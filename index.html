@@ -1,0 +1,2147 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetricSell | E-ticaret, Sağlık Turizmi & Eğitim için Reklam Yönetimi</title>
+    <meta name="description" content="MetricSell - E-ticaret & e-ihracat, sağlık turizmi ve eğitim sektörlerinde uzmanlaşmış performance marketing ajansı. Google Ads, Meta Ads, pazaryeri reklam yönetimi ve lead generation.">
+    <link rel="canonical" href="https://www.metricsell.com/">
+
+    <!-- Favicon (inline SVG, harici dosya gerekmez) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231B3A5C'/%3E%3Cpath d='M20 70 L38 45 L52 60 L80 25' stroke='%23FF8C00' stroke-width='8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='80' cy='25' r='6' fill='%23FF8C00'/%3E%3C/svg%3E">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="tr_TR">
+    <meta property="og:site_name" content="MetricSell">
+    <meta property="og:title" content="MetricSell | E-ticaret, Sağlık Turizmi & Eğitim için Reklam Yönetimi">
+    <meta property="og:description" content="E-ticaret & e-ihracat, sağlık turizmi ve eğitim sektörlerinde uzmanlaşmış performance marketing ajansı. Google Ads, Meta Ads, pazaryeri reklam yönetimi ve lead generation.">
+    <meta property="og:url" content="https://www.metricsell.com/">
+    <!-- TODO: Gerçek bir og:image (1200x630px, barındırılan bir görsel URL'i) eklenmeli -->
+    <meta property="og:image" content="https://www.metricsell.com/og-image.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MetricSell | E-ticaret, Sağlık Turizmi & Eğitim için Reklam Yönetimi">
+    <meta name="twitter:description" content="E-ticaret & e-ihracat, sağlık turizmi ve eğitim sektörlerinde uzmanlaşmış performance marketing ajansı.">
+    <!-- TODO: Gerçek bir twitter:image eklenmeli -->
+    <meta name="twitter:image" content="https://www.metricsell.com/og-image.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1B3A5C;
+            --secondary: #6B8BAE;
+            --accent: #FF8C00;
+            --accent-light: #FFB84D;
+            --bg: #FFFFFF;
+            --bg-secondary: #F0F4F8;
+            --bg-dark: #0F2744;
+            --text: #1B3A5C;
+            --text-light: #6B8BAE;
+            --text-white: #FFFFFF;
+            --border: #D1DDE8;
+            --success: #34C759;
+            --error: #E5484D;
+            --gradient-start: #1B3A5C;
+            --gradient-end: #2E5A8C;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: inherit; }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(27,58,92,0.08);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(255,255,255,0.98);
+            box-shadow: 0 4px 20px rgba(27,58,92,0.08);
+        }
+
+        .nav-container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-mark {
+            display: block;
+            flex-shrink: 0;
+            border-radius: 10px;
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--primary);
+        }
+
+        .logo-text span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown > a {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-dropdown-chevron {
+            transition: transform 0.25s ease;
+        }
+
+        .nav-dropdown:hover .nav-dropdown-chevron {
+            transform: rotate(180deg);
+        }
+
+        .nav-dropdown-menu {
+            position: absolute;
+            top: calc(100% + 14px);
+            left: 50%;
+            transform: translateX(-50%) translateY(-8px);
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(27,58,92,0.15);
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            min-width: 220px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+
+        .nav-dropdown:hover .nav-dropdown-menu {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .nav-dropdown-menu a {
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .nav-dropdown-menu a::after {
+            display: none;
+        }
+
+        .nav-dropdown-menu a:hover {
+            background: var(--bg-secondary);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            color: white;
+            padding: 12px 26px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255,140,0,0.3);
+            white-space: nowrap;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255,140,0,0.4);
+        }
+
+        .btn-arrow {
+            display: inline-block;
+            transition: transform 0.25s ease;
+        }
+
+        .nav-cta:hover .btn-arrow,
+        .btn-primary:hover .btn-arrow,
+        .form-submit:hover:not(:disabled) .btn-arrow {
+            transform: translateX(4px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            color: var(--primary);
+        }
+
+        /* Mobile nav panel */
+        .mobile-nav-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15,39,68,0.45);
+            backdrop-filter: blur(2px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 1400;
+        }
+
+        .mobile-nav-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .mobile-nav-panel {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: min(320px, 85vw);
+            height: 100vh;
+            background: var(--bg);
+            box-shadow: -10px 0 40px rgba(27,58,92,0.2);
+            transition: right 0.35s ease;
+            z-index: 1500;
+            padding: 28px 28px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .mobile-nav-panel.open {
+            right: 0;
+        }
+
+        .mobile-nav-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .mobile-nav-close {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--primary);
+            padding: 6px;
+        }
+
+        .mobile-nav-panel ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-nav-panel a {
+            display: block;
+            padding: 14px 4px;
+            text-decoration: none;
+            color: var(--text);
+            font-size: 17px;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .mobile-nav-panel .nav-cta {
+            margin-top: 24px;
+            text-align: center;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 140px 24px 100px;
+            background: linear-gradient(180deg, #F0F4F8 0%, #FFFFFF 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            left: -30%;
+            width: 160%;
+            height: 160%;
+            background:
+                radial-gradient(circle at 20% 40%, rgba(255,140,0,0.06) 0%, transparent 40%),
+                radial-gradient(circle at 80% 60%, rgba(27,58,92,0.04) 0%, transparent 40%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(1deg); }
+            66% { transform: translate(-20px, 20px) rotate(-1deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            background: rgba(255,140,0,0.1);
+            color: var(--accent);
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 32px;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(255,140,0,0.2);
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 5.5vw, 68px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+            color: var(--primary);
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: clamp(17px, 2.2vw, 22px);
+            color: var(--secondary);
+            max-width: 640px;
+            margin: 0 auto 40px;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(255,140,0,0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(255,140,0,0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            padding: 18px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: 2px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            background: rgba(27,58,92,0.05);
+        }
+
+        .hero-sector-pills {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-sector-pills a {
+            padding: 8px 18px;
+            border-radius: 100px;
+            border: 1px solid var(--border);
+            text-decoration: none;
+            color: var(--secondary);
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.25s ease;
+        }
+
+        .hero-sector-pills a:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* ===== SHARED SECTION HEADER ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-eyebrow {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 14px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+            color: var(--primary);
+        }
+
+        .section-header p {
+            color: var(--secondary);
+            font-size: 17px;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        /* ===== SERVICES ===== */
+        .services {
+            padding: 120px 24px;
+            background: var(--bg);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--bg);
+            border-radius: 24px;
+            padding: 40px 36px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            border-color: transparent;
+            box-shadow: 0 12px 40px rgba(27,58,92,0.1);
+            transform: translateY(-4px);
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary);
+        }
+
+        .service-card p {
+            color: var(--secondary);
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .service-features {
+            list-style: none;
+        }
+
+        .service-features li {
+            padding: 6px 0;
+            font-size: 14px;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        .service-card-cta {
+            display: block;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            color: var(--accent);
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: max-height 0.35s ease, opacity 0.3s ease, margin-top 0.35s ease;
+        }
+
+        .service-card:hover .service-card-cta {
+            max-height: 40px;
+            opacity: 1;
+            margin-top: 18px;
+        }
+
+        .service-card-cta .btn-arrow {
+            display: inline-block;
+            transition: transform 0.25s ease;
+        }
+
+        .service-card-cta:hover .btn-arrow {
+            transform: translateX(4px);
+        }
+
+        /* ===== SECTORS INTRO ===== */
+        .sectors-intro {
+            padding: 100px 24px 40px;
+            background: var(--bg-secondary);
+            text-align: center;
+        }
+
+        .sector-pill-nav {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .sector-pill-nav a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            text-decoration: none;
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.25s ease;
+        }
+
+        .sector-pill-nav a:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            box-shadow: 0 8px 20px rgba(255,140,0,0.15);
+            transform: translateY(-2px);
+        }
+
+        /* ===== SECTOR BLOCKS ===== */
+        .sector-block {
+            padding: 100px 24px;
+        }
+
+        .sector-block.bg-light { background: var(--bg); }
+        .sector-block.bg-alt { background: var(--bg-secondary); }
+
+        .sector-block.bg-dark {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--primary) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sector-block.bg-dark::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,140,0,0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .sector-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sector-block.reverse .sector-split {
+            direction: rtl;
+        }
+
+        .sector-block.reverse .sector-split > * {
+            direction: ltr;
+        }
+
+        .sector-icon-badge {
+            width: 64px;
+            height: 64px;
+            border-radius: 18px;
+            background: rgba(255,140,0,0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin-bottom: 24px;
+        }
+
+        .sector-block.bg-dark .sector-icon-badge {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .sector-text h2 {
+            font-size: clamp(26px, 3.2vw, 36px);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 18px;
+            color: var(--primary);
+        }
+
+        .sector-block.bg-dark .sector-text h2 {
+            color: white;
+        }
+
+        .sector-text > p {
+            color: var(--secondary);
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .sector-block.bg-dark .sector-text > p {
+            color: rgba(255,255,255,0.75);
+        }
+
+        .sector-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 28px;
+        }
+
+        .sector-tag {
+            padding: 7px 16px;
+            background: var(--bg-secondary);
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--secondary);
+            border: 1px solid var(--border);
+        }
+
+        .sector-block.bg-dark .sector-tag {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.85);
+        }
+
+        .sector-mini-stats {
+            display: flex;
+            gap: 32px;
+        }
+
+        .sector-mini-stat .num {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .sector-mini-stat .lbl {
+            font-size: 12px;
+            color: var(--secondary);
+            margin-top: 6px;
+        }
+
+        .sector-block.bg-dark .sector-mini-stat .lbl {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .placeholder-flag {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            vertical-align: super;
+            color: var(--accent);
+            opacity: 0.8;
+        }
+
+        /* ===== LEAD FORM CARD ===== */
+        .sector-form-card {
+            background: var(--bg);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 24px 64px rgba(27,58,92,0.18);
+            border: 1px solid var(--border);
+            position: relative;
+            z-index: 1;
+        }
+
+        .sector-form-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+
+        .sector-form-card .form-sub {
+            font-size: 14px;
+            color: var(--secondary);
+            margin-bottom: 24px;
+        }
+
+        .lead-form .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 13px 16px;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 15px;
+            color: var(--text);
+            background: #fff;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            width: 100%;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(255,140,0,0.12);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        .chip-select {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .chip {
+            padding: 10px 18px;
+            border-radius: 100px;
+            border: 1.5px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .chip:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .chip.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        .form-honeypot {
+            position: absolute;
+            left: -9999px;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .form-submit {
+            width: 100%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .form-submit:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .form-spinner {
+            width: 15px;
+            height: 15px;
+            border: 2px solid rgba(255,255,255,0.4);
+            border-top-color: #fff;
+            border-radius: 50%;
+            display: none;
+            animation: spin 0.7s linear infinite;
+        }
+
+        .form-submit.loading .form-spinner {
+            display: inline-block;
+        }
+
+        .form-submit.loading .btn-arrow {
+            display: none;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .form-status {
+            margin-top: 14px;
+            font-size: 14px;
+            font-weight: 600;
+            min-height: 0;
+            opacity: 0;
+            transform: translateY(-4px);
+            transition: all 0.3s ease;
+        }
+
+        .form-status.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .form-status.success { color: var(--success); }
+        .form-status.error { color: var(--error); }
+
+        /* ===== RESULTS ===== */
+        .results {
+            padding: 120px 24px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--gradient-end) 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .results::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 50% 50%, rgba(255,140,0,0.08) 0%, transparent 50%);
+        }
+
+        .results h2 {
+            font-size: clamp(30px, 4vw, 46px);
+            font-weight: 700;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .results > .container > p {
+            opacity: 0.7;
+            font-size: 17px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .metric-disclaimer {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            margin-bottom: 56px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            max-width: 960px;
+            margin: 0 auto 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .result-item {
+            padding: 24px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .result-number {
+            font-size: clamp(34px, 4.5vw, 52px);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .result-label {
+            font-size: 14px;
+            opacity: 0.8;
+            font-weight: 500;
+        }
+
+        .scenarios-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .scenario-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 20px;
+            padding: 32px;
+            text-align: left;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .scenario-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .scenario-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(255,140,0,0.18);
+            color: var(--accent-light);
+            border-radius: 100px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+
+        .scenario-card h4 {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .scenario-card p {
+            font-size: 13.5px;
+            opacity: 0.7;
+            margin-bottom: 18px;
+            line-height: 1.6;
+        }
+
+        .scenario-metric {
+            font-size: 26px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .scenario-metric span {
+            font-size: 12px;
+            -webkit-text-fill-color: rgba(255,255,255,0.6);
+            font-weight: 500;
+            margin-left: 4px;
+        }
+
+        .results-footnote {
+            text-align: center;
+            font-size: 12.5px;
+            opacity: 0.55;
+            margin-top: 48px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== PROCESS ===== */
+        .process {
+            padding: 120px 24px;
+            background: var(--bg-secondary);
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            opacity: 0.3;
+            border-radius: 3px;
+        }
+
+        .step {
+            text-align: center;
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--bg), #FFFFFF);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--accent);
+            margin: 0 auto 24px;
+            border: 3px solid var(--accent);
+            box-shadow: 0 4px 20px rgba(255,140,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .step:hover .step-number {
+            transform: scale(1.08);
+        }
+
+        .step h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+
+        .step p {
+            color: var(--secondary);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* ===== CONTACT / GENERAL CTA ===== */
+        .contact-section {
+            padding: 120px 24px;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--primary) 100%);
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 50% 50%, rgba(255,140,0,0.1) 0%, transparent 50%);
+        }
+
+        .contact-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-section h2 {
+            font-size: clamp(30px, 4vw, 44px);
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .contact-section > .contact-content > p {
+            opacity: 0.7;
+            font-size: 17px;
+            margin-bottom: 40px;
+        }
+
+        .contact-section .sector-form-card {
+            text-align: left;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--bg-dark);
+            color: white;
+            padding: 80px 24px 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto 60px;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .footer-brand .logo-footer {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-brand h3 {
+            font-size: 22px;
+            font-weight: 800;
+        }
+
+        .footer-brand h3 span {
+            color: var(--accent);
+        }
+
+        .footer-brand p {
+            opacity: 0.6;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .footer-links h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 40px;
+            text-align: center;
+            opacity: 0.5;
+            font-size: 14px;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .results-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .scenarios-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .sector-split {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .sector-block.reverse .sector-split {
+                direction: ltr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .results-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+
+            .process-steps {
+                flex-direction: column;
+                gap: 48px;
+            }
+
+            .process-steps::before {
+                display: none;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+
+            .service-card {
+                padding: 32px;
+            }
+
+            .lead-form .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .sector-form-card {
+                padding: 28px;
+            }
+
+            .sector-mini-stats {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <svg class="logo-mark" viewBox="0 0 100 100" width="36" height="36" aria-hidden="true">
+                    <rect width="100" height="100" rx="22" fill="#1B3A5C"/>
+                    <path d="M20 70 L38 45 L52 60 L80 25" stroke="#FF8C00" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="80" cy="25" r="6" fill="#FF8C00"/>
+                </svg>
+                <span class="logo-text">Metric<span>Sell</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#services">Hizmetler</a></li>
+                <li class="nav-dropdown">
+                    <a href="#ecommerce">Sektörler
+                        <svg class="nav-dropdown-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </a>
+                    <div class="nav-dropdown-menu">
+                        <a href="#ecommerce">🛒 E-ticaret & E-ihracat</a>
+                        <a href="#saglik-turizmi">🏥 Sağlık Turizmi</a>
+                        <a href="#egitim">🎓 Eğitim</a>
+                    </div>
+                </li>
+                <li><a href="#results">Sonuçlar</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+            <a href="#contact" class="nav-cta">Teklif Al <span class="btn-arrow">→</span></a>
+            <button class="mobile-menu-btn" aria-label="Menüyü aç" aria-expanded="false" id="mobileMenuBtn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE NAV -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+    <div class="mobile-nav-panel" id="mobileNavPanel">
+        <div class="mobile-nav-top">
+            <span class="logo-text">Metric<span>Sell</span></span>
+            <button class="mobile-nav-close" aria-label="Menüyü kapat" id="mobileNavClose">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <ul>
+            <li><a href="#services">Hizmetler</a></li>
+            <li><a href="#ecommerce">E-ticaret & E-ihracat</a></li>
+            <li><a href="#saglik-turizmi">Sağlık Turizmi</a></li>
+            <li><a href="#egitim">Eğitim</a></li>
+            <li><a href="#results">Sonuçlar</a></li>
+            <li><a href="#process">Süreç</a></li>
+            <li><a href="blog.html">Blog</a></li>
+        </ul>
+        <a href="#contact" class="nav-cta">Teklif Al <span class="btn-arrow">→</span></a>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge"><span aria-hidden="true">🎯</span>&nbsp; Performance Marketing Uzmanı</div>
+            <h1>
+                E-ticaret, Sağlık Turizmi & Eğitim<br>
+                <span class="highlight">Markalarının Büyüme Partneri</span>
+            </h1>
+            <p>
+                Google Ads, Meta Ads ve pazaryeri reklam yönetiminde sektör uzmanlığı.
+                Satış, hasta randevusu ve kayıt sayılarınızı büyütmek için veri odaklı çalışıyoruz.
+            </p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn-primary">Ücretsiz Reklam Analizi Al <span class="btn-arrow">→</span></a>
+                <a href="#results" class="btn-secondary">Sonuçları İncele</a>
+            </div>
+            <div class="hero-sector-pills">
+                <a href="#ecommerce">🛒 E-ticaret & E-ihracat</a>
+                <a href="#saglik-turizmi">🏥 Sağlık Turizmi</a>
+                <a href="#egitim">🎓 Eğitim (Sürücü & Dil Kursu)</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-eyebrow">Hizmetlerimiz</span>
+                <h2>360° Reklam Yönetimi</h2>
+                <p>Tasarımdan reklam yönetimine, lead generation'dan SEO'ya tüm büyüme kanalları tek çatı altında</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <h3><span aria-hidden="true">🎨</span> Tasarım</h3>
+                    <p>Dönüşüm odaklı UX ile web sitesi, landing page ve reklam kreatiflerinizi tasarlıyoruz.</p>
+                    <ul class="service-features">
+                        <li>Web Sitesi Tasarımı</li>
+                        <li>Landing Page Tasarımı</li>
+                        <li>Reklam Kreatifleri</li>
+                        <li>UX/UI Optimizasyonu</li>
+                    </ul>
+                    <a href="#contact" class="service-card-cta">Bu hizmet için teklif alın <span class="btn-arrow">→</span></a>
+                </div>
+                <div class="service-card fade-in">
+                    <h3><span aria-hidden="true">📱</span> Meta Ads Yönetimi</h3>
+                    <p>Facebook ve Instagram'da hedef kitle oluşturma, remarketing ve dönüşüm odaklı kampanya yönetimi.</p>
+                    <ul class="service-features">
+                        <li>Facebook & Instagram Reklamları</li>
+                        <li>Lead Generation Formları</li>
+                        <li>Remarketing Kampanyaları</li>
+                        <li>Lookalike Audience</li>
+                    </ul>
+                    <a href="#contact" class="service-card-cta">Bu hizmet için teklif alın <span class="btn-arrow">→</span></a>
+                </div>
+                <div class="service-card fade-in">
+                    <h3><span aria-hidden="true">🔍</span> Google Ads</h3>
+                    <p>Arama, görüntülü ve Performance Max kampanyaları ile hedef kitlenize doğru zamanda ulaşın.</p>
+                    <ul class="service-features">
+                        <li>Arama Ağı Reklamları</li>
+                        <li>Performance Max Kampanyaları</li>
+                        <li>Görüntülü Reklam Ağı</li>
+                        <li>YouTube Reklamları</li>
+                    </ul>
+                    <a href="#contact" class="service-card-cta">Bu hizmet için teklif alın <span class="btn-arrow">→</span></a>
+                </div>
+                <div class="service-card fade-in">
+                    <h3><span aria-hidden="true">🎯</span> Lead Generation</h3>
+                    <p>Huni kurulumundan CRM entegrasyonuna, kaliteli lead akışını sürdürülebilir hale getiriyoruz.</p>
+                    <ul class="service-features">
+                        <li>Lead Formu Optimizasyonu</li>
+                        <li>CRM Entegrasyonu</li>
+                        <li>WhatsApp / Telefon Otomasyonu</li>
+                        <li>Huni (Funnel) Kurulumu</li>
+                    </ul>
+                    <a href="#contact" class="service-card-cta">Bu hizmet için teklif alın <span class="btn-arrow">→</span></a>
+                </div>
+                <div class="service-card fade-in">
+                    <h3><span aria-hidden="true">🛒</span> Pazaryeri Yönetimi</h3>
+                    <p>Trendyol, Hepsiburada ve Amazon TR'de sponsorlu ürün ve mağaza reklamı stratejileri.</p>
+                    <ul class="service-features">
+                        <li>Trendyol Sponsorlu Ürün</li>
+                        <li>Hepsiburada Reklam Yönetimi</li>
+                        <li>Amazon TR PPC</li>
+                        <li>Karlılık Analizi</li>
+                    </ul>
+                    <a href="#contact" class="service-card-cta">Bu hizmet için teklif alın <span class="btn-arrow">→</span></a>
+                </div>
+                <div class="service-card fade-in">
+                    <h3><span aria-hidden="true">✍️</span> İçerik & SEO</h3>
+                    <p>Organik görünürlüğü artıran teknik SEO, yerel SEO ve içerik stratejisi.</p>
+                    <ul class="service-features">
+                        <li>Teknik SEO Denetimi</li>
+                        <li>İçerik Stratejisi & Blog</li>
+                        <li>Yerel SEO (Google Business)</li>
+                        <li>Anahtar Kelime Optimizasyonu</li>
+                    </ul>
+                    <a href="#contact" class="service-card-cta">Bu hizmet için teklif alın <span class="btn-arrow">→</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTORS INTRO -->
+    <section class="sectors-intro" id="sectors">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-eyebrow">Uzmanlaştığımız Sektörler</span>
+                <h2>Sektörünüze Özel Strateji</h2>
+                <p>Her sektörün dinamikleri farklıdır — kampanyalarımızı sektör bazlı kurguluyoruz</p>
+            </div>
+            <div class="sector-pill-nav fade-in">
+                <a href="#ecommerce">🛒 E-ticaret & E-ihracat</a>
+                <a href="#saglik-turizmi">🏥 Sağlık Turizmi</a>
+                <a href="#egitim">🎓 Eğitim</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTOR: E-TİCARET & E-İHRACAT -->
+    <section class="sector-block bg-light" id="ecommerce">
+        <div class="sector-split">
+            <div class="sector-text fade-in">
+                <div class="sector-icon-badge" aria-hidden="true">🛒</div>
+                <h2>E-ticaret & E-ihracat</h2>
+                <p>Online mağazanız veya yurt dışına açılan markanız için pazaryeri ve performans reklamcılığını
+                   tek stratejide birleştiriyoruz. Yurt içi satışı büyütürken, e-ihracat kampanyalarıyla yeni
+                   pazarlara açılmanızı sağlıyoruz.</p>
+                <div class="sector-tags">
+                    <span class="sector-tag">Trendyol</span>
+                    <span class="sector-tag">Hepsiburada</span>
+                    <span class="sector-tag">Amazon</span>
+                    <span class="sector-tag">Google Shopping</span>
+                    <span class="sector-tag">Etsy</span>
+                    <span class="sector-tag">Shopify</span>
+                </div>
+                <div class="sector-mini-stats">
+                    <div class="sector-mini-stat">
+                        <div class="num">%180<span class="placeholder-flag">örnek</span></div>
+                        <div class="lbl">Ort. ROAS Artışı</div>
+                    </div>
+                    <div class="sector-mini-stat">
+                        <div class="num">%35<span class="placeholder-flag">örnek</span></div>
+                        <div class="lbl">CPA Düşüşü</div>
+                    </div>
+                </div>
+            </div>
+            <div class="sector-form-card fade-in">
+                <h3>E-ticaret için Teklif Al</h3>
+                <p class="form-sub">Formu doldurun, 48 saat içinde size özel analiz raporunu hazırlayalım.</p>
+                <form class="lead-form" action="https://formspree.io/f/mykrnjzk" method="POST" data-sector="E-ticaret & E-ihracat">
+                    <input type="hidden" name="sektor" value="E-ticaret & E-ihracat">
+                    <input type="hidden" name="_subject" value="Yeni Teklif Talebi — E-ticaret & E-ihracat">
+                    <input type="text" name="_gotcha" class="form-honeypot" tabindex="-1" autocomplete="off">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="ecom-name">Ad Soyad</label>
+                            <input type="text" id="ecom-name" name="name" required placeholder="Adınız Soyadınız">
+                        </div>
+                        <div class="form-group">
+                            <label for="ecom-email">E-posta</label>
+                            <input type="email" id="ecom-email" name="email" required placeholder="ornek@firma.com">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ecom-phone">Telefon</label>
+                        <input type="tel" id="ecom-phone" name="phone" required placeholder="05XX XXX XX XX">
+                    </div>
+                    <div class="form-group">
+                        <label for="ecom-message">Mesajınız</label>
+                        <textarea id="ecom-message" name="message" placeholder="Mağazanız / markanız hakkında kısaca bilgi verin..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary form-submit">
+                        <span class="form-spinner" aria-hidden="true"></span>
+                        <span class="btn-text">Teklif Al</span>
+                        <span class="btn-arrow">→</span>
+                    </button>
+                    <div class="form-status" role="status" aria-live="polite"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTOR: SAĞLIK TURİZMİ -->
+    <section class="sector-block bg-dark reverse" id="saglik-turizmi">
+        <div class="sector-split">
+            <div class="sector-form-card fade-in">
+                <h3>Sağlık Turizmi için Teklif Al</h3>
+                <p class="form-sub">Formu doldurun, 48 saat içinde size özel analiz raporunu hazırlayalım.</p>
+                <form class="lead-form" action="https://formspree.io/f/mykrnjzk" method="POST" data-sector="Sağlık Turizmi">
+                    <input type="hidden" name="sektor" value="Sağlık Turizmi">
+                    <input type="hidden" name="_subject" value="Yeni Teklif Talebi — Sağlık Turizmi">
+                    <input type="text" name="_gotcha" class="form-honeypot" tabindex="-1" autocomplete="off">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="health-name">Ad Soyad</label>
+                            <input type="text" id="health-name" name="name" required placeholder="Adınız Soyadınız">
+                        </div>
+                        <div class="form-group">
+                            <label for="health-email">E-posta</label>
+                            <input type="email" id="health-email" name="email" required placeholder="ornek@klinik.com">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="health-phone">Telefon</label>
+                        <input type="tel" id="health-phone" name="phone" required placeholder="05XX XXX XX XX">
+                    </div>
+                    <div class="form-group">
+                        <label for="health-message">Mesajınız</label>
+                        <textarea id="health-message" name="message" placeholder="Kliniğiniz / branşınız hakkında kısaca bilgi verin..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary form-submit">
+                        <span class="form-spinner" aria-hidden="true"></span>
+                        <span class="btn-text">Teklif Al</span>
+                        <span class="btn-arrow">→</span>
+                    </button>
+                    <div class="form-status" role="status" aria-live="polite"></div>
+                </form>
+            </div>
+            <div class="sector-text fade-in">
+                <div class="sector-icon-badge" aria-hidden="true">🏥</div>
+                <h2>Sağlık Turizmi</h2>
+                <p>Yurt dışından hasta çekmek isteyen klinik ve hastaneler için çok dilli kampanya yönetimi
+                   ve uluslararası hedefleme. Saç ekimi, estetik cerrahi ve diş kliniklerinde hasta danışmanlığı
+                   huninize uçtan uca destek oluyoruz.</p>
+                <div class="sector-tags">
+                    <span class="sector-tag">Saç Ekimi</span>
+                    <span class="sector-tag">Diş Estetiği</span>
+                    <span class="sector-tag">Estetik Cerrahi</span>
+                    <span class="sector-tag">Uluslararası Hasta</span>
+                    <span class="sector-tag">Çok Dilli Kampanya</span>
+                </div>
+                <div class="sector-mini-stats">
+                    <div class="sector-mini-stat">
+                        <div class="num">%180<span class="placeholder-flag">örnek</span></div>
+                        <div class="lbl">Randevu Artışı</div>
+                    </div>
+                    <div class="sector-mini-stat">
+                        <div class="num">%40<span class="placeholder-flag">örnek</span></div>
+                        <div class="lbl">Lead Maliyeti Düşüşü</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTOR: EĞİTİM -->
+    <section class="sector-block bg-alt" id="egitim">
+        <div class="sector-split">
+            <div class="sector-text fade-in">
+                <div class="sector-icon-badge" aria-hidden="true">🎓</div>
+                <h2>Eğitim Sektörü</h2>
+                <p>Sürücü kursları ve dil okulları için yerel hedefleme ve kayıt odaklı kampanya yönetimi.
+                   Bölgesel arama hacminden yerel SEO'ya kadar, şubenize en yakın öğrenci adaylarına ulaşıyoruz.</p>
+                <div class="sector-tags">
+                    <span class="sector-tag">Sürücü Kursu</span>
+                    <span class="sector-tag">Dil Okulu</span>
+                    <span class="sector-tag">Yerel SEO</span>
+                    <span class="sector-tag">Kayıt Kampanyası</span>
+                </div>
+                <div class="sector-mini-stats">
+                    <div class="sector-mini-stat">
+                        <div class="num">%250<span class="placeholder-flag">örnek</span></div>
+                        <div class="lbl">Kayıt Artışı</div>
+                    </div>
+                    <div class="sector-mini-stat">
+                        <div class="num">%45<span class="placeholder-flag">örnek</span></div>
+                        <div class="lbl">Kayıt Maliyeti Düşüşü</div>
+                    </div>
+                </div>
+            </div>
+            <div class="sector-form-card fade-in">
+                <h3>Eğitim Sektörü için Teklif Al</h3>
+                <p class="form-sub">Formu doldurun, 48 saat içinde size özel analiz raporunu hazırlayalım.</p>
+                <form class="lead-form" action="https://formspree.io/f/mykrnjzk" method="POST" data-sector="Eğitim">
+                    <input type="hidden" name="sektor" value="Eğitim (Sürücü / Dil Kursu)">
+                    <input type="hidden" name="_subject" value="Yeni Teklif Talebi — Eğitim Sektörü">
+                    <input type="text" name="_gotcha" class="form-honeypot" tabindex="-1" autocomplete="off">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="edu-name">Ad Soyad</label>
+                            <input type="text" id="edu-name" name="name" required placeholder="Adınız Soyadınız">
+                        </div>
+                        <div class="form-group">
+                            <label for="edu-email">E-posta</label>
+                            <input type="email" id="edu-email" name="email" required placeholder="ornek@kurum.com">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="edu-phone">Telefon</label>
+                        <input type="tel" id="edu-phone" name="phone" required placeholder="05XX XXX XX XX">
+                    </div>
+                    <div class="form-group">
+                        <label for="edu-message">Mesajınız</label>
+                        <textarea id="edu-message" name="message" placeholder="Kurumunuz (sürücü kursu / dil okulu) hakkında kısaca bilgi verin..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary form-submit">
+                        <span class="form-spinner" aria-hidden="true"></span>
+                        <span class="btn-text">Teklif Al</span>
+                        <span class="btn-arrow">→</span>
+                    </button>
+                    <div class="form-status" role="status" aria-live="polite"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESULTS SECTION -->
+    <section class="results" id="results">
+        <div class="container">
+            <h2 class="fade-in">Sektör Ortaklarımızın Sonuçları</h2>
+            <p class="fade-in">Kampanya yönetiminde odaklandığımız temel performans göstergeleri</p>
+            <div class="metric-disclaimer fade-in">⚠️ Aşağıdaki rakamlar örnek / gösterge niteliğindedir</div>
+            <div class="results-grid">
+                <div class="result-item fade-in">
+                    <div class="result-number">%180</div>
+                    <div class="result-label">Ort. ROAS Artışı*</div>
+                </div>
+                <div class="result-item fade-in">
+                    <div class="result-number">%35</div>
+                    <div class="result-label">Tıklama Maliyeti Düşüşü*</div>
+                </div>
+                <div class="result-item fade-in">
+                    <div class="result-number">%40</div>
+                    <div class="result-label">Lead Maliyeti Düşüşü*</div>
+                </div>
+                <div class="result-item fade-in">
+                    <div class="result-number">%65</div>
+                    <div class="result-label">Dönüşüm Oranı Artışı*</div>
+                </div>
+            </div>
+
+            <div class="scenarios-grid">
+                <div class="scenario-card fade-in">
+                    <span class="scenario-badge">ÖRNEK SENARYO</span>
+                    <h4>🛒 E-ticaret & E-ihracat</h4>
+                    <p>Pazaryeri + Google Shopping kombinasyonuyla kurgulanan bir kampanyada hedeflenen ilerleme.</p>
+                    <div class="scenario-metric">%180 <span>ROAS artışı</span></div>
+                </div>
+                <div class="scenario-card fade-in">
+                    <span class="scenario-badge">ÖRNEK SENARYO</span>
+                    <h4>🏥 Sağlık Turizmi</h4>
+                    <p>Çok dilli Meta + Google Ads yönetimiyle uluslararası hasta danışmanlığı huninde hedeflenen ilerleme.</p>
+                    <div class="scenario-metric">%180 <span>randevu artışı</span></div>
+                </div>
+                <div class="scenario-card fade-in">
+                    <span class="scenario-badge">ÖRNEK SENARYO</span>
+                    <h4>🎓 Eğitim (Sürücü / Dil Kursu)</h4>
+                    <p>Yerel hedeflemeli lead generation kampanyasıyla kayıt huninde hedeflenen ilerleme.</p>
+                    <div class="scenario-metric">%250 <span>kayıt artışı</span></div>
+                </div>
+            </div>
+            <p class="results-footnote fade-in">*Rakamlar örnek amaçlıdır; gerçek performans sektöre, bütçeye ve rekabet ortamına göre değişir.</p>
+        </div>
+    </section>
+
+    <!-- PROCESS SECTION -->
+    <section class="process" id="process">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-eyebrow">Süreç</span>
+                <h2>Çalışma Sürecimiz</h2>
+                <p>Şeffaf, veri odaklı ve sonuç odaklı iş akışı</p>
+            </div>
+            <div class="process-steps">
+                <div class="step fade-in">
+                    <div class="step-number">1</div>
+                    <h4>Ücretsiz Analiz</h4>
+                    <p>Mevcut reklam hesaplarınızı, sektörünüzü ve rakiplerinizi detaylı inceliyoruz.</p>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-number">2</div>
+                    <h4>Strateji Oluşturma</h4>
+                    <p>Sektörünüze özel, veri odaklı bir reklam stratejisi ve bütçe planı hazırlıyoruz.</p>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-number">3</div>
+                    <h4>Optimizasyon</h4>
+                    <p>Günlük kontrol, haftalık A/B testleri ve aylık strateji revizyonları.</p>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-number">4</div>
+                    <h4>Ölçeklendirme</h4>
+                    <p>Kazanan kampanyaları bütçe ve kitle olarak ölçeklendirerek büyümeyi sürdürüyoruz.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GENERAL CONTACT SECTION -->
+    <section class="contact-section" id="contact">
+        <div class="contact-content">
+            <h2 class="fade-in">Projenizi Konuşalım</h2>
+            <p class="fade-in">Sektörünüz aşağıdaki listede yoksa da bize yazın — 48 saat içinde dönüş yapıyoruz.</p>
+            <div class="sector-form-card fade-in">
+                <h3>Genel Teklif Formu</h3>
+                <p class="form-sub">Formu doldurun, ekibimiz size en kısa sürede ulaşsın.</p>
+                <form class="lead-form" action="https://formspree.io/f/mykrnjzk" method="POST" data-sector="Genel">
+                    <input type="hidden" name="_subject" value="Yeni Teklif Talebi — Genel">
+                    <input type="text" name="_gotcha" class="form-honeypot" tabindex="-1" autocomplete="off">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="gen-name">Ad Soyad</label>
+                            <input type="text" id="gen-name" name="name" required placeholder="Adınız Soyadınız">
+                        </div>
+                        <div class="form-group">
+                            <label for="gen-email">E-posta</label>
+                            <input type="email" id="gen-email" name="email" required placeholder="ornek@firma.com">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="gen-phone">Telefon</label>
+                        <input type="tel" id="gen-phone" name="phone" required placeholder="05XX XXX XX XX">
+                    </div>
+                    <div class="form-group">
+                        <label>İlgilendiğiniz Alan(lar)</label>
+                        <div class="chip-select" id="genSectorChips">
+                            <button type="button" class="chip" data-value="E-ticaret & E-ihracat">🛒 E-ticaret & E-ihracat</button>
+                            <button type="button" class="chip" data-value="Sağlık Turizmi">🏥 Sağlık Turizmi</button>
+                            <button type="button" class="chip" data-value="Eğitim (Sürücü / Dil Kursu)">🎓 Eğitim (Sürücü / Dil Kursu)</button>
+                            <button type="button" class="chip" data-value="Diğer">✳️ Diğer</button>
+                        </div>
+                        <input type="hidden" name="sektor" id="genSectorValue" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="gen-message">Mesajınız</label>
+                        <textarea id="gen-message" name="message" placeholder="Projeniz hakkında kısaca bilgi verin..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary form-submit">
+                        <span class="form-spinner" aria-hidden="true"></span>
+                        <span class="btn-text">Teklif Al</span>
+                        <span class="btn-arrow">→</span>
+                    </button>
+                    <div class="form-status" role="status" aria-live="polite"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo-footer">
+                    <svg viewBox="0 0 100 100" width="36" height="36" aria-hidden="true">
+                        <rect width="100" height="100" rx="22" fill="#FFFFFF" fill-opacity="0.1"/>
+                        <path d="M20 70 L38 45 L52 60 L80 25" stroke="#FF8C00" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="80" cy="25" r="6" fill="#FF8C00"/>
+                    </svg>
+                    <h3>Metric<span>Sell</span></h3>
+                </div>
+                <p>E-ticaret & e-ihracat, sağlık turizmi ve eğitim sektörlerinde uzmanlaşmış performance marketing ajansı.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Sektörler</h4>
+                <ul>
+                    <li><a href="#ecommerce">E-ticaret & E-ihracat</a></li>
+                    <li><a href="#saglik-turizmi">Sağlık Turizmi</a></li>
+                    <li><a href="#egitim">Eğitim</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Hizmetler</h4>
+                <ul>
+                    <li><a href="#services">Tasarım</a></li>
+                    <li><a href="#services">Meta Ads</a></li>
+                    <li><a href="#services">Google Ads</a></li>
+                    <li><a href="#services">Lead Generation</a></li>
+                    <li><a href="#services">Pazaryeri Yönetimi</a></li>
+                    <li><a href="#services">İçerik & SEO</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>İletişim</h4>
+                <ul>
+                    <li><a href="mailto:info@metricsell.com">info@metricsell.com</a></li>
+                    <li><a href="tel:+902121234567">+90 212 123 45 67</a></li>
+                    <li><a href="#contact">Teklif Formu</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 MetricSell. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile nav toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNavPanel = document.getElementById('mobileNavPanel');
+        const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+        const mobileNavClose = document.getElementById('mobileNavClose');
+
+        function openMobileNav() {
+            mobileNavPanel.classList.add('open');
+            mobileNavOverlay.classList.add('open');
+            mobileMenuBtn.setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileNav() {
+            mobileNavPanel.classList.remove('open');
+            mobileNavOverlay.classList.remove('open');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+
+        mobileMenuBtn.addEventListener('click', openMobileNav);
+        mobileNavClose.addEventListener('click', closeMobileNav);
+        mobileNavOverlay.addEventListener('click', closeMobileNav);
+        mobileNavPanel.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileNav));
+
+        // Staggered fade-in: cards in the same grid appear one after another
+        document.querySelectorAll('.services-grid, .results-grid, .scenarios-grid, .process-steps').forEach(group => {
+            Array.from(group.children).forEach((child, i) => {
+                if (child.classList.contains('fade-in')) {
+                    child.style.transitionDelay = (i * 90) + 'ms';
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for in-page anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href.length <= 1) return;
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Counter animation for results
+        function animateCounter(element, target, duration = 1600) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    element.textContent = '%' + Math.floor(target);
+                    clearInterval(timer);
+                } else {
+                    element.textContent = '%' + Math.floor(start);
+                }
+            }, 16);
+        }
+
+        const resultsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const numbers = entry.target.querySelectorAll('.result-number');
+                    numbers.forEach((num, index) => {
+                        const targets = [180, 35, 40, 65];
+                        setTimeout(() => {
+                            animateCounter(num, targets[index]);
+                        }, index * 150);
+                    });
+                    resultsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const resultsSection = document.querySelector('.results');
+        if (resultsSection) {
+            resultsObserver.observe(resultsSection);
+        }
+
+        // Chip-select: toggle multi-select interest chips into a hidden input
+        const genChips = document.getElementById('genSectorChips');
+        const genSectorValue = document.getElementById('genSectorValue');
+        if (genChips && genSectorValue) {
+            genChips.querySelectorAll('.chip').forEach(chip => {
+                chip.addEventListener('click', () => {
+                    chip.classList.toggle('active');
+                    const selected = Array.from(genChips.querySelectorAll('.chip.active')).map(c => c.dataset.value);
+                    genSectorValue.value = selected.join(', ');
+                });
+            });
+        }
+
+        // Lead form submission (Formspree, AJAX)
+        document.querySelectorAll('.lead-form').forEach(form => {
+            form.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                const submitBtn = form.querySelector('.form-submit');
+                const statusEl = form.querySelector('.form-status');
+                const btnText = submitBtn.querySelector('.btn-text');
+
+                submitBtn.disabled = true;
+                submitBtn.classList.add('loading');
+                const originalText = btnText.textContent;
+                btnText.textContent = 'Gönderiliyor...';
+                statusEl.classList.remove('visible', 'success', 'error');
+
+                try {
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: new FormData(form),
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (response.ok) {
+                        statusEl.textContent = 'Teşekkürler! Talebiniz alındı, 48 saat içinde size dönüş yapacağız.';
+                        statusEl.classList.add('visible', 'success');
+                        form.reset();
+                    } else {
+                        statusEl.textContent = 'Bir hata oluştu. Lütfen tekrar deneyin veya info@metricsell.com adresine yazın.';
+                        statusEl.classList.add('visible', 'error');
+                    }
+                } catch (err) {
+                    statusEl.textContent = 'Bağlantı hatası. Lütfen tekrar deneyin veya info@metricsell.com adresine yazın.';
+                    statusEl.classList.add('visible', 'error');
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('loading');
+                    btnText.textContent = originalText;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

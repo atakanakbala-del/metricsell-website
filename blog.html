@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | MetricSell — E-ticaret, Sağlık Turizmi & Eğitim için Reklam Yönetimi İçerikleri</title>
+    <meta name="description" content="MetricSell Blog: E-ticaret & e-ihracat, sağlık turizmi ve eğitim sektörlerinde Google Ads, Meta Ads, pazaryeri reklamcılığı ve lead generation üzerine rehberler.">
+    <link rel="canonical" href="https://www.metricsell.com/blog.html">
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231B3A5C'/%3E%3Cpath d='M20 70 L38 45 L52 60 L80 25' stroke='%23FF8C00' stroke-width='8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='80' cy='25' r='6' fill='%23FF8C00'/%3E%3C/svg%3E">
+
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="tr_TR">
+    <meta property="og:site_name" content="MetricSell">
+    <meta property="og:title" content="Blog | MetricSell">
+    <meta property="og:description" content="E-ticaret & e-ihracat, sağlık turizmi ve eğitim sektörlerinde performance marketing rehberleri.">
+    <meta property="og:url" content="https://www.metricsell.com/blog.html">
+    <!-- TODO: Gerçek bir og:image (1200x630px, barındırılan bir görsel URL'i) eklenmeli -->
+    <meta property="og:image" content="https://www.metricsell.com/og-image.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blog | MetricSell">
+    <meta name="twitter:description" content="E-ticaret & e-ihracat, sağlık turizmi ve eğitim sektörlerinde performance marketing rehberleri.">
+    <meta name="twitter:image" content="https://www.metricsell.com/og-image.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1B3A5C;
+            --secondary: #6B8BAE;
+            --accent: #FF8C00;
+            --accent-light: #FFB84D;
+            --bg: #FFFFFF;
+            --bg-secondary: #F0F4F8;
+            --bg-dark: #0F2744;
+            --text: #1B3A5C;
+            --text-light: #6B8BAE;
+            --text-white: #FFFFFF;
+            --border: #D1DDE8;
+            --success: #34C759;
+            --error: #E5484D;
+            --gradient-start: #1B3A5C;
+            --gradient-end: #2E5A8C;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: inherit; }
+
+        /* ===== NAVIGATION (shared with index.html) ===== */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(27,58,92,0.08);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(255,255,255,0.98);
+            box-shadow: 0 4px 20px rgba(27,58,92,0.08);
+        }
+
+        .nav-container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-mark { display: block; flex-shrink: 0; border-radius: 10px; }
+        .logo-text { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; color: var(--primary); }
+        .logo-text span { color: var(--accent); }
+
+        .nav-links { display: flex; gap: 28px; list-style: none; }
+        .nav-links a {
+            text-decoration: none; color: var(--text); font-size: 14px; font-weight: 500;
+            transition: color 0.2s; position: relative;
+        }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-links a.active { color: var(--accent); }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+            background: var(--accent); transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+        .nav-dropdown { position: relative; }
+        .nav-dropdown > a { display: flex; align-items: center; gap: 5px; }
+        .nav-dropdown-chevron { transition: transform 0.25s ease; }
+        .nav-dropdown:hover .nav-dropdown-chevron { transform: rotate(180deg); }
+
+        .nav-dropdown-menu {
+            position: absolute;
+            top: calc(100% + 14px);
+            left: 50%;
+            transform: translateX(-50%) translateY(-8px);
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(27,58,92,0.15);
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            min-width: 220px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+
+        .nav-dropdown:hover .nav-dropdown-menu {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .nav-dropdown-menu a {
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .nav-dropdown-menu a::after { display: none; }
+        .nav-dropdown-menu a:hover { background: var(--bg-secondary); }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            color: white; padding: 12px 26px; border-radius: 10px; text-decoration: none;
+            font-size: 14px; font-weight: 600; transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255,140,0,0.3); white-space: nowrap;
+        }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,140,0,0.4); }
+
+        .btn-arrow { display: inline-block; transition: transform 0.25s ease; }
+        .nav-cta:hover .btn-arrow, .btn-primary:hover .btn-arrow { transform: translateX(4px); }
+
+        .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 8px; color: var(--primary); }
+
+        .mobile-nav-overlay {
+            position: fixed; inset: 0; background: rgba(15,39,68,0.45);
+            backdrop-filter: blur(2px); opacity: 0; pointer-events: none;
+            transition: opacity 0.3s ease; z-index: 1400;
+        }
+        .mobile-nav-overlay.open { opacity: 1; pointer-events: auto; }
+
+        .mobile-nav-panel {
+            position: fixed; top: 0; right: -320px; width: min(320px, 85vw); height: 100vh;
+            background: var(--bg); box-shadow: -10px 0 40px rgba(27,58,92,0.2);
+            transition: right 0.35s ease; z-index: 1500; padding: 28px 28px 40px;
+            display: flex; flex-direction: column; gap: 8px;
+        }
+        .mobile-nav-panel.open { right: 0; }
+        .mobile-nav-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+        .mobile-nav-close { background: none; border: none; cursor: pointer; color: var(--primary); padding: 6px; }
+        .mobile-nav-panel ul { list-style: none; display: flex; flex-direction: column; }
+        .mobile-nav-panel a {
+            display: block; padding: 14px 4px; text-decoration: none; color: var(--text);
+            font-size: 17px; font-weight: 600; border-bottom: 1px solid var(--border);
+        }
+        .mobile-nav-panel .nav-cta { margin-top: 24px; text-align: center; }
+
+        /* ===== SHARED BUTTONS ===== */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            color: white; padding: 18px 40px; border-radius: 12px; text-decoration: none;
+            font-size: 16px; font-weight: 600; transition: all 0.3s ease; display: inline-block;
+            border: none; cursor: pointer; box-shadow: 0 8px 30px rgba(255,140,0,0.3);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(255,140,0,0.4); }
+
+        /* ===== CONTAINER / SECTION HEADER ===== */
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        .section-eyebrow {
+            display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 1.5px;
+            text-transform: uppercase; color: var(--accent); margin-bottom: 14px;
+        }
+
+        /* ===== BLOG HERO ===== */
+        .blog-hero {
+            padding: 160px 24px 60px;
+            background: linear-gradient(180deg, #F0F4F8 0%, #FFFFFF 100%);
+            text-align: center;
+        }
+
+        .blog-hero h1 {
+            font-size: clamp(32px, 4.5vw, 52px);
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin-bottom: 18px;
+            color: var(--primary);
+        }
+
+        .blog-hero p {
+            color: var(--secondary);
+            font-size: 17px;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        /* ===== FILTER PILLS ===== */
+        .blog-filters {
+            padding: 40px 24px 0;
+            text-align: center;
+        }
+
+        .filter-pill-nav {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .filter-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 22px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .filter-pill:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .filter-pill.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        /* ===== BLOG GRID ===== */
+        .blog-list {
+            padding: 48px 24px 120px;
+        }
+
+        .blog-disclaimer {
+            display: block;
+            max-width: 720px;
+            margin: 0 auto 48px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--secondary);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 14px 20px;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .blog-card {
+            background: var(--bg);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(27,58,92,0.12);
+            border-color: var(--accent);
+        }
+
+        .blog-card-image {
+            height: 180px;
+            background: linear-gradient(135deg, var(--bg-secondary), #E8EEF4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 44px;
+            position: relative;
+        }
+
+        .blog-card-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            padding: 6px 14px;
+            background: rgba(27,58,92,0.85);
+            color: white;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+        }
+
+        .blog-card-status {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            padding: 6px 14px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: white;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+        }
+
+        .blog-card-content {
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .blog-card-content h3 {
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.35;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .blog-card-content p {
+            color: var(--secondary);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 18px;
+            flex: 1;
+        }
+
+        .blog-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12.5px;
+            color: var(--text-light);
+            font-weight: 500;
+            padding-top: 14px;
+            border-top: 1px solid var(--border);
+        }
+
+        .blog-card-meta .dot {
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: var(--border);
+        }
+
+        /* ===== NEWSLETTER ===== */
+        .newsletter-section {
+            padding: 100px 24px;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--primary) 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter-section::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle at 50% 50%, rgba(255,140,0,0.1) 0%, transparent 50%);
+        }
+
+        .newsletter-content {
+            position: relative;
+            z-index: 1;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        .newsletter-section h2 {
+            font-size: clamp(26px, 3.5vw, 36px);
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .newsletter-section > .newsletter-content > p {
+            opacity: 0.7;
+            font-size: 16px;
+            margin-bottom: 32px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .newsletter-form input[type="email"] {
+            flex: 1;
+            min-width: 240px;
+            padding: 15px 20px;
+            border-radius: 10px;
+            border: 1.5px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.08);
+            color: white;
+            font-family: inherit;
+            font-size: 15px;
+        }
+
+        .newsletter-form input[type="email"]::placeholder { color: rgba(255,255,255,0.5); }
+
+        .newsletter-form input[type="email"]:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(255,255,255,0.12);
+        }
+
+        .newsletter-form .form-honeypot {
+            position: absolute;
+            left: -9999px;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .newsletter-form button {
+            white-space: nowrap;
+        }
+
+        .form-status {
+            margin-top: 16px;
+            font-size: 14px;
+            font-weight: 600;
+            opacity: 0;
+            transform: translateY(-4px);
+            transition: all 0.3s ease;
+        }
+
+        .form-status.visible { opacity: 1; transform: translateY(0); }
+        .form-status.success { color: var(--accent-light); }
+        .form-status.error { color: #ff8080; }
+
+        /* ===== FOOTER (shared with index.html) ===== */
+        footer { background: var(--bg-dark); color: white; padding: 80px 24px 40px; }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto 60px;
+        }
+
+        .footer-brand { display: flex; flex-direction: column; gap: 16px; }
+        .footer-brand .logo-footer { display: flex; align-items: center; gap: 10px; }
+        .footer-brand h3 { font-size: 22px; font-weight: 800; }
+        .footer-brand h3 span { color: var(--accent); }
+        .footer-brand p { opacity: 0.6; font-size: 15px; line-height: 1.6; }
+
+        .footer-links h4 { font-size: 16px; font-weight: 600; margin-bottom: 20px; opacity: 0.9; }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 15px; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--accent); }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 40px;
+            text-align: center;
+            opacity: 0.5;
+            font-size: 14px;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .blog-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .nav-cta { display: none; }
+            .blog-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .newsletter-form { flex-direction: column; align-items: stretch; }
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-secondary); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--secondary); }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <svg class="logo-mark" viewBox="0 0 100 100" width="36" height="36" aria-hidden="true">
+                    <rect width="100" height="100" rx="22" fill="#1B3A5C"/>
+                    <path d="M20 70 L38 45 L52 60 L80 25" stroke="#FF8C00" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="80" cy="25" r="6" fill="#FF8C00"/>
+                </svg>
+                <span class="logo-text">Metric<span>Sell</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#services">Hizmetler</a></li>
+                <li class="nav-dropdown">
+                    <a href="index.html#ecommerce">Sektörler
+                        <svg class="nav-dropdown-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </a>
+                    <div class="nav-dropdown-menu">
+                        <a href="index.html#ecommerce">🛒 E-ticaret & E-ihracat</a>
+                        <a href="index.html#saglik-turizmi">🏥 Sağlık Turizmi</a>
+                        <a href="index.html#egitim">🎓 Eğitim</a>
+                    </div>
+                </li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+            </ul>
+            <a href="index.html#contact" class="nav-cta">Teklif Al <span class="btn-arrow">→</span></a>
+            <button class="mobile-menu-btn" aria-label="Menüyü aç" aria-expanded="false" id="mobileMenuBtn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE NAV -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+    <div class="mobile-nav-panel" id="mobileNavPanel">
+        <div class="mobile-nav-top">
+            <span class="logo-text">Metric<span>Sell</span></span>
+            <button class="mobile-nav-close" aria-label="Menüyü kapat" id="mobileNavClose">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <ul>
+            <li><a href="index.html#services">Hizmetler</a></li>
+            <li><a href="index.html#ecommerce">E-ticaret & E-ihracat</a></li>
+            <li><a href="index.html#saglik-turizmi">Sağlık Turizmi</a></li>
+            <li><a href="index.html#egitim">Eğitim</a></li>
+            <li><a href="blog.html">Blog</a></li>
+        </ul>
+        <a href="index.html#contact" class="nav-cta">Teklif Al <span class="btn-arrow">→</span></a>
+    </div>
+
+    <!-- BLOG HERO -->
+    <section class="blog-hero">
+        <div class="container">
+            <span class="section-eyebrow fade-in">MetricSell Blog</span>
+            <h1 class="fade-in">E-ticaret, Sağlık Turizmi & Eğitim İçin Reklam Rehberleri</h1>
+            <p class="fade-in">Google Ads, Meta Ads, pazaryeri reklamcılığı ve lead generation üzerine sektöre özel, uygulanabilir içerikler.</p>
+        </div>
+    </section>
+
+    <!-- FILTERS -->
+    <section class="blog-filters">
+        <div class="filter-pill-nav fade-in" id="filterPillNav">
+            <button class="filter-pill active" data-filter="all">Tümü</button>
+            <button class="filter-pill" data-filter="ecommerce">🛒 E-ticaret & E-ihracat</button>
+            <button class="filter-pill" data-filter="health">🏥 Sağlık Turizmi</button>
+            <button class="filter-pill" data-filter="education">🎓 Eğitim</button>
+        </div>
+    </section>
+
+    <!-- BLOG LIST -->
+    <section class="blog-list">
+        <div class="container">
+            <p class="blog-disclaimer fade-in">📝 Aşağıdaki başlıklar yayın planımızdaki örnek konulardır. Yazılar yayınlandıkça bu sayfa güncellenecek ve her biri kendi sayfasına bağlanacaktır.</p>
+
+            <div class="blog-grid" id="blogGrid">
+                <article class="blog-card fade-in" data-sector="ecommerce">
+                    <div class="blog-card-image">
+                        <span class="blog-card-badge">E-TİCARET</span>
+                        <span class="blog-card-status">Yakında</span>
+                        <span aria-hidden="true">🛒</span>
+                    </div>
+                    <div class="blog-card-content">
+                        <h3>2026'da E-ihracatta Google Shopping ile Satışları Artırmanın 7 Yolu</h3>
+                        <p>Google Shopping kampanyalarını e-ihracat hedeflerinize göre kurgulamanın temel adımları.</p>
+                        <div class="blog-card-meta">
+                            <span>Yayın Planında</span>
+                            <span class="dot"></span>
+                            <span>~5 dk okuma</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card fade-in" data-sector="ecommerce">
+                    <div class="blog-card-image">
+                        <span class="blog-card-badge">E-TİCARET</span>
+                        <span class="blog-card-status">Yakında</span>
+                        <span aria-hidden="true">🛒</span>
+                    </div>
+                    <div class="blog-card-content">
+                        <h3>Trendyol Sponsorlu Ürün Reklamlarında Bütçe Optimizasyonu Nasıl Yapılır?</h3>
+                        <p>Sponsorlu ürün kampanyalarında bütçe dağılımı ve karlılık odaklı optimizasyon taktikleri.</p>
+                        <div class="blog-card-meta">
+                            <span>Yayın Planında</span>
+                            <span class="dot"></span>
+                            <span>~6 dk okuma</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card fade-in" data-sector="ecommerce">
+                    <div class="blog-card-image">
+                        <span class="blog-card-badge">E-TİCARET</span>
+                        <span class="blog-card-status">Yakında</span>
+                        <span aria-hidden="true">🛒</span>
+                    </div>
+                    <div class="blog-card-content">
+                        <h3>Pazaryeri mi Kendi E-ticaret Siteniz mi? Reklam Stratejisi Karşılaştırması</h3>
+                        <p>İki kanalın avantajlarını birleştiren bütünleşik bir reklam stratejisi nasıl kurulur.</p>
+                        <div class="blog-card-meta">
+                            <span>Yayın Planında</span>
+                            <span class="dot"></span>
+                            <span>~7 dk okuma</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card fade-in" data-sector="health">
+                    <div class="blog-card-image">
+                        <span class="blog-card-badge">SAĞLIK TURİZMİ</span>
+                        <span class="blog-card-status">Yakında</span>
+                        <span aria-hidden="true">🏥</span>
+                    </div>
+                    <div class="blog-card-content">
+                        <h3>Uluslararası Hasta Çekmek İçin Google Ads Stratejileri</h3>
+                        <p>Farklı ülkelerden hasta adaylarına ulaşmak için hedefleme ve dil stratejisi kurgusu.</p>
+                        <div class="blog-card-meta">
+                            <span>Yayın Planında</span>
+                            <span class="dot"></span>
+                            <span>~6 dk okuma</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card fade-in" data-sector="health">
+                    <div class="blog-card-image">
+                        <span class="blog-card-badge">SAĞLIK TURİZMİ</span>
+                        <span class="blog-card-status">Yakında</span>
+                        <span aria-hidden="true">🏥</span>
+                    </div>
+                    <div class="blog-card-content">
+                        <h3>Klinikler İçin Çok Dilli Meta Ads Kampanyası Nasıl Kurulur?</h3>
+                        <p>Çok dilli kreatif ve hedef kitle segmentasyonuyla uluslararası hasta huninizi büyütün.</p>
+                        <div class="blog-card-meta">
+                            <span>Yayın Planında</span>
+                            <span class="dot"></span>
+                            <span>~5 dk okuma</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card fade-in" data-sector="health">
+                    <div class="blog-card-image">
+                        <span class="blog-card-badge">SAĞLIK TURİZMİ</span>
+                        <span class="blog-card-status">Yakında</span>
+                        <span aria-hidden="true">🏥</span>
+                    </div>
+                    <div class="blog-card-content">
+                        <h3>Sağlık Turizmi Web Sitenizde Dönüşümü Artıran 5 UX Prensibi</h3>
+                        <p>Uluslararası hasta adaylarının güvenini kazanan sayfa yapısı ve içerik hiyerarşisi.</p>
+                        <div class="blog-card-meta">
+                            <span>Yayın Planında</span>
+                            <span class="dot"></span>
+                            <span>~4 dk okuma</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card fade-in" data-sector="education">
+                    <div class="blog-card-image">
+                        <span class="blog-card-badge">EĞİTİM</span>
+                        <span class="blog-card-status">Yakında</span>
+                        <span aria-hidden="true">🎓</span>
+                    </div>
+                    <div class="blog-card-content">
+                        <h3>Sürücü Kursları İçin Yerel SEO Rehberi: Google Business Profili Optimizasyonu</h3>
+                        <p>Şubenize en yakın öğrenci adaylarına ulaşmak için yerel arama görünürlüğünü artırma.</p>
+                        <div class="blog-card-meta">
+                            <span>Yayın Planında</span>
+                            <span class="dot"></span>
+                            <span>~5 dk okuma</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card fade-in" data-sector="education">
+                    <div class="blog-card-image">
+                        <span class="blog-card-badge">EĞİTİM</span>
+                        <span class="blog-card-status">Yakında</span>
+                        <span aria-hidden="true">🎓</span>
+                    </div>
+                    <div class="blog-card-content">
+                        <h3>Dil Okulları İçin Lead Generation Hunisi Nasıl Kurulur?</h3>
+                        <p>Kayıt formundan CRM'e uzanan uçtan uca bir lead generation akışı kurgulama rehberi.</p>
+                        <div class="blog-card-meta">
+                            <span>Yayın Planında</span>
+                            <span class="dot"></span>
+                            <span>~6 dk okuma</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card fade-in" data-sector="education">
+                    <div class="blog-card-image">
+                        <span class="blog-card-badge">EĞİTİM</span>
+                        <span class="blog-card-status">Yakında</span>
+                        <span aria-hidden="true">🎓</span>
+                    </div>
+                    <div class="blog-card-content">
+                        <h3>Eğitim Sektöründe Kayıt Maliyetini Düşüren 6 Kampanya Taktiği</h3>
+                        <p>Bütçenizi verimli kullanarak kayıt başına maliyeti düşürmenin pratik yöntemleri.</p>
+                        <div class="blog-card-meta">
+                            <span>Yayın Planında</span>
+                            <span class="dot"></span>
+                            <span>~5 dk okuma</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter-section">
+        <div class="newsletter-content">
+            <h2 class="fade-in">Yeni Yazılardan Haberdar Olun</h2>
+            <p class="fade-in">Yayınlandıkça sektörünüze özel rehberleri e-postanıza gönderelim.</p>
+            <form class="newsletter-form fade-in" id="newsletterForm" action="https://formspree.io/f/mykrnjzk" method="POST">
+                <input type="hidden" name="sektor" value="Blog Bülten">
+                <input type="hidden" name="_subject" value="Yeni Bülten Kaydı — Blog">
+                <input type="text" name="_gotcha" class="form-honeypot" tabindex="-1" autocomplete="off">
+                <input type="email" name="email" required placeholder="E-posta adresiniz">
+                <button type="submit" class="btn-primary">
+                    <span class="btn-text">Abone Ol</span> <span class="btn-arrow">→</span>
+                </button>
+            </form>
+            <div class="form-status" role="status" aria-live="polite" id="newsletterStatus"></div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo-footer">
+                    <svg viewBox="0 0 100 100" width="36" height="36" aria-hidden="true">
+                        <rect width="100" height="100" rx="22" fill="#FFFFFF" fill-opacity="0.1"/>
+                        <path d="M20 70 L38 45 L52 60 L80 25" stroke="#FF8C00" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="80" cy="25" r="6" fill="#FF8C00"/>
+                    </svg>
+                    <h3>Metric<span>Sell</span></h3>
+                </div>
+                <p>E-ticaret & e-ihracat, sağlık turizmi ve eğitim sektörlerinde uzmanlaşmış performance marketing ajansı.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Sektörler</h4>
+                <ul>
+                    <li><a href="index.html#ecommerce">E-ticaret & E-ihracat</a></li>
+                    <li><a href="index.html#saglik-turizmi">Sağlık Turizmi</a></li>
+                    <li><a href="index.html#egitim">Eğitim</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Hizmetler</h4>
+                <ul>
+                    <li><a href="index.html#services">Tasarım</a></li>
+                    <li><a href="index.html#services">Meta Ads</a></li>
+                    <li><a href="index.html#services">Google Ads</a></li>
+                    <li><a href="index.html#services">Lead Generation</a></li>
+                    <li><a href="index.html#services">Pazaryeri Yönetimi</a></li>
+                    <li><a href="index.html#services">İçerik & SEO</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>İletişim</h4>
+                <ul>
+                    <li><a href="mailto:info@metricsell.com">info@metricsell.com</a></li>
+                    <li><a href="tel:+902121234567">+90 212 123 45 67</a></li>
+                    <li><a href="index.html#contact">Teklif Formu</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 MetricSell. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile nav toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNavPanel = document.getElementById('mobileNavPanel');
+        const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+        const mobileNavClose = document.getElementById('mobileNavClose');
+
+        function openMobileNav() {
+            mobileNavPanel.classList.add('open');
+            mobileNavOverlay.classList.add('open');
+            mobileMenuBtn.setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileNav() {
+            mobileNavPanel.classList.remove('open');
+            mobileNavOverlay.classList.remove('open');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+
+        mobileMenuBtn.addEventListener('click', openMobileNav);
+        mobileNavClose.addEventListener('click', closeMobileNav);
+        mobileNavOverlay.addEventListener('click', closeMobileNav);
+        mobileNavPanel.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileNav));
+
+        // Staggered fade-in: cards in the same grid appear one after another
+        document.querySelectorAll('.blog-grid').forEach(group => {
+            Array.from(group.children).forEach((child, i) => {
+                if (child.classList.contains('fade-in')) {
+                    child.style.transitionDelay = (Math.min(i, 8) * 70) + 'ms';
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Sector filter
+        const filterPills = document.querySelectorAll('.filter-pill');
+        const blogCards = document.querySelectorAll('.blog-card');
+
+        filterPills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                filterPills.forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+                const filter = pill.dataset.filter;
+                blogCards.forEach(card => {
+                    card.style.display = (filter === 'all' || card.dataset.sector === filter) ? '' : 'none';
+                });
+            });
+        });
+
+        // Newsletter form submission (Formspree, AJAX)
+        const newsletterForm = document.getElementById('newsletterForm');
+        const newsletterStatus = document.getElementById('newsletterStatus');
+
+        newsletterForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const submitBtn = newsletterForm.querySelector('button[type="submit"]');
+            const btnText = submitBtn.querySelector('.btn-text');
+            const originalText = btnText.textContent;
+
+            submitBtn.disabled = true;
+            btnText.textContent = 'Gönderiliyor...';
+            newsletterStatus.classList.remove('visible', 'success', 'error');
+
+            try {
+                const response = await fetch(newsletterForm.action, {
+                    method: 'POST',
+                    body: new FormData(newsletterForm),
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    newsletterStatus.textContent = 'Teşekkürler! Kaydınız alındı.';
+                    newsletterStatus.classList.add('visible', 'success');
+                    newsletterForm.reset();
+                } else {
+                    newsletterStatus.textContent = 'Bir hata oluştu. Lütfen tekrar deneyin.';
+                    newsletterStatus.classList.add('visible', 'error');
+                }
+            } catch (err) {
+                newsletterStatus.textContent = 'Bağlantı hatası. Lütfen tekrar deneyin.';
+                newsletterStatus.classList.add('visible', 'error');
+            } finally {
+                submitBtn.disabled = false;
+                btnText.textContent = originalText;
+            }
+        });
+    </script>
+</body>
+</html>
