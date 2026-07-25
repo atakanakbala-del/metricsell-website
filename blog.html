@@ -445,7 +445,7 @@
             margin-bottom: 32px;
         }
 
-        .newsletter-form {
+        .newsletter-row {
             display: flex;
             gap: 12px;
             flex-wrap: wrap;
@@ -559,16 +559,49 @@
             .nav-cta { display: none; }
             .blog-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-            .newsletter-form { flex-direction: column; align-items: stretch; }
+            .newsletter-row { flex-direction: column; align-items: stretch; }
         }
 
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: var(--bg-secondary); }
         ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--secondary); }
+
+        /* ===== COOKIE CONSENT BANNER ===== */
+        .cookie-banner {
+            position: fixed; left: 20px; right: 20px; bottom: 20px; max-width: 680px; margin: 0 auto;
+            background: var(--bg-dark); color: white; border-radius: 16px; padding: 24px 28px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3); z-index: 2000; display: flex; flex-direction: column; gap: 16px;
+        }
+        .cookie-banner p { font-size: 14px; line-height: 1.6; opacity: 0.85; margin: 0; }
+        .cookie-banner a { color: var(--accent-light); }
+        .cookie-banner-actions { display: flex; gap: 12px; justify-content: flex-end; }
+        .cookie-banner-actions button { padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; border: none; font-family: inherit; }
+        .btn-cookie-reject { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.3); }
+        .btn-cookie-accept { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%); color: white; }
+        .cookie-banner[hidden] { display: none; }
+        @media (max-width: 480px) {
+            .cookie-banner { left: 12px; right: 12px; bottom: 12px; padding: 20px; }
+            .cookie-banner-actions { flex-direction: column-reverse; }
+            .cookie-banner-actions button { width: 100%; }
+        }
+
+        .consent-checkbox { display: flex; align-items: flex-start; gap: 10px; margin: 4px 0 16px; }
+        .consent-checkbox input[type="checkbox"] { width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0; accent-color: var(--accent); }
+        .consent-checkbox label { font-size: 12.5px; color: rgba(255,255,255,0.6); line-height: 1.5; font-weight: 400; text-align: left; }
+        .consent-checkbox label a { color: var(--accent-light); text-decoration: underline; }
     </style>
 </head>
 <body>
+
+    <!-- COOKIE CONSENT BANNER -->
+    <div class="cookie-banner" id="cookieBanner" hidden role="dialog" aria-live="polite" aria-label="Çerez izni">
+        <p>Sitemizde deneyiminizi geliştirmek için çerezler kullanıyoruz. Detaylı bilgi için <a href="cerez-politikasi.html">Çerez Politikası</a>'nı inceleyebilirsiniz.</p>
+        <div class="cookie-banner-actions">
+            <button type="button" class="btn-cookie-reject" id="cookieReject">Reddet</button>
+            <button type="button" class="btn-cookie-accept" id="cookieAccept">Kabul Et</button>
+        </div>
+    </div>
 
     <!-- NAVIGATION -->
     <nav id="navbar">
@@ -818,10 +851,16 @@
                 <input type="hidden" name="sektor" value="Blog Bülten">
                 <input type="hidden" name="_subject" value="Yeni Bülten Kaydı — Blog">
                 <input type="text" name="_gotcha" class="form-honeypot" tabindex="-1" autocomplete="off">
-                <input type="email" name="email" required placeholder="E-posta adresiniz">
-                <button type="submit" class="btn-primary">
-                    <span class="btn-text">Abone Ol</span> <span class="btn-arrow">→</span>
-                </button>
+                <div class="newsletter-row">
+                    <input type="email" name="email" required placeholder="E-posta adresiniz">
+                    <button type="submit" class="btn-primary">
+                        <span class="btn-text">Abone Ol</span> <span class="btn-arrow">→</span>
+                    </button>
+                </div>
+                <div class="consent-checkbox" style="justify-content: center; text-align: left; max-width: 480px; margin: 16px auto 0;">
+                    <input type="checkbox" id="newsletter-consent" name="kvkk_onay" required>
+                    <label for="newsletter-consent"><a href="kvkk.html" target="_blank">KVKK Aydınlatma Metni</a>'ni okudum, kişisel verilerimin işlenmesini kabul ediyorum.</label>
+                </div>
             </form>
             <div class="form-status" role="status" aria-live="polite" id="newsletterStatus"></div>
         </div>
@@ -880,11 +919,34 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 MetricSell. Tüm hakları saklıdır.</p>
+            <p>© 2026 MetricSell. Tüm hakları saklıdır. &nbsp;·&nbsp; <a href="kvkk.html" style="color:inherit;text-decoration:underline;">KVKK Aydınlatma Metni</a> &nbsp;·&nbsp; <a href="gizlilik-politikasi.html" style="color:inherit;text-decoration:underline;">Gizlilik Politikası</a> &nbsp;·&nbsp; <a href="cerez-politikasi.html" style="color:inherit;text-decoration:underline;">Çerez Politikası</a> &nbsp;·&nbsp; <a href="#" id="cookieSettingsLink" style="color:inherit;text-decoration:underline;">Çerez Ayarları</a></p>
         </div>
     </footer>
 
     <script>
+        // Cookie consent
+        (function () {
+            const banner = document.getElementById('cookieBanner');
+            const consent = localStorage.getItem('ms_cookie_consent');
+            if (!consent) banner.hidden = false;
+            document.getElementById('cookieAccept').addEventListener('click', () => {
+                localStorage.setItem('ms_cookie_consent', 'accepted');
+                banner.hidden = true;
+                if (window.msLoadTracking) window.msLoadTracking();
+            });
+            document.getElementById('cookieReject').addEventListener('click', () => {
+                localStorage.setItem('ms_cookie_consent', 'rejected');
+                banner.hidden = true;
+            });
+            const settingsLink = document.getElementById('cookieSettingsLink');
+            if (settingsLink) {
+                settingsLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    banner.hidden = false;
+                });
+            }
+        })();
+
         // Navbar scroll effect
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {

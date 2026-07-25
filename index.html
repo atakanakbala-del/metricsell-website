@@ -976,6 +976,26 @@
         .form-status.success { color: var(--success); }
         .form-status.error { color: var(--error); }
 
+        .consent-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .consent-checkbox input[type="checkbox"] {
+            width: 18px; height: 18px;
+            margin-top: 2px;
+            flex-shrink: 0;
+            accent-color: var(--accent);
+        }
+        .consent-checkbox label {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.5;
+            font-weight: 400;
+        }
+        .consent-checkbox label a { color: var(--accent); text-decoration: underline; }
+
         /* ===== RESULTS ===== */
         .results {
             padding: 120px 24px;
@@ -1474,35 +1494,94 @@
         ::-webkit-scrollbar-thumb:hover {
             background: var(--secondary);
         }
+
+        /* ===== COOKIE CONSENT BANNER ===== */
+        .cookie-banner {
+            position: fixed;
+            left: 20px; right: 20px; bottom: 20px;
+            max-width: 680px;
+            margin: 0 auto;
+            background: var(--bg-dark);
+            color: white;
+            border-radius: 16px;
+            padding: 24px 28px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .cookie-banner p { font-size: 14px; line-height: 1.6; opacity: 0.85; margin: 0; }
+        .cookie-banner a { color: var(--accent-light); }
+        .cookie-banner-actions { display: flex; gap: 12px; justify-content: flex-end; }
+        .cookie-banner-actions button {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+        .btn-cookie-reject { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.3); }
+        .btn-cookie-accept { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%); color: white; }
+        .cookie-banner[hidden] { display: none; }
+        @media (max-width: 480px) {
+            .cookie-banner { left: 12px; right: 12px; bottom: 12px; padding: 20px; }
+            .cookie-banner-actions { flex-direction: column-reverse; }
+            .cookie-banner-actions button { width: 100%; }
+        }
     </style>
 
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MKW7SQTG');</script>
-    <!-- End Google Tag Manager -->
-
-    <!-- Facebook Pixel -->
+    <!-- Consent-gated tracking (GTM, Facebook Pixel, GA4, Google Ads) -->
+    <!-- Scripts only load after cookie consent is accepted — see cookie-consent.js logic below -->
     <script>
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1827487517954836');
-    fbq('track', 'PageView');
-    </script>
-    <!-- End Facebook Pixel -->
+    function msLoadTracking() {
+        if (window.msTrackingLoaded) return;
+        window.msTrackingLoaded = true;
 
-    <!-- GA4 + Google Ads -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0FKXPN6YGP"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-0FKXPN6YGP');
-    gtag('config', 'AW-17868667342');
+        // Google Tag Manager
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MKW7SQTG');
+
+        var gtmNoscript = document.createElement('noscript');
+        var gtmIframe = document.createElement('iframe');
+        gtmIframe.src = 'https://www.googletagmanager.com/ns.html?id=GTM-MKW7SQTG';
+        gtmIframe.height = '0'; gtmIframe.width = '0'; gtmIframe.style.display = 'none'; gtmIframe.style.visibility = 'hidden';
+        gtmNoscript.appendChild(gtmIframe);
+        document.body.insertBefore(gtmNoscript, document.body.firstChild);
+
+        // Facebook Pixel
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1827487517954836');
+        fbq('track', 'PageView');
+
+        // GA4 + Google Ads
+        var gaScript = document.createElement('script');
+        gaScript.async = true;
+        gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-0FKXPN6YGP';
+        document.head.appendChild(gaScript);
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function(){dataLayer.push(arguments);};
+        gtag('js', new Date());
+        gtag('config', 'G-0FKXPN6YGP');
+        gtag('config', 'AW-17868667342');
+    }
+
+    if (localStorage.getItem('ms_cookie_consent') === 'accepted') {
+        msLoadTracking();
+    }
     </script>
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKW7SQTG"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- COOKIE CONSENT BANNER -->
+    <div class="cookie-banner" id="cookieBanner" hidden role="dialog" aria-live="polite" aria-label="Çerez izni">
+        <p>Sitemizde deneyiminizi geliştirmek ve reklam performansını ölçmek için çerezler kullanıyoruz. Detaylı bilgi için <a href="cerez-politikasi.html">Çerez Politikası</a>'nı inceleyebilirsiniz.</p>
+        <div class="cookie-banner-actions">
+            <button type="button" class="btn-cookie-reject" id="cookieReject">Reddet</button>
+            <button type="button" class="btn-cookie-accept" id="cookieAccept">Kabul Et</button>
+        </div>
+    </div>
 
     <!-- NAVIGATION -->
     <nav id="navbar">
@@ -1739,6 +1818,10 @@
                         <label for="ecom-message">Mesajınız</label>
                         <textarea id="ecom-message" name="message" placeholder="Mağazanız / markanız hakkında kısaca bilgi verin..."></textarea>
                     </div>
+                    <div class="consent-checkbox">
+                        <input type="checkbox" id="ecom-consent" name="kvkk_onay" required>
+                        <label for="ecom-consent"><a href="kvkk.html" target="_blank">KVKK Aydınlatma Metni</a>'ni okudum, kişisel verilerimin belirtilen amaçlarla işlenmesini kabul ediyorum.</label>
+                    </div>
                     <button type="submit" class="btn-primary form-submit">
                         <span class="form-spinner" aria-hidden="true"></span>
                         <span class="btn-text">Teklif Al</span>
@@ -1777,6 +1860,10 @@
                     <div class="form-group">
                         <label for="health-message">Mesajınız</label>
                         <textarea id="health-message" name="message" placeholder="Kliniğiniz / branşınız hakkında kısaca bilgi verin..."></textarea>
+                    </div>
+                    <div class="consent-checkbox">
+                        <input type="checkbox" id="health-consent" name="kvkk_onay" required>
+                        <label for="health-consent"><a href="kvkk.html" target="_blank">KVKK Aydınlatma Metni</a>'ni okudum, kişisel verilerimin belirtilen amaçlarla işlenmesini kabul ediyorum.</label>
                     </div>
                     <button type="submit" class="btn-primary form-submit">
                         <span class="form-spinner" aria-hidden="true"></span>
@@ -1862,6 +1949,10 @@
                     <div class="form-group">
                         <label for="edu-message">Mesajınız</label>
                         <textarea id="edu-message" name="message" placeholder="Kurumunuz (sürücü kursu / dil okulu) hakkında kısaca bilgi verin..."></textarea>
+                    </div>
+                    <div class="consent-checkbox">
+                        <input type="checkbox" id="edu-consent" name="kvkk_onay" required>
+                        <label for="edu-consent"><a href="kvkk.html" target="_blank">KVKK Aydınlatma Metni</a>'ni okudum, kişisel verilerimin belirtilen amaçlarla işlenmesini kabul ediyorum.</label>
                     </div>
                     <button type="submit" class="btn-primary form-submit">
                         <span class="form-spinner" aria-hidden="true"></span>
@@ -1995,6 +2086,10 @@
                         <label for="gen-message">Mesajınız</label>
                         <textarea id="gen-message" name="message" placeholder="Projeniz hakkında kısaca bilgi verin..."></textarea>
                     </div>
+                    <div class="consent-checkbox">
+                        <input type="checkbox" id="gen-consent" name="kvkk_onay" required>
+                        <label for="gen-consent"><a href="kvkk.html" target="_blank">KVKK Aydınlatma Metni</a>'ni okudum, kişisel verilerimin belirtilen amaçlarla işlenmesini kabul ediyorum.</label>
+                    </div>
                     <button type="submit" class="btn-primary form-submit">
                         <span class="form-spinner" aria-hidden="true"></span>
                         <span class="btn-text">Teklif Al</span>
@@ -2059,11 +2154,35 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 MetricSell. Tüm hakları saklıdır.</p>
+            <p>© 2026 MetricSell. Tüm hakları saklıdır. &nbsp;·&nbsp; <a href="kvkk.html" style="color:inherit;text-decoration:underline;">KVKK Aydınlatma Metni</a> &nbsp;·&nbsp; <a href="gizlilik-politikasi.html" style="color:inherit;text-decoration:underline;">Gizlilik Politikası</a> &nbsp;·&nbsp; <a href="cerez-politikasi.html" style="color:inherit;text-decoration:underline;">Çerez Politikası</a> &nbsp;·&nbsp; <a href="#" id="cookieSettingsLink" style="color:inherit;text-decoration:underline;">Çerez Ayarları</a></p>
         </div>
     </footer>
 
     <script>
+        // Cookie consent
+        (function () {
+            const banner = document.getElementById('cookieBanner');
+            const consent = localStorage.getItem('ms_cookie_consent');
+            if (!consent) banner.hidden = false;
+
+            document.getElementById('cookieAccept').addEventListener('click', () => {
+                localStorage.setItem('ms_cookie_consent', 'accepted');
+                banner.hidden = true;
+                if (window.msLoadTracking) window.msLoadTracking();
+            });
+            document.getElementById('cookieReject').addEventListener('click', () => {
+                localStorage.setItem('ms_cookie_consent', 'rejected');
+                banner.hidden = true;
+            });
+            const settingsLink = document.getElementById('cookieSettingsLink');
+            if (settingsLink) {
+                settingsLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    banner.hidden = false;
+                });
+            }
+        })();
+
         // Navbar scroll effect
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {

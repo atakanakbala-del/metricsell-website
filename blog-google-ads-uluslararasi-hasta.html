@@ -164,9 +164,37 @@
         ::-webkit-scrollbar-track { background: var(--bg-secondary); }
         ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--secondary); }
+
+        /* ===== COOKIE CONSENT BANNER ===== */
+        .cookie-banner {
+            position: fixed; left: 20px; right: 20px; bottom: 20px; max-width: 680px; margin: 0 auto;
+            background: var(--bg-dark); color: white; border-radius: 16px; padding: 24px 28px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3); z-index: 2000; display: flex; flex-direction: column; gap: 16px;
+        }
+        .cookie-banner p { font-size: 14px; line-height: 1.6; opacity: 0.85; margin: 0; }
+        .cookie-banner a { color: var(--accent-light); }
+        .cookie-banner-actions { display: flex; gap: 12px; justify-content: flex-end; }
+        .cookie-banner-actions button { padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; border: none; font-family: inherit; }
+        .btn-cookie-reject { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.3); }
+        .btn-cookie-accept { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%); color: white; }
+        .cookie-banner[hidden] { display: none; }
+        @media (max-width: 480px) {
+            .cookie-banner { left: 12px; right: 12px; bottom: 12px; padding: 20px; }
+            .cookie-banner-actions { flex-direction: column-reverse; }
+            .cookie-banner-actions button { width: 100%; }
+        }
     </style>
 </head>
 <body>
+
+    <!-- COOKIE CONSENT BANNER -->
+    <div class="cookie-banner" id="cookieBanner" hidden role="dialog" aria-live="polite" aria-label="Çerez izni">
+        <p>Sitemizde deneyiminizi geliştirmek için çerezler kullanıyoruz. Detaylı bilgi için <a href="cerez-politikasi.html">Çerez Politikası</a>'nı inceleyebilirsiniz.</p>
+        <div class="cookie-banner-actions">
+            <button type="button" class="btn-cookie-reject" id="cookieReject">Reddet</button>
+            <button type="button" class="btn-cookie-accept" id="cookieAccept">Kabul Et</button>
+        </div>
+    </div>
 
     <!-- NAVIGATION -->
     <nav id="navbar">
@@ -321,11 +349,34 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 MetricSell. Tüm hakları saklıdır.</p>
+            <p>© 2026 MetricSell. Tüm hakları saklıdır. &nbsp;·&nbsp; <a href="kvkk.html" style="color:inherit;text-decoration:underline;">KVKK Aydınlatma Metni</a> &nbsp;·&nbsp; <a href="gizlilik-politikasi.html" style="color:inherit;text-decoration:underline;">Gizlilik Politikası</a> &nbsp;·&nbsp; <a href="cerez-politikasi.html" style="color:inherit;text-decoration:underline;">Çerez Politikası</a> &nbsp;·&nbsp; <a href="#" id="cookieSettingsLink" style="color:inherit;text-decoration:underline;">Çerez Ayarları</a></p>
         </div>
     </footer>
 
     <script>
+        // Cookie consent
+        (function () {
+            const banner = document.getElementById('cookieBanner');
+            const consent = localStorage.getItem('ms_cookie_consent');
+            if (!consent) banner.hidden = false;
+            document.getElementById('cookieAccept').addEventListener('click', () => {
+                localStorage.setItem('ms_cookie_consent', 'accepted');
+                banner.hidden = true;
+                if (window.msLoadTracking) window.msLoadTracking();
+            });
+            document.getElementById('cookieReject').addEventListener('click', () => {
+                localStorage.setItem('ms_cookie_consent', 'rejected');
+                banner.hidden = true;
+            });
+            const settingsLink = document.getElementById('cookieSettingsLink');
+            if (settingsLink) {
+                settingsLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    banner.hidden = false;
+                });
+            }
+        })();
+
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 50); });
 
