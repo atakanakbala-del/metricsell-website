@@ -70,6 +70,9 @@
         .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
         .logo-mark { display: block; flex-shrink: 0; }
         .logo-wordmark { display: block; height: 28px; width: auto; }
+        .logo-text { font-family: 'Inter', sans-serif; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
+        .logo-sparkle { display: inline-block; color: var(--accent); font-size: 13px; transform: translateY(-9px); margin: 0 -1px; }
+        .logo-text .logo-accent { color: var(--accent); }
         .nav-links { display: flex; gap: 28px; list-style: none; }
         .nav-links a { text-decoration: none; color: var(--text); font-size: 14px; font-weight: 500; transition: color 0.2s; position: relative; }
         .nav-links a:hover { color: var(--accent); }
@@ -209,7 +212,7 @@
         <div class="nav-container">
             <a href="index.html" class="logo">
                 <img src="logo-icon.png" class="logo-mark" width="31" height="40" alt="" aria-hidden="true">
-                <img src="logo-wordmark.png" class="logo-wordmark" alt="MetricSell">
+                <span class="logo-text">Metric<span class="logo-sparkle" aria-hidden="true">✦</span><span class="logo-accent">Sell</span></span>
             </a>
             <ul class="nav-links">
                 <li><a href="index.html#services">Hizmetler</a></li>
@@ -235,7 +238,7 @@
     <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
     <div class="mobile-nav-panel" id="mobileNavPanel">
         <div class="mobile-nav-top">
-            <img src="logo-wordmark.png" class="logo-wordmark" alt="MetricSell">
+            <span class="logo-text">Metric<span class="logo-sparkle" aria-hidden="true">✦</span><span class="logo-accent">Sell</span></span>
             <button class="mobile-nav-close" aria-label="Menüyü kapat" id="mobileNavClose">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
@@ -317,7 +320,7 @@
             <div class="footer-brand">
                 <div class="logo-footer">
                     <img src="logo-icon.png" class="footer-logo-icon" width="31" height="40" alt="" aria-hidden="true">
-                    <img src="logo-wordmark-white.png" class="logo-wordmark" alt="MetricSell">
+                    <span class="logo-text">Metric<span class="logo-sparkle" aria-hidden="true">✦</span><span class="logo-accent">Sell</span></span>
                 </div>
                 <p>E-ticaret & e-ihracat, sağlık turizmi ve eğitim sektörlerinde uzmanlaşmış performance marketing ajansı.</p>
                 <div class="social-links">
