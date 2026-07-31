@@ -82,6 +82,8 @@
         .nav-dropdown:hover .nav-dropdown-chevron { transform: rotate(180deg); }
         .nav-dropdown-menu { position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(-8px); background: var(--bg); border: 1px solid var(--border); border-radius: 16px; box-shadow: 0 20px 50px rgba(27,58,92,0.15); padding: 10px; display: flex; flex-direction: column; gap: 2px; min-width: 220px; opacity: 0; pointer-events: none; transition: opacity 0.25s ease, transform 0.25s ease; }
         .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+
+        .nav-dropdown.open .nav-dropdown-menu { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
         .nav-dropdown-menu a { padding: 10px 14px; border-radius: 10px; font-size: 14px; font-weight: 500; white-space: nowrap; }
         .nav-dropdown-menu a::after { display: none; }
         .nav-dropdown-menu a:hover { background: var(--bg-secondary); }
@@ -401,6 +403,23 @@
         mobileNavClose.addEventListener('click', closeMobileNav);
         mobileNavOverlay.addEventListener('click', closeMobileNav);
         mobileNavPanel.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileNav));
+
+        // Click/tap-to-toggle for the Sektörler dropdown (touch devices don't have real :hover)
+        document.querySelectorAll('.nav-dropdown > a').forEach(trigger => {
+            trigger.addEventListener('click', function (e) {
+                const parent = this.closest('.nav-dropdown');
+                if (!parent.classList.contains('open')) {
+                    e.preventDefault();
+                    document.querySelectorAll('.nav-dropdown.open').forEach(d => { if (d !== parent) d.classList.remove('open'); });
+                    parent.classList.add('open');
+                }
+            });
+        });
+        document.addEventListener('click', function (e) {
+            if (!e.target.closest('.nav-dropdown')) {
+                document.querySelectorAll('.nav-dropdown.open').forEach(d => d.classList.remove('open'));
+            }
+        });
     </script>
 </body>
 </html>

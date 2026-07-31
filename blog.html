@@ -165,6 +165,8 @@
             transform: translateX(-50%) translateY(0);
         }
 
+        .nav-dropdown.open .nav-dropdown-menu { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+
         .nav-dropdown-menu a {
             padding: 10px 14px;
             border-radius: 10px;
@@ -968,6 +970,23 @@
         mobileNavClose.addEventListener('click', closeMobileNav);
         mobileNavOverlay.addEventListener('click', closeMobileNav);
         mobileNavPanel.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileNav));
+
+        // Click/tap-to-toggle for the Sektörler dropdown (touch devices don't have real :hover)
+        document.querySelectorAll('.nav-dropdown > a').forEach(trigger => {
+            trigger.addEventListener('click', function (e) {
+                const parent = this.closest('.nav-dropdown');
+                if (!parent.classList.contains('open')) {
+                    e.preventDefault();
+                    document.querySelectorAll('.nav-dropdown.open').forEach(d => { if (d !== parent) d.classList.remove('open'); });
+                    parent.classList.add('open');
+                }
+            });
+        });
+        document.addEventListener('click', function (e) {
+            if (!e.target.closest('.nav-dropdown')) {
+                document.querySelectorAll('.nav-dropdown.open').forEach(d => d.classList.remove('open'));
+            }
+        });
 
         // Staggered fade-in: cards in the same grid appear one after another
         document.querySelectorAll('.blog-grid').forEach(group => {
