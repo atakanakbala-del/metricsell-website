@@ -2224,6 +2224,8 @@
                     });
 
                     if (response.ok) {
+                        if (typeof fbq === 'function') fbq('track', 'Lead');
+                        if (typeof gtag === 'function') gtag('event', 'generate_lead');
                         statusEl.textContent = 'Teşekkürler! Talebiniz alındı, 48 saat içinde size dönüş yapacağız.';
                         statusEl.classList.add('visible', 'success');
                         form.reset();
@@ -2241,6 +2243,40 @@
                 }
             });
         });
+
+        function toggleWaChat() {
+            const box = document.getElementById('waChatBox');
+            if (box) box.classList.toggle('active');
+        }
     </script>
+
+    <!-- FLOATING LIVE WHATSAPP ASSISTANT WIDGET -->
+    <div class="wa-widget-wrapper" style="position:fixed;bottom:24px;right:24px;z-index:99999;font-family:'Inter',sans-serif;">
+        <div class="wa-chat-box" id="waChatBox" style="position:absolute;bottom:74px;right:0;width:320px;background:#fff;border-radius:20px;box-shadow:0 25px 60px rgba(15,39,68,0.25);border:1px solid #D8E3EE;display:none;flex-direction:column;overflow:hidden;">
+            <div style="background:#075E54;color:#fff;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;">
+                <div style="display:flex;align-items:center;gap:10px;">
+                    <img src="logo-icon.png" width="34" height="32" style="border-radius:50%;background:#fff;padding:2px;" alt="">
+                    <div>
+                        <div style="font-size:13.5px;font-weight:800;">Atakan Akbala</div>
+                        <div style="font-size:11px;opacity:0.85;">🏥 Sağlık Turizmi Büyüme Uzmanı</div>
+                    </div>
+                </div>
+                <button onclick="toggleWaChat()" style="background:none;border:none;color:#fff;font-size:16px;cursor:pointer;">✕</button>
+            </div>
+            <div style="padding:16px;background:#E5DDD5;">
+                <div style="background:#fff;padding:12px;border-radius:0 14px 14px 14px;font-size:12.5px;color:#111;line-height:1.45;">
+                    Bonjour! 👋 Kliniğinize Fransa, Almanya veya Körfez ülkelerinden hasta kazandıracak çok dilli Meta Ads kurgumuz hakkında bilgi almak ister misiniz?
+                </div>
+            </div>
+            <div style="padding:14px;background:#fff;display:flex;flex-direction:column;gap:8px;">
+                <a href="https://wa.me/905369852926?text=Merhaba%20Atakan%20Bey,%20sağlık%20turizmi%20fransızca%20klinik%20reklam%20analizi%20istiyorum." target="_blank" style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:#F4F7FB;border-radius:10px;color:#1B3A5C;text-decoration:none;font-size:12px;font-weight:700;">
+                    <span>🏥 WhatsApp Hızlı Analiz Al</span> <span>→</span>
+                </a>
+            </div>
+        </div>
+        <button onclick="toggleWaChat()" style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#25D366 0%,#128C7E 100%);color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;cursor:pointer;border:none;box-shadow:0 10px 30px rgba(37,211,102,0.45);">
+            💬
+        </button>
+    </div>
 </body>
 </html>
