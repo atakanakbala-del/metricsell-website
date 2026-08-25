@@ -2619,9 +2619,18 @@
             item.classList.toggle('open');
         }
 
-        // 7. Form Submit
+        // 7. Form Submit & Conversion Tracking
         function handleFormSubmit(e) {
             e.preventDefault();
+            
+            // Trigger Meta Pixel & Google Analytics Lead Events
+            if (typeof fbq === 'function') {
+                fbq('track', 'Lead');
+            }
+            if (typeof gtag === 'function') {
+                gtag('event', 'generate_lead', { 'event_category': 'Form', 'event_label': 'Growth Audit Request' });
+            }
+
             document.getElementById('formFeedback').style.display = 'block';
             setTimeout(() => {
                 alert('Talebiniz alındı! Ekibimiz en kısa sürede sizinle iletişime geçecektir.');
