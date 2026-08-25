@@ -1483,11 +1483,167 @@
             .geo-table { min-width: 600px; }
         }
 
-        @media (max-width: 600px) {
-            .form-grid, .dash-stats-grid, .calc-sector-radios { grid-template-columns: 1fr; }
-            .audit-container, .calc-card, .sector-spotlight-card { padding: 24px 18px; }
-            .shorts-grid, .blog-grid { grid-template-columns: 1fr; }
-            .shorts-cta-banner { text-align: center; justify-content: center; }
+        /* ===== FLOATING LIVE WHATSAPP ASSISTANT WIDGET ===== */
+        .wa-widget-wrapper {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 99999;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .wa-trigger-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.45);
+            border: none;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .wa-trigger-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6);
+        }
+
+        .wa-unread-badge {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            background: #FF0000;
+            color: #FFFFFF;
+            font-size: 11px;
+            font-weight: 800;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #FFFFFF;
+        }
+
+        .wa-chat-box {
+            position: absolute;
+            bottom: 74px;
+            right: 0;
+            width: 330px;
+            background: #FFFFFF;
+            border-radius: 20px;
+            box-shadow: 0 25px 60px rgba(15, 39, 68, 0.25);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+            animation: waPopIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .wa-chat-box.active {
+            display: flex !important;
+        }
+
+        @keyframes waPopIn {
+            from { opacity: 0; transform: translateY(20px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .wa-chat-header {
+            background: #075E54;
+            color: #FFFFFF;
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .wa-profile-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .wa-avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #FFFFFF;
+            padding: 2px;
+            flex-shrink: 0;
+        }
+
+        .wa-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .wa-title-name { font-size: 13.5px; font-weight: 800; }
+        .wa-status-text { font-size: 11px; opacity: 0.85; display: flex; align-items: center; gap: 4px; }
+        .wa-close-btn { background: none; border: none; color: #FFFFFF; font-size: 16px; cursor: pointer; opacity: 0.8; }
+        .wa-close-btn:hover { opacity: 1; }
+
+        .wa-chat-body {
+            padding: 16px;
+            background: #E5DDD5;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .wa-message-bubble {
+            background: #FFFFFF;
+            padding: 12px 14px;
+            border-radius: 0 14px 14px 14px;
+            font-size: 12.5px;
+            color: #111;
+            line-height: 1.45;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+            position: relative;
+        }
+
+        .wa-message-time {
+            font-size: 9.5px;
+            color: #888;
+            text-align: right;
+            margin-top: 4px;
+        }
+
+        .wa-action-options {
+            padding: 12px 14px 16px;
+            background: #FFFFFF;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .wa-option-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 9px 12px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+            border-radius: 10px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 700;
+            transition: all 0.2s ease;
+        }
+
+        .wa-option-btn:hover {
+            background: #25D366;
+            color: #FFFFFF;
+            border-color: #25D366;
         }
     </style>
 </head>
@@ -2724,6 +2880,64 @@
                 nav.classList.remove('scrolled');
             }
         });
+
+        // 9. Floating WhatsApp Assistant Widget Toggle
+        function toggleWaChat() {
+            const box = document.getElementById('waChatBox');
+            box.classList.toggle('active');
+        }
+
+        // Auto open WhatsApp chat after 7 seconds for maximum conversion
+        setTimeout(() => {
+            const box = document.getElementById('waChatBox');
+            if (box && !box.classList.contains('active')) {
+                box.classList.add('active');
+            }
+        }, 7000);
     </script>
+
+    <!-- FLOATING LIVE WHATSAPP ASSISTANT WIDGET -->
+    <div class="wa-widget-wrapper">
+        <!-- Chat Box Popup -->
+        <div class="wa-chat-box" id="waChatBox">
+            <div class="wa-chat-header">
+                <div class="wa-profile-info">
+                    <div class="wa-avatar">
+                        <img src="logo-icon.png" alt="Atakan Akbala - MetricSell">
+                    </div>
+                    <div>
+                        <div class="wa-title-name">Atakan Akbala</div>
+                        <div class="wa-status-text"><span class="toast-live-dot" style="position:static;display:inline-block;width:7px;height:7px;margin-right:2px;"></span> Çevrimiçi • Büyüme Uzmanı</div>
+                    </div>
+                </div>
+                <button class="wa-close-btn" onclick="toggleWaChat()">✕</button>
+            </div>
+            
+            <div class="wa-chat-body">
+                <div class="wa-message-bubble">
+                    Merhaba! 👋 Kliniğiniz, sürücü kursunuz veya e-ticaret mağazanız için nasıl yardımcı olabilirim? Aşağıdan konuyu seçerek doğrudan WhatsApp hattıma bağlanabilirsiniz.
+                    <div class="wa-message-time">Şimdi</div>
+                </div>
+            </div>
+
+            <div class="wa-action-options">
+                <a href="https://wa.me/905369852926?text=Merhaba%20Atakan%20Bey,%20sağlık%20turizmi%20klinik%20reklam%20analizi%20almak%20istiyorum." target="_blank" class="wa-option-btn">
+                    <span>🏥 Sağlık Turizmi Reklam Analizi</span> <span>→</span>
+                </a>
+                <a href="https://wa.me/905369852926?text=Merhaba%20Atakan%20Bey,%20sürücü%20kursu%20veya%20dil%20okulu%20kayıt%20reklamları%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="wa-option-btn">
+                    <span>🎓 Sürücü / Dil Kursu Kayıt Hunisi</span> <span>→</span>
+                </a>
+                <a href="https://wa.me/905369852926?text=Merhaba%20Atakan%20Bey,%20Trendyol/Amazon%20mağazam%20için%20ROAS%20ve%20reklam%20desteği%20istiyorum." target="_blank" class="wa-option-btn">
+                    <span>🛒 Trendyol & Amazon ROAS Desteği</span> <span>→</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Trigger Button -->
+        <button class="wa-trigger-btn" onclick="toggleWaChat()" aria-label="WhatsApp Canlı Destek">
+            💬
+            <span class="wa-unread-badge">1</span>
+        </button>
+    </div>
 </body>
 </html>
