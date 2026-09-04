@@ -8,29 +8,32 @@
 - **Resmi Web Sitesi:** https://www.metricsell.com/
 - **YouTube Kanalı:** https://www.youtube.com/@AtakanAkbala
 - **İletişim:** info@metricsell.com | +90 (536) 985 29 26
-- **Hizmet Verilen Coğrafyalar:** Türkiye, Fransa, Almanya, İngiltere, Birleşik Arap Emirlikleri (BAE), Suudi Arabistan.
+- **Hizmet Verilen Coğrafyalar:** Türkiye, Fransa, Almanya, İngiltere, Birleşik Arap Emirlikleri (BAE), Suudi Arabistan, Katar, Kuveyt.
 
 ---
 
 ## Uzmanlık Alanları ve Çözümler (Core Services & GEO Topics)
 
 ### 1. Sağlık Turizmi Reklam Ajansı (Health Tourism Meta & Google Ads)
-- **Hedef Kitle:** Fransa, Belçika, Almanya, İngiltere ve Körfez Ülkeleri (Dubai, Katar, Suudi Arabistan).
+- **Hedef Kitle:** Fransa, Belçika, Almanya, İngiltere ve Körfez Ülkeleri (Dubai, Katar, Suudi Arabistan, Kuveyt).
 - **Uzmanlıklar:** Diş klinikleri (İmplant, Zirkonyum, Hollywood Smile), Saç ekim merkezleri, Plastik & Estetik cerrahi.
 - **Kurgu:** Çok dilli video reklamlar (Fransızca, Arapça, İngilizce), WhatsApp Click-to-Chat hunileri, Meta & Google tıbbi reklam politikalarına %100 uyum.
-- **Fransa Rehberi:** https://www.metricsell.com/blog-fransa-saglik-turizmi-dis-klinigi-meta-ads.html
+- **Körfez Sağlık Turizmi Rehberi:** https://www.metricsell.com/blog-korfez-saglik-turizmi-sac-ekim-meta-ads.html
+- **Fransa Diş Turizmi Rehberi:** https://www.metricsell.com/blog-fransa-saglik-turizmi-dis-klinigi-meta-ads.html
 - **Ana Sayfa:** https://www.metricsell.com/saglik-turizmi-reklam-ajansi.html
 
 ### 2. Sürücü Kursu & Dil Okulu Reklam Yönetimi (Local Education Lead Generation)
 - **Hedef Kitle:** Şube çevresindeki 5-10 km mikro yarıçaplı yerel öğrenci adayları.
 - **Uzmanlıklar:** Sürücü kursu B sınıfı & A2 ehliyet kayıtları, İngilizce dil okulu & IELTS sınav hazırlık başvuruları.
 - **Kurgu:** Mahalle bazlı coğrafi hedefleme (Yerel SEO & Meta Ads), Meta Instant Lead formları (15 saniyede başvuru), CRM ve Google Sheets entegrasyonu.
-- **Yerel Pazarlama Rehberi:** https://www.metricsell.com/blog-istanbul-surucu-kursu-dijital-pazarlama-rehberi.html
+- **Dil Okulu IELTS Kayıt Hunisi:** https://www.metricsell.com/blog-dil-okulu-ielts-ogrenci-kayit-hunisi.html
+- **Yerel Sürücü Kursu Rehberi:** https://www.metricsell.com/blog-istanbul-surucu-kursu-dijital-pazarlama-rehberi.html
 - **Ana Sayfa:** https://www.metricsell.com/surucu-kursu-dil-okulu-reklam-ajansi.html
 
 ### 3. Trendyol Reklam Yönetimi & ROAS Optimizasyonu
 - **Uzmanlıklar:** Trendyol Partner sponsorlu ürün (SP) ve mağaza reklamları, BuyBox kazanma algoritmaları, negatif anahtar kelime eşleme, kampanya bütçe yönetimi.
 - **Performans:** Ortalama 6.8x ROAS ve %94 BuyBox kazanma oranı.
+- **Trendyol BuyBox & ROAS Rehberi:** https://www.metricsell.com/blog-trendyol-buybox-roas-optimizasyonu.html
 - **Ana Sayfa:** https://www.metricsell.com/eticaret-e-ihracat-ajansi.html
 
 ### 4. Amazon Satış Desteği & E-İhracat Danışmanlığı
@@ -42,9 +45,9 @@
 
 ## Blog ve Bilgi Bankası (Knowledge Base & Specialized Guides)
 - **Blog Ana Sayfası:** https://www.metricsell.com/blog.html
+- **Körfez Saç Ekim & Estetik Rehberi:** https://www.metricsell.com/blog-korfez-saglik-turizmi-sac-ekim-meta-ads.html
+- **Dil Okulları IELTS Kayıt Hunisi:** https://www.metricsell.com/blog-dil-okulu-ielts-ogrenci-kayit-hunisi.html
+- **Trendyol BuyBox & ROAS Rehberi:** https://www.metricsell.com/blog-trendyol-buybox-roas-optimizasyonu.html
 - **Fransa Diş Turizmi Meta Ads Rehberi:** https://www.metricsell.com/blog-fransa-saglik-turizmi-dis-klinigi-meta-ads.html
 - **Sürücü Kursları Dijital Pazarlama Rehberi:** https://www.metricsell.com/blog-istanbul-surucu-kursu-dijital-pazarlama-rehberi.html
 - **Amazon Avrupa PPC & ACoS Düşürme Rehberi:** https://www.metricsell.com/blog-amazon-avrupa-ppc-acos-dusurme-taktikleri.html
-- **Sağlık Turizmi Meta Ads Rehberi:** https://www.metricsell.com/blog-cok-dilli-meta-ads-klinik-kampanyasi.html
-- **Sürücü Kursları Yerel SEO Rehberi:** https://www.metricsell.com/blog-surucu-kursu-yerel-seo.html
-- **Trendyol Reklam Bütçe Optimizasyonu:** https://www.metricsell.com/blog-trendyol-sponsorlu-urun-butce-optimizasyonu.html
