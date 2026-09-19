@@ -20,4 +20,4 @@ Unattended daily maintenance passes on this repo. Each entry lists what was prop
   today's run. Their "⚠️ Onay bekliyor" items (case-study numbers in `index.html` needing verification,
   and the orphaned `index-modern.html`) remain unresolved — see those PRs, not repeated here.
 
-PR: (placeholder — updated after PR creation)
+PR: https://github.com/atakanakbala-del/metricsell-website/pull/3
