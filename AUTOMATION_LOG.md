@@ -29,4 +29,4 @@ Unattended daily maintenance passes on this repo. Each entry lists what was prop
     fixes on `index.html`.
   - PR #2: `CLAUDE.md` typo + stale color palette values.
 
-PR: (added after push — see below)
+PR: https://github.com/atakanakbala-del/metricsell-website/pull/4
