@@ -1,4 +1,4 @@
-c# MetricSell Website — Proje Bilgi Dosyası
+# MetricSell Website — Proje Bilgi Dosyası
 
 ## Proje Amacı
 
