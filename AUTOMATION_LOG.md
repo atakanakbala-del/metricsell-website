@@ -44,7 +44,7 @@ yeni bulgular içeriyor.
   başlık + URL olarak eklendi, böylece AI arama/GEO amaçlı bu dosyayı okuyan sistemler tüm içerik
   kütüphanesini görebiliyor.
 - Diff: 7 dosya, 48 satır (34 ekleme / 14 silme).
-- PR: (bu PR'ın linki — açılırken eklenecek)
+- PR: https://github.com/atakanakbala-del/metricsell-website/pull/7
 
 ### Kontroller
 - Tüm `.html` dosyalarındaki `href`/`img src` referansları diskteki dosyalarla karşılaştırıldı — kırık link
