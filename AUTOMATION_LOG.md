@@ -57,3 +57,40 @@ yeni bulgular içeriyor.
 ### ⚠️ Onay bekliyor
 - Yeni bir madde yok. 2026-09-17'deki iki madde (orphan `index-modern.html` ve vaka analizi rakamları) hâlâ
   geçerli ve bekliyor.
+
+## 2026-09-24
+
+Not: `auto/main`'den bu dala merge alındı (`blog-egitim-google-yorumlari-itibar-yonetimi.html` yeni blog
+yazısı dahil, main'den geldi, çakışma yok). #6 (`auto/2026-09-22`) hâlâ ayrı açık bekliyor, dokunulmadı.
+
+- 6 blog yazısında (`blog-egitim-google-yorumlari-itibar-yonetimi.html`,
+  `blog-egitim-kayit-maliyeti-kampanya-taktikleri.html`,
+  `blog-egitim-reels-tiktok-organik-ogrenci-kazanimi.html`, `blog-korfez-hastalari-snapchat-ads.html`,
+  `blog-saglik-turizmi-hasta-yorumlari-itibar-yonetimi.html`,
+  `blog-saglik-turizmi-web-sitesi-donusum-ux.html`) sondaki CTA butonu `index.html#egitim` veya
+  `index.html#saglik-turizmi`'ye linkliyordu — bu anchor'lar `index.html`'de hiç var olmamış (gerçek kırık
+  link, tıklanınca sayfanın en üstüne düşüyordu). En yakın karşılık gelen gerçek section id'lerine
+  düzeltildi: eğitim CTA'ları → `index.html#course-spotlight`, sağlık turizmi CTA'ları →
+  `index.html#health-spotlight` (bu id'ler homepage'deki ilgili sektör spotlight bölümleriyle eşleşiyor).
+- `llms.txt`: main'den gelen yeni blog yazısı (`blog-egitim-google-yorumlari-itibar-yonetimi.html`) "Blog ve
+  Bilgi Bankası" listesinde eksikti, eklendi.
+- `sitemap.xml`: 3 politika sayfası (`gizlilik-politikasi.html`, `cerez-politikasi.html`, `kvkk.html`) —
+  hepsinde `<meta name="robots" content="index, follow">` var (indexlenmesi isteniyor) ama sitemap'te hiç
+  yoktu — eklendi (düşük öncelik/priority 0.3, yearly).
+- Diff: 8 dosya, 25 satır (19 ekleme / 6 silme).
+- PR: https://github.com/atakanakbala-del/metricsell-website/pull/7 (güncellendi)
+
+### Kontroller
+- Tüm `.html` dosyalarındaki `href`/`img src` referansları diskteki dosyalarla karşılaştırıldı — kırık dosya
+  yolu bulunamadı. Tüm in-page anchor (`#id`) linkleri hedef dosyalardaki `id`'lerle karşılaştırıldı — yukarıdaki
+  6 blog CTA'sı dışında kırık anchor bulunamadı (`index-modern.html#sectors` hariç, o zaten orphan/bilinen).
+- Kopya `id` bulunamadı, eksik `alt` metni bulunamadı.
+- Kalan `target="_blank"` linklerinde eksik `rel="noopener"` bulunamadı (3 tanesi `index-modern.html`'de,
+  daha önceden orphan olduğu için dokunulmuyor — 2026-09-23'te de aynı tespit).
+- Yeni blog yazısında (`blog-egitim-google-yorumlari-itibar-yonetimi.html`) doğrulanamaz istatistik/vaka
+  rakamı bulunamadı.
+- Stray dev artifact (`.bak`, `.orig`, `~` vb.) bulunamadı.
+
+### ⚠️ Onay bekliyor
+- Yeni bir madde yok. 2026-09-17'deki iki madde (orphan `index-modern.html` ve vaka analizi rakamları) hâlâ
+  geçerli ve bekliyor.
