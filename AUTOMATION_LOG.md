@@ -94,3 +94,38 @@ yazısı dahil, main'den geldi, çakışma yok). #6 (`auto/2026-09-22`) hâlâ a
 ### ⚠️ Onay bekliyor
 - Yeni bir madde yok. 2026-09-17'deki iki madde (orphan `index-modern.html` ve vaka analizi rakamları) hâlâ
   geçerli ve bekliyor.
+
+## 2026-09-26
+
+Not: `origin/main` ile `origin/auto/maintenance` zaten aynı commit'teydi (`git merge origin/main` "Already up
+to date" döndü) — bu koşuda yeni bir merge yoktu. PR #6 (`auto/2026-09-22`) hâlâ ayrı açık bekliyor,
+dokunulmadı.
+
+- `CLAUDE.md`: "Mevcut renk paleti" bölümündeki 4 CSS değişkeni değeri artık `index.html`'deki gerçek
+  `:root` tanımlarıyla eşleşmiyordu (muhtemelen daha önceki bir tasarım güncellemesinden kalma, dosya
+  güncellenmemiş) — `--accent-light` (`#FFB84D` → gerçek değer `#FFA733`), `--bg-secondary` (`#F0F4F8` →
+  `#F4F7FB`), `--bg-dark` (`#0F2744` → `#091A2F`), `--border` (`#D1DDE8` → `#D8E3EE`). Dördü de düzeltildi;
+  diğer 8 değer (`--primary`, `--secondary`, `--accent`, `--bg`, `--text`, `--text-light`, `--text-white`,
+  `--success`) zaten doğruydu, dokunulmadı.
+- Diff: 1 dosya, 6 satır (3 ekleme / 3 silme).
+
+### Kontroller
+- Tüm `.html` dosyalarındaki `href`/`img src` referansları diskteki dosyalarla karşılaştırıldı (script ile,
+  aynı-sayfa ve sayfalar-arası anchor'lar dahil) — kırık link/anchor bulunamadı, `index-modern.html#sectors`
+  hariç (bilinen, orphan dosya).
+- Kopya `id` bulunamadı (dosya başına kontrol edildi).
+- Eksik `alt` metni bulunamadı; boş `alt=""` kullanılan tüm `<img>` etiketleri dekoratif logo ikonları
+  (çoğu zaten `aria-hidden="true"` ile işaretli) — mevcut, kasıtlı bir pattern, yeni değil.
+- `target="_blank"` linklerinde eksik `rel="noopener"` sadece `index-modern.html`'de (3 adet, bilinen/orphan)
+  — yeni yok.
+- `llms.txt` ve `sitemap.xml`: sitedeki 27 blog yazısının tamamı ve tüm ana sayfalar (index-modern.html hariç,
+  kasıtlı) her ikisinde de mevcut — eksik yok.
+- Orphan sayfa taraması: `index-modern.html` dışında referans almayan `.html` dosyası yok.
+- `outreach_tracker_template.csv` zaten "Örnek..." (example) olarak etiketlenmiş sahte veri — ek bir işlem
+  gerekmiyor.
+- Stray dev artifact (`.bak`, `.orig`, `~` vb.) bulunamadı. `git status` temiz, commit öncesi secret benzeri
+  dosya yok.
+
+### ⚠️ Onay bekliyor
+- Yeni bir madde yok. 2026-09-17'deki iki madde (orphan `index-modern.html` ve vaka analizi rakamları) hâlâ
+  geçerli ve bekliyor.
