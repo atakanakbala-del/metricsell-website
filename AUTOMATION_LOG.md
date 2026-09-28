@@ -129,3 +129,41 @@ dokunulmadı.
 ### ⚠️ Onay bekliyor
 - Yeni bir madde yok. 2026-09-17'deki iki madde (orphan `index-modern.html` ve vaka analizi rakamları) hâlâ
   geçerli ve bekliyor.
+
+## 2026-09-28
+
+Not: `origin/main`'i bu dala merge alırken `sitemap.xml`'de gerçek bir çakışma çıktı (main yeni blog yazısını
+sitemap'e eklerken, bu dal daha önce (09-24) 3 politika sayfasını aynı `<url>` bloğunun hemen ardına eklemişti)
+— trivial, iki taraf da farklı satırlar ekliyordu; her iki bloğu da koruyarak elle çözüldü. PR #6
+(`auto/2026-09-22`) hâlâ ayrı açık bekliyor, dokunulmadı.
+
+- Main'den gelen yeni blog yazısı `blog-saglik-turizmi-youtube-video-reklamlari.html`, 2026-09-24'te 6 diğer
+  blog yazısında düzeltilen aynı kalıpta kırık bir CTA anchor'ıyla gelmiş: sondaki "Sağlık Turizmi için Teklif
+  Al" butonu `index.html#saglik-turizmi`'ye linkliyordu — bu id `index.html`'de hiç var olmadı (tıklanınca
+  sayfanın en üstüne düşüyordu). 09-24'teki kararla tutarlı şekilde gerçek karşılığına düzeltildi:
+  `index.html#health-spotlight`.
+- `llms.txt`: aynı yeni blog yazısı "Blog ve Bilgi Bankası" listesinde eksikti (merge sitemap.xml ve
+  blog.html'e otomatik eklemişti ama llms.txt elle tutulan bir liste olduğu için atlanmıştı), eklendi.
+- Diff: 2 dosya, 3 satır (2 ekleme / 1 silme).
+- PR: https://github.com/atakanakbala-del/metricsell-website/pull/7 (güncellendi)
+
+### Kontroller
+- Tüm `.html` dosyalarındaki `href` referansları (dosya yolları + aynı-sayfa/sayfalar-arası anchor'lar)
+  script ile diskteki dosyalar ve gerçek `id`'lerle karşılaştırıldı — yukarıdaki 1 madde dışında kırık link/
+  anchor bulunamadı (`index-modern.html#sectors` hariç, bilinen/orphan).
+- Kopya `id` bulunamadı (dosya başına kontrol edildi, yeni blog yazısı dahil).
+- Eksik `alt` metni bulunamadı.
+- `target="_blank"` linklerinde eksik `rel="noopener"` sadece `index-modern.html`'de (3 adet, bilinen/orphan)
+  — yeni yok.
+- Orphan sayfa taraması: `index-modern.html` dışında referans almayan `.html` dosyası yok.
+- Yeni blog yazısındaki (`blog-saglik-turizmi-youtube-video-reklamlari.html`) yüzdelik rakamlar (%50, %60-70
+  bütçe dağılımı) genel taktik tavsiye niteliğinde, "Gerçek Vaka Analizleri" bölümündeki gibi belirli bir
+  müşteriye atfedilen sonuç rakamı değil — ek bir işaretleme gerekmedi.
+- `CLAUDE.md`'deki CSS paleti değerleri hâlâ `index.html`'deki gerçek `:root` tanımlarıyla eşleşiyor (09-26'da
+  düzeltilmişti) — yeni sapma yok.
+- Stray dev artifact (`.bak`, `.orig`, `~` vb.) bulunamadı. `git status` merge sonrası temiz, commit öncesi
+  secret benzeri dosya yok.
+
+### ⚠️ Onay bekliyor
+- Yeni bir madde yok. 2026-09-17'deki iki madde (orphan `index-modern.html` ve vaka analizi rakamları) hâlâ
+  geçerli ve bekliyor.
