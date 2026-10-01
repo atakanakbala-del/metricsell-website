@@ -167,3 +167,39 @@ sitemap'e eklerken, bu dal daha önce (09-24) 3 politika sayfasını aynı `<url
 ### ⚠️ Onay bekliyor
 - Yeni bir madde yok. 2026-09-17'deki iki madde (orphan `index-modern.html` ve vaka analizi rakamları) hâlâ
   geçerli ve bekliyor.
+
+## 2026-10-01
+
+`origin/main`'i bu dala merge alırken çakışma çıkmadı (main'den gelen tek yeni dosya,
+`blog-egitim-google-ads-arama-kampanyasi.html`, ve `blog.html`/`sitemap.xml`'deki eklemeleri otomatik merge
+oldu). PR #6 (`auto/2026-09-22`) hâlâ ayrı açık bekliyor, dokunulmadı.
+
+- **`llms.txt`**: main'den gelen yeni blog yazısı (`blog-egitim-google-ads-arama-kampanyasi.html`, "Sürücü
+  Kursu ve Dil Okulları İçin Google Ads Arama Kampanyası Rehberi") "Blog ve Bilgi Bankası" listesinde eksikti
+  (merge `sitemap.xml` ve `blog.html`'e otomatik eklemişti ama `llms.txt` elle tutulan bir liste olduğu için
+  atlanmıştı) — eklendi.
+- Diff: 1 dosya, 1 satır (1 ekleme).
+
+### Kontroller
+- Yeni blog yazısının kapanış CTA'sı kontrol edildi — bu yazı önceki günlerde 7 farklı yazıda bulunan kırık
+  `index.html#egitim`/`#saglik-turizmi` anchor kalıbını taşımıyor; `index.html#services` ve
+  `index.html#contact`'e linkliyor, ikisi de gerçek id (önceki düzeltmelerden kalma pattern tekrarlanmamış).
+- Tüm `.html` dosyalarındaki `href` referansları (dosya yolları + aynı-sayfa/sayfalar-arası anchor'lar)
+  script ile diskteki dosyalar ve gerçek `id`'lerle karşılaştırıldı — kırık link/anchor bulunamadı,
+  `index-modern.html#sectors` hariç (bilinen/orphan, değişmedi).
+- Kopya `id` bulunamadı (dosya başına kontrol edildi, yeni blog yazısı dahil).
+- Eksik `alt` metni bulunamadı.
+- `target="_blank"` linklerinde eksik `rel="noopener"` sadece `index-modern.html`'de (3 adet, bilinen/orphan)
+  — yeni yok.
+- `sitemap.xml`/`blog.html`: yeni blog yazısı için tek, kopyasız kayıt var (merge sorunsuz).
+- Yeni blog yazısında (`blog-egitim-google-ads-arama-kampanyasi.html`) doğrulanamaz müşteri-atıflı istatistik
+  bulunamadı (tek yüzdelik rakam, "%10-15 üzerinde hedef gir" şeklinde genel taktik tavsiye, vaka analizi
+  rakamı değil).
+- `CLAUDE.md`'deki CSS paleti değerleri hâlâ `index.html`'deki gerçek `:root` tanımlarıyla eşleşiyor — yeni
+  sapma yok.
+- Stray dev artifact (`.bak`, `.orig`, `~` vb.) bulunamadı. `git status` merge sonrası temiz, commit öncesi
+  secret benzeri dosya yok.
+
+### ⚠️ Onay bekliyor
+- Yeni bir madde yok. 2026-09-17'deki iki madde (orphan `index-modern.html` ve vaka analizi rakamları) hâlâ
+  geçerli ve bekliyor.
