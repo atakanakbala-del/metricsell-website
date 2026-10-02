@@ -1565,44 +1565,7 @@
         }
     </style>
 
-    <!-- Consent-gated tracking (GTM, Facebook Pixel, GA4, Google Ads) -->
-    <!-- Scripts only load after cookie consent is accepted — see cookie-consent.js logic below -->
-    <script>
-    function msLoadTracking() {
-        if (window.msTrackingLoaded) return;
-        window.msTrackingLoaded = true;
-
-        // Google Tag Manager
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MKW7SQTG');
-
-        var gtmNoscript = document.createElement('noscript');
-        var gtmIframe = document.createElement('iframe');
-        gtmIframe.src = 'https://www.googletagmanager.com/ns.html?id=GTM-MKW7SQTG';
-        gtmIframe.height = '0'; gtmIframe.width = '0'; gtmIframe.style.display = 'none'; gtmIframe.style.visibility = 'hidden';
-        gtmNoscript.appendChild(gtmIframe);
-        document.body.insertBefore(gtmNoscript, document.body.firstChild);
-
-        // Facebook Pixel
-        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1827487517954836');
-        fbq('track', 'PageView');
-
-        // GA4 + Google Ads
-        var gaScript = document.createElement('script');
-        gaScript.async = true;
-        gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-0FKXPN6YGP';
-        document.head.appendChild(gaScript);
-        window.dataLayer = window.dataLayer || [];
-        window.gtag = function(){dataLayer.push(arguments);};
-        gtag('js', new Date());
-        gtag('config', 'G-0FKXPN6YGP');
-        gtag('config', 'AW-17868667342');
-    }
-
-    if (localStorage.getItem('ms_cookie_consent') === 'accepted') {
-        msLoadTracking();
-    }
-    </script>
+    <script src="tracking.js"></script>
 </head>
 <body>
 
