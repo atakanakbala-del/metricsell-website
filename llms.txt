@@ -32,7 +32,6 @@
 
 ### 3. Trendyol Reklam Yönetimi & ROAS Optimizasyonu
 - **Uzmanlıklar:** Trendyol Partner sponsorlu ürün (SP) ve mağaza reklamları, BuyBox kazanma algoritmaları, negatif anahtar kelime eşleme, kampanya bütçe yönetimi.
-- **Performans:** Ortalama 6.8x ROAS ve %94 BuyBox kazanma oranı.
 - **Trendyol BuyBox & ROAS Rehberi:** https://www.metricsell.com/blog-trendyol-buybox-roas-optimizasyonu.html
 - **Ana Sayfa:** https://www.metricsell.com/eticaret-e-ihracat-ajansi.html
 
