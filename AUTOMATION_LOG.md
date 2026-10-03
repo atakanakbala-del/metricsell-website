@@ -23,3 +23,183 @@
 - Ana sayfadaki "Gerçek Vaka Analizleri" (case studies) bölümündeki rakamlar (€48,000+ ciro, €14.48 CPL,
   622 form, 6.8x ROAS vb.) gerçek müşteri verisi gibi sunuluyor ama isim/marka belirtilmiyor — bunların
   gerçek olduğunu teyit edemediğim için dokunmadım, sadece bilginize.
+
+## 2026-09-23
+
+Not: Bu koşudan itibaren otomasyon, tarih damgalı (`auto/YYYY-MM-DD`) dallar yerine kalıcı `auto/maintenance`
+dalını kullanıyor. Bu koşuda `auto/maintenance` başlıklı açık bir PR yoktu, ancak eski isimlendirmeyle açılmış
+#6 (`auto/2026-09-22`) hâlâ açık bekliyor — blog makale sayısı (26+) ve `CLAUDE.md`'deki "tek dosyalık" ifadesi
+düzeltmelerini içeriyor. O ikisini burada tekrar önermedim (zaten #6'da bekliyor); bu PR tamamen farklı,
+yeni bulgular içeriyor.
+
+- `CLAUDE.md`: dosyanın en başındaki başlıktan önce fazladan bir `c` harfi vardı (`c# MetricSell Website...`)
+  — muhtemelen eski bir düzenleme kalıntısı. Düzeltildi (`# MetricSell Website...`).
+- 5 dosyada (`index.html`, `blog.html`, `eticaret-e-ihracat-ajansi.html`,
+  `saglik-turizmi-reklam-ajansi.html`, `surucu-kursu-dil-okulu-reklam-ajansi.html`) toplam 13 adet
+  `target="_blank"` linkte `rel="noopener noreferrer"` eksikti (YouTube, WhatsApp/wa.me ve KVKK sayfası
+  linkleri) — `window.opener` üzerinden erişim ve performans/güvenlik açısından standart en iyi pratik
+  eklendi. Görsel/davranışsal değişiklik yok. (`index-modern.html`'deki 3 benzer link, o dosya zaten orphan
+  olarak işaretli olduğundan dokunulmadı.)
+- `llms.txt`: "Blog ve Bilgi Bankası" bölümünde sadece 6/26 blog yazısı listeliydi. Kalan 20 yazı da
+  başlık + URL olarak eklendi, böylece AI arama/GEO amaçlı bu dosyayı okuyan sistemler tüm içerik
+  kütüphanesini görebiliyor.
+- Diff: 7 dosya, 48 satır (34 ekleme / 14 silme).
+- PR: https://github.com/atakanakbala-del/metricsell-website/pull/7
+
+### Kontroller
+- Tüm `.html` dosyalarındaki `href`/`img src` referansları diskteki dosyalarla karşılaştırıldı — kırık link
+  bulunamadı.
+- `index.html`'de kopya (duplicate) `id` bulunamadı; eksik `alt` metni bulunamadı.
+- `index-modern.html`'de "Hizmetlerimiz" linkinin hedeflediği `id="sectors"` o dosyada mevcut değil (gerçek
+  bir kırık anchor), ama dosya zaten kullanılmayan/orphan olarak işaretli olduğundan — 2026-09-17'deki karar
+  gereği — dokunulmadı.
+
+### ⚠️ Onay bekliyor
+- Yeni bir madde yok. 2026-09-17'deki iki madde (orphan `index-modern.html` ve vaka analizi rakamları) hâlâ
+  geçerli ve bekliyor.
+
+## 2026-09-24
+
+Not: `auto/main`'den bu dala merge alındı (`blog-egitim-google-yorumlari-itibar-yonetimi.html` yeni blog
+yazısı dahil, main'den geldi, çakışma yok). #6 (`auto/2026-09-22`) hâlâ ayrı açık bekliyor, dokunulmadı.
+
+- 6 blog yazısında (`blog-egitim-google-yorumlari-itibar-yonetimi.html`,
+  `blog-egitim-kayit-maliyeti-kampanya-taktikleri.html`,
+  `blog-egitim-reels-tiktok-organik-ogrenci-kazanimi.html`, `blog-korfez-hastalari-snapchat-ads.html`,
+  `blog-saglik-turizmi-hasta-yorumlari-itibar-yonetimi.html`,
+  `blog-saglik-turizmi-web-sitesi-donusum-ux.html`) sondaki CTA butonu `index.html#egitim` veya
+  `index.html#saglik-turizmi`'ye linkliyordu — bu anchor'lar `index.html`'de hiç var olmamış (gerçek kırık
+  link, tıklanınca sayfanın en üstüne düşüyordu). En yakın karşılık gelen gerçek section id'lerine
+  düzeltildi: eğitim CTA'ları → `index.html#course-spotlight`, sağlık turizmi CTA'ları →
+  `index.html#health-spotlight` (bu id'ler homepage'deki ilgili sektör spotlight bölümleriyle eşleşiyor).
+- `llms.txt`: main'den gelen yeni blog yazısı (`blog-egitim-google-yorumlari-itibar-yonetimi.html`) "Blog ve
+  Bilgi Bankası" listesinde eksikti, eklendi.
+- `sitemap.xml`: 3 politika sayfası (`gizlilik-politikasi.html`, `cerez-politikasi.html`, `kvkk.html`) —
+  hepsinde `<meta name="robots" content="index, follow">` var (indexlenmesi isteniyor) ama sitemap'te hiç
+  yoktu — eklendi (düşük öncelik/priority 0.3, yearly).
+- Diff: 8 dosya, 25 satır (19 ekleme / 6 silme).
+- PR: https://github.com/atakanakbala-del/metricsell-website/pull/7 (güncellendi)
+
+### Kontroller
+- Tüm `.html` dosyalarındaki `href`/`img src` referansları diskteki dosyalarla karşılaştırıldı — kırık dosya
+  yolu bulunamadı. Tüm in-page anchor (`#id`) linkleri hedef dosyalardaki `id`'lerle karşılaştırıldı — yukarıdaki
+  6 blog CTA'sı dışında kırık anchor bulunamadı (`index-modern.html#sectors` hariç, o zaten orphan/bilinen).
+- Kopya `id` bulunamadı, eksik `alt` metni bulunamadı.
+- Kalan `target="_blank"` linklerinde eksik `rel="noopener"` bulunamadı (3 tanesi `index-modern.html`'de,
+  daha önceden orphan olduğu için dokunulmuyor — 2026-09-23'te de aynı tespit).
+- Yeni blog yazısında (`blog-egitim-google-yorumlari-itibar-yonetimi.html`) doğrulanamaz istatistik/vaka
+  rakamı bulunamadı.
+- Stray dev artifact (`.bak`, `.orig`, `~` vb.) bulunamadı.
+
+### ⚠️ Onay bekliyor
+- Yeni bir madde yok. 2026-09-17'deki iki madde (orphan `index-modern.html` ve vaka analizi rakamları) hâlâ
+  geçerli ve bekliyor.
+
+## 2026-09-26
+
+Not: `origin/main` ile `origin/auto/maintenance` zaten aynı commit'teydi (`git merge origin/main` "Already up
+to date" döndü) — bu koşuda yeni bir merge yoktu. PR #6 (`auto/2026-09-22`) hâlâ ayrı açık bekliyor,
+dokunulmadı.
+
+- `CLAUDE.md`: "Mevcut renk paleti" bölümündeki 4 CSS değişkeni değeri artık `index.html`'deki gerçek
+  `:root` tanımlarıyla eşleşmiyordu (muhtemelen daha önceki bir tasarım güncellemesinden kalma, dosya
+  güncellenmemiş) — `--accent-light` (`#FFB84D` → gerçek değer `#FFA733`), `--bg-secondary` (`#F0F4F8` →
+  `#F4F7FB`), `--bg-dark` (`#0F2744` → `#091A2F`), `--border` (`#D1DDE8` → `#D8E3EE`). Dördü de düzeltildi;
+  diğer 8 değer (`--primary`, `--secondary`, `--accent`, `--bg`, `--text`, `--text-light`, `--text-white`,
+  `--success`) zaten doğruydu, dokunulmadı.
+- Diff: 1 dosya, 6 satır (3 ekleme / 3 silme).
+
+### Kontroller
+- Tüm `.html` dosyalarındaki `href`/`img src` referansları diskteki dosyalarla karşılaştırıldı (script ile,
+  aynı-sayfa ve sayfalar-arası anchor'lar dahil) — kırık link/anchor bulunamadı, `index-modern.html#sectors`
+  hariç (bilinen, orphan dosya).
+- Kopya `id` bulunamadı (dosya başına kontrol edildi).
+- Eksik `alt` metni bulunamadı; boş `alt=""` kullanılan tüm `<img>` etiketleri dekoratif logo ikonları
+  (çoğu zaten `aria-hidden="true"` ile işaretli) — mevcut, kasıtlı bir pattern, yeni değil.
+- `target="_blank"` linklerinde eksik `rel="noopener"` sadece `index-modern.html`'de (3 adet, bilinen/orphan)
+  — yeni yok.
+- `llms.txt` ve `sitemap.xml`: sitedeki 27 blog yazısının tamamı ve tüm ana sayfalar (index-modern.html hariç,
+  kasıtlı) her ikisinde de mevcut — eksik yok.
+- Orphan sayfa taraması: `index-modern.html` dışında referans almayan `.html` dosyası yok.
+- `outreach_tracker_template.csv` zaten "Örnek..." (example) olarak etiketlenmiş sahte veri — ek bir işlem
+  gerekmiyor.
+- Stray dev artifact (`.bak`, `.orig`, `~` vb.) bulunamadı. `git status` temiz, commit öncesi secret benzeri
+  dosya yok.
+
+### ⚠️ Onay bekliyor
+- Yeni bir madde yok. 2026-09-17'deki iki madde (orphan `index-modern.html` ve vaka analizi rakamları) hâlâ
+  geçerli ve bekliyor.
+
+## 2026-09-28
+
+Not: `origin/main`'i bu dala merge alırken `sitemap.xml`'de gerçek bir çakışma çıktı (main yeni blog yazısını
+sitemap'e eklerken, bu dal daha önce (09-24) 3 politika sayfasını aynı `<url>` bloğunun hemen ardına eklemişti)
+— trivial, iki taraf da farklı satırlar ekliyordu; her iki bloğu da koruyarak elle çözüldü. PR #6
+(`auto/2026-09-22`) hâlâ ayrı açık bekliyor, dokunulmadı.
+
+- Main'den gelen yeni blog yazısı `blog-saglik-turizmi-youtube-video-reklamlari.html`, 2026-09-24'te 6 diğer
+  blog yazısında düzeltilen aynı kalıpta kırık bir CTA anchor'ıyla gelmiş: sondaki "Sağlık Turizmi için Teklif
+  Al" butonu `index.html#saglik-turizmi`'ye linkliyordu — bu id `index.html`'de hiç var olmadı (tıklanınca
+  sayfanın en üstüne düşüyordu). 09-24'teki kararla tutarlı şekilde gerçek karşılığına düzeltildi:
+  `index.html#health-spotlight`.
+- `llms.txt`: aynı yeni blog yazısı "Blog ve Bilgi Bankası" listesinde eksikti (merge sitemap.xml ve
+  blog.html'e otomatik eklemişti ama llms.txt elle tutulan bir liste olduğu için atlanmıştı), eklendi.
+- Diff: 2 dosya, 3 satır (2 ekleme / 1 silme).
+- PR: https://github.com/atakanakbala-del/metricsell-website/pull/7 (güncellendi)
+
+### Kontroller
+- Tüm `.html` dosyalarındaki `href` referansları (dosya yolları + aynı-sayfa/sayfalar-arası anchor'lar)
+  script ile diskteki dosyalar ve gerçek `id`'lerle karşılaştırıldı — yukarıdaki 1 madde dışında kırık link/
+  anchor bulunamadı (`index-modern.html#sectors` hariç, bilinen/orphan).
+- Kopya `id` bulunamadı (dosya başına kontrol edildi, yeni blog yazısı dahil).
+- Eksik `alt` metni bulunamadı.
+- `target="_blank"` linklerinde eksik `rel="noopener"` sadece `index-modern.html`'de (3 adet, bilinen/orphan)
+  — yeni yok.
+- Orphan sayfa taraması: `index-modern.html` dışında referans almayan `.html` dosyası yok.
+- Yeni blog yazısındaki (`blog-saglik-turizmi-youtube-video-reklamlari.html`) yüzdelik rakamlar (%50, %60-70
+  bütçe dağılımı) genel taktik tavsiye niteliğinde, "Gerçek Vaka Analizleri" bölümündeki gibi belirli bir
+  müşteriye atfedilen sonuç rakamı değil — ek bir işaretleme gerekmedi.
+- `CLAUDE.md`'deki CSS paleti değerleri hâlâ `index.html`'deki gerçek `:root` tanımlarıyla eşleşiyor (09-26'da
+  düzeltilmişti) — yeni sapma yok.
+- Stray dev artifact (`.bak`, `.orig`, `~` vb.) bulunamadı. `git status` merge sonrası temiz, commit öncesi
+  secret benzeri dosya yok.
+
+### ⚠️ Onay bekliyor
+- Yeni bir madde yok. 2026-09-17'deki iki madde (orphan `index-modern.html` ve vaka analizi rakamları) hâlâ
+  geçerli ve bekliyor.
+
+## 2026-10-01
+
+`origin/main`'i bu dala merge alırken çakışma çıkmadı (main'den gelen tek yeni dosya,
+`blog-egitim-google-ads-arama-kampanyasi.html`, ve `blog.html`/`sitemap.xml`'deki eklemeleri otomatik merge
+oldu). PR #6 (`auto/2026-09-22`) hâlâ ayrı açık bekliyor, dokunulmadı.
+
+- **`llms.txt`**: main'den gelen yeni blog yazısı (`blog-egitim-google-ads-arama-kampanyasi.html`, "Sürücü
+  Kursu ve Dil Okulları İçin Google Ads Arama Kampanyası Rehberi") "Blog ve Bilgi Bankası" listesinde eksikti
+  (merge `sitemap.xml` ve `blog.html`'e otomatik eklemişti ama `llms.txt` elle tutulan bir liste olduğu için
+  atlanmıştı) — eklendi.
+- Diff: 1 dosya, 1 satır (1 ekleme).
+
+### Kontroller
+- Yeni blog yazısının kapanış CTA'sı kontrol edildi — bu yazı önceki günlerde 7 farklı yazıda bulunan kırık
+  `index.html#egitim`/`#saglik-turizmi` anchor kalıbını taşımıyor; `index.html#services` ve
+  `index.html#contact`'e linkliyor, ikisi de gerçek id (önceki düzeltmelerden kalma pattern tekrarlanmamış).
+- Tüm `.html` dosyalarındaki `href` referansları (dosya yolları + aynı-sayfa/sayfalar-arası anchor'lar)
+  script ile diskteki dosyalar ve gerçek `id`'lerle karşılaştırıldı — kırık link/anchor bulunamadı,
+  `index-modern.html#sectors` hariç (bilinen/orphan, değişmedi).
+- Kopya `id` bulunamadı (dosya başına kontrol edildi, yeni blog yazısı dahil).
+- Eksik `alt` metni bulunamadı.
+- `target="_blank"` linklerinde eksik `rel="noopener"` sadece `index-modern.html`'de (3 adet, bilinen/orphan)
+  — yeni yok.
+- `sitemap.xml`/`blog.html`: yeni blog yazısı için tek, kopyasız kayıt var (merge sorunsuz).
+- Yeni blog yazısında (`blog-egitim-google-ads-arama-kampanyasi.html`) doğrulanamaz müşteri-atıflı istatistik
+  bulunamadı (tek yüzdelik rakam, "%10-15 üzerinde hedef gir" şeklinde genel taktik tavsiye, vaka analizi
+  rakamı değil).
+- `CLAUDE.md`'deki CSS paleti değerleri hâlâ `index.html`'deki gerçek `:root` tanımlarıyla eşleşiyor — yeni
+  sapma yok.
+- Stray dev artifact (`.bak`, `.orig`, `~` vb.) bulunamadı. `git status` merge sonrası temiz, commit öncesi
+  secret benzeri dosya yok.
+
+### ⚠️ Onay bekliyor
+- Yeni bir madde yok. 2026-09-17'deki iki madde (orphan `index-modern.html` ve vaka analizi rakamları) hâlâ
+  geçerli ve bekliyor.
