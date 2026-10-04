@@ -203,3 +203,49 @@ oldu). PR #6 (`auto/2026-09-22`) hâlâ ayrı açık bekliyor, dokunulmadı.
 ### ⚠️ Onay bekliyor
 - Yeni bir madde yok. 2026-09-17'deki iki madde (orphan `index-modern.html` ve vaka analizi rakamları) hâlâ
   geçerli ve bekliyor.
+
+## 2026-10-04
+
+`origin/main`'i bu dala merge alırken çakışma çıkmadı (otomatik merge ile çözüldü). Main'de son koşudan beri
+6 commit vardı: Search Console doğrulama dosyası + 404.html + 11 eski BilgiKurumsal URL'si için `noindex`
+yönlendirme sayfası (`biz-kimiz/`, `teklif-al/`, `store/m/5/` vb.), tüm sayfalara ortak `tracking.js` ile
+rıza temelli (KVKK) GA4/Meta Pixel/GTM/Google Ads yüklemesi, ve — önemlisi — **2026-09-17'den beri bekleyen
+iki "⚠️ Onay bekliyor" maddesinin ikisi de proje sahibi tarafından doğrudan çözüldü**: `index-modern.html`
+silindi (orphan sayfa kararı artık gerekmiyor), ve ana sayfadaki atfedilmemiş "Gerçek Vaka Analizleri"
+rakamları (€48,000+ ciro, 6.8x ROAS vb.) tamamen kaldırılıp yerine iddia içermeyen "Neyi Ölçüyoruz?" / KPI
+odaklı bir bölüm geldi. Bu koşuda bu iki maddeyi tekrar önermiyorum — ikisi de artık "bekliyor" listesinde
+değil.
+
+- 3 niş sayfasında (`eticaret-e-ihracat-ajansi.html`, `saglik-turizmi-reklam-ajansi.html`,
+  `surucu-kursu-dil-okulu-reklam-ajansi.html`) main'deki "Remove fabricated results..." commit'i, o
+  sayfalardaki "örnek" etiketli rakamları ve uyarı metnini kaldırmıştı ama ikisinin de kullandığı CSS
+  kuralları (`.placeholder-flag`, `.metric-disclaimer`) üç dosyada da hâlâ duruyordu — artık hiçbir HTML
+  etiketi tarafından referans alınmayan ölü CSS. Üç dosyadan da ikişer kural (toplam 6 blok) kaldırıldı,
+  görsel/davranışsal değişiklik yok.
+- Diff: 3 dosya, 75 satır (75 silme).
+- PR: https://github.com/atakanakbala-del/metricsell-website/pull/7 (güncellendi)
+
+### Kontroller
+- Tüm `.html` dosyalarındaki `href`/`src` referansları (dosya yolları + aynı-sayfa/sayfalar-arası anchor'lar)
+  script ile diskteki dosyalar ve gerçek `id`'lerle karşılaştırıldı (artık orphan `index-modern.html` de
+  yok) — kırık link/anchor bulunamadı.
+- Yeni eklenen 11 yönlendirme (redirect) sayfası tek tek kontrol edildi: hepsi `noindex` + doğru
+  `canonical` + doğru hedef URL'e sahip, `sitemap.xml`/`llms.txt`'e sızmamış (kasıtlı, doğru).
+  `teklif-al/index.html`'in hedefi olan `index.html#audit-form` anchor'ı gerçek ve mevcut.
+- Main'den bu koşuda yeni bir blog yazısı gelmedi (son yeni yazı 10-01'de zaten işlenmişti); yine de 29
+  blog yazısının hepsi `llms.txt`, `sitemap.xml` ve `blog.html`'de eksiksiz listeleniyor, CTA anchor'ları
+  (`#services`, `#contact`, `#sectors`, `#course-spotlight`, `#health-spotlight`) hepsi gerçek id'lere
+  işaret ediyor.
+- Kopya `id` bulunamadı (tüm `.html` dosyaları, redirect sayfaları dahil). Eksik `alt` metni bulunamadı.
+- `target="_blank"` linklerinde eksik `rel="noopener"` bulunamadı (önceki koşularda tek kaynak olan
+  `index-modern.html` artık silinmiş olduğu için repo'da sıfıra indi).
+- `CLAUDE.md`'deki CSS paleti değerleri hâlâ `index.html`'deki gerçek `:root` tanımlarıyla eşleşiyor — yeni
+  sapma yok.
+- Stray dev artifact (`.bak`, `.orig`, `~`, `Thumbs.db`, `.DS_Store`) bulunamadı. `.agents/skills` ve
+  `.claude/skills` dizinleri 2026-08-18'de proje sahibi tarafından kasıtlı eklenmiş (skills.sh ile); site
+  içeriği değil, dokunulmadı. `git status` merge sonrası temiz, commit öncesi credential-benzeri dosya yok.
+- Ödeme/faturalama veya auth kodu yok (statik site, beklenen).
+
+### ⚠️ Onay bekliyor
+- Yeni bir madde yok. Önceki iki madde (orphan sayfa ve vaka analizi rakamları) bu koşuda yukarıda
+  açıklandığı gibi main'de doğrudan çözüldüğü için listeden çıkarıldı.
