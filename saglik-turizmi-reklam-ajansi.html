@@ -1565,44 +1565,7 @@
         }
     </style>
 
-    <!-- Consent-gated tracking (GTM, Facebook Pixel, GA4, Google Ads) -->
-    <!-- Scripts only load after cookie consent is accepted — see cookie-consent.js logic below -->
-    <script>
-    function msLoadTracking() {
-        if (window.msTrackingLoaded) return;
-        window.msTrackingLoaded = true;
-
-        // Google Tag Manager
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MKW7SQTG');
-
-        var gtmNoscript = document.createElement('noscript');
-        var gtmIframe = document.createElement('iframe');
-        gtmIframe.src = 'https://www.googletagmanager.com/ns.html?id=GTM-MKW7SQTG';
-        gtmIframe.height = '0'; gtmIframe.width = '0'; gtmIframe.style.display = 'none'; gtmIframe.style.visibility = 'hidden';
-        gtmNoscript.appendChild(gtmIframe);
-        document.body.insertBefore(gtmNoscript, document.body.firstChild);
-
-        // Facebook Pixel
-        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1827487517954836');
-        fbq('track', 'PageView');
-
-        // GA4 + Google Ads
-        var gaScript = document.createElement('script');
-        gaScript.async = true;
-        gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-0FKXPN6YGP';
-        document.head.appendChild(gaScript);
-        window.dataLayer = window.dataLayer || [];
-        window.gtag = function(){dataLayer.push(arguments);};
-        gtag('js', new Date());
-        gtag('config', 'G-0FKXPN6YGP');
-        gtag('config', 'AW-17868667342');
-    }
-
-    if (localStorage.getItem('ms_cookie_consent') === 'accepted') {
-        msLoadTracking();
-    }
-    </script>
+    <script src="tracking.js"></script>
 </head>
 <body>
 
@@ -1636,7 +1599,7 @@
                         <a href="surucu-kursu-dil-okulu-reklam-ajansi.html">🎓 Eğitim</a>
                     </div>
                 </li>
-                <li><a href="#results">Sonuçlar</a></li>
+                <li><a href="#results">Ölçüm</a></li>
                 <li><a href="blog.html">Blog</a></li>
             </ul>
             <a href="#contact" class="nav-cta">Teklif Al <span class="btn-arrow">→</span></a>
@@ -1667,7 +1630,7 @@
             <li><a href="eticaret-e-ihracat-ajansi.html">E-ticaret & E-ihracat</a></li>
             <li><a href="saglik-turizmi-reklam-ajansi.html">Sağlık Turizmi</a></li>
             <li><a href="surucu-kursu-dil-okulu-reklam-ajansi.html">Eğitim</a></li>
-            <li><a href="#results">Sonuçlar</a></li>
+            <li><a href="#results">Ölçüm</a></li>
             <li><a href="#process">Süreç</a></li>
             <li><a href="blog.html">Blog</a></li>
         </ul>
@@ -1692,7 +1655,7 @@
             </p>
             <div class="hero-buttons">
                 <a href="#contact" class="btn-primary">Ücretsiz Reklam Analizi Al <span class="btn-arrow">→</span></a>
-                <a href="#results" class="btn-secondary">Sonuçları İncele</a>
+                <a href="#results" class="btn-secondary">Neyi Ölçüyoruz?</a>
             </div>
             <div class="hero-sector-pills">
                 <span style="color:var(--text-light);font-size:13px;">Diğer sektörler:</span>
@@ -1825,11 +1788,11 @@
                 </div>
                 <div class="sector-mini-stats">
                     <div class="sector-mini-stat">
-                        <div class="num">%180<span class="placeholder-flag">örnek</span></div>
+                        <div class="num">Hedef</div>
                         <div class="lbl">Randevu Artışı</div>
                     </div>
                     <div class="sector-mini-stat">
-                        <div class="num">%40<span class="placeholder-flag">örnek</span></div>
+                        <div class="num">Hedef</div>
                         <div class="lbl">Lead Maliyeti Düşüşü</div>
                     </div>
                 </div>
@@ -1903,49 +1866,48 @@
     <!-- RESULTS SECTION -->
     <section class="results" id="results">
         <div class="container">
-            <h2 class="fade-in">Sektör Ortaklarımızın Sonuçları</h2>
+            <h2 class="fade-in">Neyi Ölçüyoruz?</h2>
             <p class="fade-in">Kampanya yönetiminde odaklandığımız temel performans göstergeleri</p>
-            <div class="metric-disclaimer fade-in">⚠️ Aşağıdaki rakamlar örnek / gösterge niteliğindedir</div>
             <div class="results-grid">
                 <div class="result-item fade-in">
-                    <div class="result-number">%180</div>
-                    <div class="result-label">Ort. ROAS Artışı*</div>
+                    <div class="result-number">ROAS</div>
+                    <div class="result-label">Reklam Getirisi</div>
                 </div>
                 <div class="result-item fade-in">
-                    <div class="result-number">%35</div>
-                    <div class="result-label">Tıklama Maliyeti Düşüşü*</div>
+                    <div class="result-number">CPC</div>
+                    <div class="result-label">Tıklama Maliyeti</div>
                 </div>
                 <div class="result-item fade-in">
-                    <div class="result-number">%40</div>
-                    <div class="result-label">Lead Maliyeti Düşüşü*</div>
+                    <div class="result-number">CPL</div>
+                    <div class="result-label">Lead Maliyeti</div>
                 </div>
                 <div class="result-item fade-in">
-                    <div class="result-number">%65</div>
-                    <div class="result-label">Dönüşüm Oranı Artışı*</div>
+                    <div class="result-number">CVR</div>
+                    <div class="result-label">Dönüşüm Oranı</div>
                 </div>
             </div>
 
             <div class="scenarios-grid">
                 <div class="scenario-card fade-in">
-                    <span class="scenario-badge">ÖRNEK SENARYO</span>
+                    <span class="scenario-badge">KAMPANYA KURGUSU</span>
                     <h3>🛒 E-ticaret & E-ihracat</h3>
                     <p>Pazaryeri + Google Shopping kombinasyonuyla kurgulanan bir kampanyada hedeflenen ilerleme.</p>
-                    <div class="scenario-metric">%180 <span>ROAS artışı</span></div>
+                    <div class="scenario-metric">Hedef <span>ROAS artışı</span></div>
                 </div>
                 <div class="scenario-card fade-in">
-                    <span class="scenario-badge">ÖRNEK SENARYO</span>
+                    <span class="scenario-badge">KAMPANYA KURGUSU</span>
                     <h3>🏥 Sağlık Turizmi</h3>
                     <p>Çok dilli Meta + Google Ads yönetimiyle uluslararası hasta danışmanlığı huninde hedeflenen ilerleme.</p>
-                    <div class="scenario-metric">%180 <span>randevu artışı</span></div>
+                    <div class="scenario-metric">Hedef <span>randevu artışı</span></div>
                 </div>
                 <div class="scenario-card fade-in">
-                    <span class="scenario-badge">ÖRNEK SENARYO</span>
+                    <span class="scenario-badge">KAMPANYA KURGUSU</span>
                     <h3>🎓 Eğitim (Sürücü / Dil Kursu)</h3>
                     <p>Yerel hedeflemeli lead generation kampanyasıyla kayıt huninde hedeflenen ilerleme.</p>
-                    <div class="scenario-metric">%250 <span>kayıt artışı</span></div>
+                    <div class="scenario-metric">Hedef <span>kayıt artışı</span></div>
                 </div>
             </div>
-            <p class="results-footnote fade-in">*Rakamlar örnek amaçlıdır; gerçek performans sektöre, bütçeye ve rekabet ortamına göre değişir.</p>
+            <p class="results-footnote fade-in">Sayısal hedefler, çalışma başlamadan önce mevcut verilerinize göre birlikte belirlenir; performans sektöre, bütçeye ve rekabet ortamına göre değişir.</p>
         </div>
     </section>
 

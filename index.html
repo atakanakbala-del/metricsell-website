@@ -22,7 +22,6 @@
     <link rel="help" href="https://www.metricsell.com/llms.txt" type="text/markdown" title="LLM Context Data">
 
     <!-- Google Search Console & Bing Webmaster Verification -->
-    <meta name="google-site-verification" content="GSC_VERIFICATION_CODE_HERE">
 
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
@@ -108,13 +107,6 @@
             "Trendyol Sponsorlu Ürün Reklamları",
             "Amazon PPC ve E-İhracat Danışmanlığı"
         ],
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "48",
-            "bestRating": "5",
-            "worstRating": "1"
-        },
         "hasOfferCatalog": {
             "@type": "OfferCatalog",
             "name": "MetricSell Büyüme Hizmetleri",
@@ -745,7 +737,7 @@
         .dash-stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 18px; }
         .dash-stat-box { background: var(--bg-secondary); border: 1px solid var(--border-light); border-radius: 12px; padding: 12px 14px; text-align: left; }
         .dash-stat-box .stat-label { font-size: 11px; font-weight: 600; color: var(--secondary); text-transform: uppercase; margin-bottom: 4px; }
-        .dash-stat-box .stat-val { font-size: 20px; font-weight: 800; color: var(--primary); line-height: 1.2; }
+        .dash-stat-box .stat-val { font-size: 15px; font-weight: 800; color: var(--primary); line-height: 1.2; white-space: nowrap; }
         .dash-stat-box .stat-val.accent { color: var(--accent); }
         .dash-stat-box .stat-val.meta { color: var(--meta-blue); }
 
@@ -1064,8 +1056,8 @@
         .geo-table tr:hover td { background: rgba(27, 58, 92, 0.02); }
 
         .geo-feature-title { font-weight: 700; color: var(--primary); }
-        .geo-bad-val { color: #E5484D; font-weight: 600; display: flex; align-items: center; gap: 6px; }
-        .geo-good-val { color: #128C7E; font-weight: 700; display: flex; align-items: center; gap: 6px; }
+        .geo-bad-val { color: #E5484D; font-weight: 600; }
+        .geo-good-val { color: #128C7E; font-weight: 700; }
 
         /* ===== BLOG & REHBERLER (SEO & ORGANİK TRAFİK VİTRİNİ) ===== */
         .blog-showcase-section {
@@ -1327,6 +1319,17 @@
             display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; flex-shrink: 0; margin-top: 2px;
         }
 
+        .playbook-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 40px; }
+        @media (max-width: 900px) { .playbook-grid { grid-template-columns: 1fr; gap: 18px; } }
+        .flow-card { background: #091A2F; color: #FFFFFF; border-radius: 20px; padding: 32px; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 20px 50px rgba(15, 39, 68, 0.18); }
+        .flow-card-title { font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 22px; }
+        .flow-steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0; }
+        .flow-step { display: flex; gap: 16px; align-items: flex-start; padding: 16px 0; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        .flow-step:first-child { border-top: none; padding-top: 0; }
+        .flow-step:last-child { padding-bottom: 0; }
+        .flow-step-num { font-size: 13px; font-weight: 800; color: var(--accent); font-variant-numeric: tabular-nums; padding-top: 2px; }
+        .flow-step strong { display: block; font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+        .flow-step div span { font-size: 13.5px; line-height: 1.5; color: rgba(255, 255, 255, 0.72); }
         .image-showcase-box {
             border-radius: 20px;
             overflow: hidden;
@@ -1421,6 +1424,8 @@
         /* ===== HUMAN / TEAM & STRATEGY ===== */
         .expert-section { padding: 100px 0; background: var(--bg-dark); color: #FFFFFF; position: relative; overflow: hidden; }
         .expert-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 54px; align-items: center; }
+        .expert-grid--solo { grid-template-columns: 1fr; max-width: 760px; margin: 0 auto; text-align: center; }
+        .expert-grid--solo .benefit-pill-item { text-align: left; }
         .expert-photo-wrap { border-radius: 24px; overflow: hidden; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.15); position: relative; }
         .expert-photo-wrap img { width: 100%; height: auto; display: block; }
         .expert-tag-float { position: absolute; bottom: 20px; left: 20px; background: rgba(15, 39, 68, 0.9); backdrop-filter: blur(10px); padding: 12px 18px; border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.15); color: #FFFFFF; }
@@ -1649,11 +1654,11 @@
             border-color: #25D366;
         }
     </style>
+    <script src="tracking.js"></script>
 </head>
 <body>
 
     <!-- CANLI LEAD & SATIŞ AKIŞ BİLDİRİMLERİ (TOASTS) -->
-    <div class="live-lead-toast-container" id="toastContainer"></div>
 
     <!-- GERÇEK ÇALIŞAN YOUTUBE SHORTS POPUP MODALI -->
     <div class="video-modal-overlay" id="videoModal" onclick="closeShortsModal(event)">
@@ -1746,15 +1751,15 @@
                     </div>
                 </div>
 
-                <!-- Sağ Kolon: İnteraktif Canlı Kampanya Paneli -->
+                <!-- Sağ Kolon: Sektöre Özel Kampanya Kurgusu Paneli -->
                 <div class="hero-right">
                     <div class="hero-interactive-card">
                         
                         <div class="floating-badge badge-top">
-                            <span>🔥</span> <strong>Ort. ROAS: +480%</strong>
+                            <span>📊</span> <strong>Haftalık KPI Raporu</strong>
                         </div>
                         <div class="floating-badge badge-bottom">
-                            <span>💬</span> <strong>WhatsApp Lead: 12 sn önce</strong>
+                            <span>💬</span> <strong>WhatsApp Hunisi Entegre</strong>
                         </div>
 
                         <!-- Sektör Sekmeleri -->
@@ -1771,40 +1776,40 @@
                         <div class="tab-pane active" id="pane-health">
                             <div class="dash-panel-header">
                                 <span class="dash-channel-tag">Meta Ads • Avrupa & Körfez</span>
-                                <span class="dash-status-pill"><span class="toast-live-dot" style="position:static;display:inline-block;margin-right:4px;"></span> Aktif Kampanya</span>
+                                <span class="dash-status-pill">Kampanya Kurgusu</span>
                             </div>
                             <div class="dash-stats-grid">
                                 <div class="dash-stat-box">
-                                    <div class="stat-label">CPL (Hasta Başı)</div>
-                                    <div class="stat-val accent">€14.20</div>
+                                    <div class="stat-label">Reklam Dilleri</div>
+                                    <div class="stat-val accent">FR · AR · EN</div>
                                 </div>
                                 <div class="dash-stat-box">
-                                    <div class="stat-label">Hasta ROAS</div>
-                                    <div class="stat-val meta">+480%</div>
+                                    <div class="stat-label">Kanallar</div>
+                                    <div class="stat-val meta">Meta · Google</div>
                                 </div>
                                 <div class="dash-stat-box">
-                                    <div class="stat-label">Yabancı Lead</div>
-                                    <div class="stat-val">382</div>
+                                    <div class="stat-label">Dönüşüm Noktası</div>
+                                    <div class="stat-val">WhatsApp</div>
                                 </div>
                             </div>
 
                             <div class="live-feed-card">
                                 <div class="live-feed-header">
-                                    <span>Son Hasta Görüşmeleri</span>
-                                    <span style="color:var(--success);font-size:11px;">● Canlı WhatsApp</span>
+                                    <span>Hasta Kazanım Akışı</span>
+                                    <span style="color:var(--success);font-size:11px;">Reklam → Görüşme</span>
                                 </div>
                                 <div class="feed-items-list">
                                     <div class="feed-row">
                                         <div style="display:flex;align-items:center;gap:8px;">
-                                            <span>🇫🇷</span> <span>Sophie L. (Paris - İmplant)</span>
+                                            <span>🇫🇷</span> <span>Fransızca reklam → Fransızca karşılama</span>
                                         </div>
-                                        <span class="feed-tag whatsapp">WhatsApp Randevu</span>
+                                        <span class="feed-tag whatsapp">Randevu</span>
                                     </div>
                                     <div class="feed-row">
                                         <div style="display:flex;align-items:center;gap:8px;">
-                                            <span>🇦🇪</span> <span>Ahmed K. (Dubai - Gülüş Tasarımı)</span>
+                                            <span>🇦🇪</span> <span>Arapça reklam → Arapça karşılama</span>
                                         </div>
-                                        <span class="feed-tag whatsapp">Fiyat Teklifi</span>
+                                        <span class="feed-tag whatsapp">Teklif</span>
                                     </div>
                                 </div>
                             </div>
@@ -1822,38 +1827,38 @@
                         <div class="tab-pane" id="pane-course">
                             <div class="dash-panel-header">
                                 <span class="dash-channel-tag">Meta Ads • Yerel 5-10 KM Yarıçap</span>
-                                <span class="dash-status-pill"><span class="toast-live-dot" style="position:static;display:inline-block;margin-right:4px;"></span> Kayıt Hunisi</span>
+                                <span class="dash-status-pill">Kayıt Hunisi</span>
                             </div>
                             <div class="dash-stats-grid">
                                 <div class="dash-stat-box">
-                                    <div class="stat-label">Kayıt Başı Maliyet</div>
-                                    <div class="stat-val accent">₺45.00</div>
+                                    <div class="stat-label">Hedefleme</div>
+                                    <div class="stat-val accent">5-10 km</div>
                                 </div>
                                 <div class="dash-stat-box">
-                                    <div class="stat-label">Kayıt Artışı</div>
-                                    <div class="stat-val meta">+320%</div>
+                                    <div class="stat-label">Başvuru</div>
+                                    <div class="stat-val meta">Anlık Form</div>
                                 </div>
                                 <div class="dash-stat-box">
-                                    <div class="stat-label">Yeni Öğrenci</div>
-                                    <div class="stat-val">1,148</div>
+                                    <div class="stat-label">Takip</div>
+                                    <div class="stat-val">CRM</div>
                                 </div>
                             </div>
 
                             <div class="live-feed-card">
                                 <div class="live-feed-header">
-                                    <span>Son Şube Başvuruları</span>
-                                    <span style="color:var(--accent);font-size:11px;">● Anlık Lead Formu</span>
+                                    <span>Öğrenci Kazanım Akışı</span>
+                                    <span style="color:var(--accent);font-size:11px;">Reklam → Kayıt</span>
                                 </div>
                                 <div class="feed-items-list">
                                     <div class="feed-row">
                                         <div style="display:flex;align-items:center;gap:8px;">
-                                            <span>🚗</span> <span>Ayşe K. (Kadıköy - B Sınıfı)</span>
+                                            <span>🚗</span> <span>Şube çevresi reklam → B sınıfı başvuru</span>
                                         </div>
                                         <span class="feed-tag form">Kayıt Formu</span>
                                     </div>
                                     <div class="feed-row">
                                         <div style="display:flex;align-items:center;gap:8px;">
-                                            <span>🇬🇧</span> <span>Burak D. (Beşiktaş - Genel İngilizce)</span>
+                                            <span>🇬🇧</span> <span>Yerel reklam → ücretsiz seviye testi</span>
                                         </div>
                                         <span class="feed-tag form">Seviye Testi</span>
                                     </div>
@@ -2059,7 +2064,7 @@
                         <tr>
                             <td class="geo-feature-title">Pazaryeri & ROAS</td>
                             <td class="geo-bad-val">✕ Sadece tık sayısına bakar, BuyBox bilmez</td>
-                            <td class="geo-good-val">✓ Trendyol Partner & Amazon PPC ile net 6.8x ROAS hedefi</td>
+                            <td class="geo-good-val">✓ Trendyol & Amazon reklamlarında tıklamayı değil net ROAS ve kârı takip eder</td>
                         </tr>
                         <tr>
                             <td class="geo-feature-title">Video & Shorts Üretimi</td>
@@ -2083,7 +2088,7 @@
             <div class="section-header">
                 <span class="section-badge">Büyüme Simülatörü</span>
                 <h2>Aylık Reklam Bütçenizle <span class="highlight-accent">Kaç Yeni Müşteri</span> Kazanırsınız?</h2>
-                <p>Sektörünüzü ve bütçenizi seçin, MetricSell veri modelleriyle tahmini getiriyi anında görün.</p>
+                <p>Sektörünüzü ve bütçenizi seçin, sektör varsayımlarına dayalı kaba bir tahmin görün. Gerçek rakamları ücretsiz analizde birlikte çıkarıyoruz.</p>
             </div>
 
             <div class="calc-card">
@@ -2114,56 +2119,57 @@
                 </div>
 
                 <div class="calc-results-box">
-                    <div class="result-eyebrow">Tahmini Nitelikli Başvuru (Lead)</div>
-                    <div class="result-big-num" id="calcLeadsDisplay">210+ Lead</div>
+                    <div class="result-eyebrow">TAHMİN · Aylık Başvuru (Lead)</div>
+                    <div class="result-big-num" id="calcLeadsDisplay">75 - 200 Lead</div>
 
                     <div class="result-meta-grid">
                         <div class="res-metric-item">
-                            <div class="res-lbl">Tahmini Kesin Kayıt / Hasta</div>
-                            <div class="res-val" id="calcClientsDisplay">25 - 35 Hasta</div>
+                            <div class="res-lbl">Tahmini Hasta / Kayıt</div>
+                            <div class="res-val" id="calcClientsDisplay">4 - 30 Hasta</div>
                         </div>
                         <div class="res-metric-item">
-                            <div class="res-lbl">Hedeflenen ROAS</div>
-                            <div class="res-val" id="calcRoasDisplay">+420%</div>
+                            <div class="res-lbl">Hesaplama Varsayımı</div>
+                            <div class="res-val" id="calcRoasDisplay" style="font-size:13px;">CPL €15-40 · Dönüşüm %5-15</div>
                         </div>
                     </div>
 
                     <a href="#audit-form" class="btn btn-primary" style="width:100%;box-shadow:none;">
-                        Bu Sonuçlar İçin Teklif Al →
+                        Bütçeme Özel Analiz Al →
                     </a>
+                    <p style="font-size:11.5px;color:var(--secondary);margin-top:12px;line-height:1.5;">Bu bir tahmindir, garanti değildir. Gerçek sonuç pazar, teklif, kreatif ve satış sürecinize göre değişir.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- REAL CASE STUDIES & PROOF SECTION -->
+    <!-- SECTOR CAMPAIGN PLAYBOOKS -->
     <section class="case-studies-section" id="case-studies" style="padding:100px 0; background:var(--bg); border-top:1px solid var(--border-light);">
         <div class="container">
             <div class="section-header">
-                <span class="section-badge" style="background:rgba(52,199,89,0.12);color:#128C7E;">Kanıtlanmış Performans</span>
-                <h2>Gerçek Vaka Analizleri & <span class="highlight-accent">Büyüme Rakamlarımız</span></h2>
-                <p>Yönettiğimiz hesaplarda elde ettiğimiz somut ciro, ROAS ve başvuru maliyet (CPL) verileri.</p>
+                <span class="section-badge" style="background:rgba(52,199,89,0.12);color:#128C7E;">Çalışma Modelimiz</span>
+                <h2>Sektöre Özel <span class="highlight-accent">Kampanya Kurguları</span></h2>
+                <p>Her sektör için reklamdan satışa giden yolu farklı kuruyor ve başarıyı tıklamayla değil, işinize dokunan KPI'larla ölçüyoruz.</p>
             </div>
 
-            <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:28px; margin-top:40px;">
+            <div class="playbook-grid">
                 
                 <!-- Case 1: Sağlık Turizmi -->
                 <div style="background:#FFFFFF; border:1px solid var(--border); border-radius:24px; padding:32px; box-shadow:var(--shadow-sm); transition:all 0.3s ease;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-                        <span style="font-size:11.5px; font-weight:800; padding:4px 10px; border-radius:6px; background:rgba(37,211,102,0.12); color:#128C7E; text-transform:uppercase;">🏥 Fransa Diş Kliniği</span>
-                        <span style="font-size:12px; font-weight:700; color:var(--success);">● €48,000+ Ciro</span>
+                        <span style="font-size:11.5px; font-weight:800; padding:4px 10px; border-radius:6px; background:rgba(37,211,102,0.12); color:#128C7E; text-transform:uppercase;">🏥 Sağlık Turizmi</span>
+                        <span style="font-size:12px; font-weight:700; color:var(--success);">FR · AR · EN</span>
                     </div>
-                    <h3 style="font-size:19px; margin-bottom:12px; color:var(--primary);">Fransa & Belçika İmplant Kampanyası</h3>
-                    <p style="font-size:14px; color:var(--secondary); line-height:1.6; margin-bottom:20px;">Fransızca WhatsApp hunisi ile hasta başı başvuru maliyetini €14.48 seviyesine çekerek kliniğin randevularını doldurduk.</p>
+                    <h3 style="font-size:19px; margin-bottom:12px; color:var(--primary);">Avrupa & Körfez Hasta Kazanımı</h3>
+                    <p style="font-size:14px; color:var(--secondary); line-height:1.6; margin-bottom:20px;">Hastanın kendi dilinde Meta ve Google reklamı, aynı dilde WhatsApp karşılaması ve randevuya kadar takip edilen bir huni.</p>
                     
                     <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; background:var(--bg-secondary); padding:14px; border-radius:12px; text-align:center;">
                         <div>
-                            <div style="font-size:11px; color:var(--secondary); font-weight:600;">Hasta Lead</div>
-                            <div style="font-size:20px; font-weight:800; color:var(--primary);">290+</div>
+                            <div style="font-size:11px; color:var(--secondary); font-weight:600;">Takip Edilen KPI</div>
+                            <div style="font-size:16px; font-weight:800; color:var(--primary);">Hasta başı CPL</div>
                         </div>
                         <div>
-                            <div style="font-size:11px; color:var(--secondary); font-weight:600;">Hasta Başı CPL</div>
-                            <div style="font-size:20px; font-weight:800; color:var(--accent);">€14.48</div>
+                            <div style="font-size:11px; color:var(--secondary); font-weight:600;">Takip Edilen KPI</div>
+                            <div style="font-size:16px; font-weight:800; color:var(--accent);">Randevu oranı</div>
                         </div>
                     </div>
                 </div>
@@ -2171,20 +2177,20 @@
                 <!-- Case 2: Sürücü Kursu -->
                 <div style="background:#FFFFFF; border:1px solid var(--border); border-radius:24px; padding:32px; box-shadow:var(--shadow-sm); transition:all 0.3s ease;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-                        <span style="font-size:11.5px; font-weight:800; padding:4px 10px; border-radius:6px; background:rgba(0,129,251,0.12); color:#0064E0; text-transform:uppercase;">🎓 Sürücü Kursu (3 Şube)</span>
-                        <span style="font-size:12px; font-weight:700; color:var(--meta-blue);">● %100 Kontenjan</span>
+                        <span style="font-size:11.5px; font-weight:800; padding:4px 10px; border-radius:6px; background:rgba(0,129,251,0.12); color:#0064E0; text-transform:uppercase;">🎓 Sürücü & Dil Kursu</span>
+                        <span style="font-size:12px; font-weight:700; color:var(--meta-blue);">5-10 km</span>
                     </div>
-                    <h3 style="font-size:19px; margin-bottom:12px; color:var(--primary);">Kadıköy & Beşiktaş Şubeleri Kayıt Patlaması</h3>
-                    <p style="font-size:14px; color:var(--secondary); line-height:1.6; margin-bottom:20px;">5 km mikro yarıçap hedeflemesiyle B sınıfı ehliyet başvurularında 622 potansiyel kursiyer toplandı.</p>
+                    <h3 style="font-size:19px; margin-bottom:12px; color:var(--primary);">Şube Çevresinden Kayıt Hunisi</h3>
+                    <p style="font-size:14px; color:var(--secondary); line-height:1.6; margin-bottom:20px;">Şubenin 5-10 km çevresine mikro hedefleme, anlık başvuru formu ve başvuruyu kayda çeviren hızlı geri dönüş süreci.</p>
                     
                     <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; background:var(--bg-secondary); padding:14px; border-radius:12px; text-align:center;">
                         <div>
-                            <div style="font-size:11px; color:var(--secondary); font-weight:600;">Kayıt Formu</div>
-                            <div style="font-size:20px; font-weight:800; color:var(--primary);">622 Form</div>
+                            <div style="font-size:11px; color:var(--secondary); font-weight:600;">Takip Edilen KPI</div>
+                            <div style="font-size:16px; font-weight:800; color:var(--primary);">Başvuru başı maliyet</div>
                         </div>
                         <div>
-                            <div style="font-size:11px; color:var(--secondary); font-weight:600;">Kayıt Başı CPL</div>
-                            <div style="font-size:20px; font-weight:800; color:var(--accent);">₺45.00</div>
+                            <div style="font-size:11px; color:var(--secondary); font-weight:600;">Takip Edilen KPI</div>
+                            <div style="font-size:16px; font-weight:800; color:var(--accent);">Kesin kayıt oranı</div>
                         </div>
                     </div>
                 </div>
@@ -2192,20 +2198,20 @@
                 <!-- Case 3: Trendyol / Amazon -->
                 <div style="background:#FFFFFF; border:1px solid var(--border); border-radius:24px; padding:32px; box-shadow:var(--shadow-sm); transition:all 0.3s ease;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-                        <span style="font-size:11.5px; font-weight:800; padding:4px 10px; border-radius:6px; background:rgba(242,122,26,0.12); color:#F27A1A; text-transform:uppercase;">🛒 Pazaryeri / Trendyol</span>
-                        <span style="font-size:12px; font-weight:700; color:var(--trendyol-orange);">● 6.8x ROAS</span>
+                        <span style="font-size:11.5px; font-weight:800; padding:4px 10px; border-radius:6px; background:rgba(242,122,26,0.12); color:#F27A1A; text-transform:uppercase;">🛒 Pazaryeri / E-Ticaret</span>
+                        <span style="font-size:12px; font-weight:700; color:var(--trendyol-orange);">Trendyol · Amazon</span>
                     </div>
-                    <h3 style="font-size:19px; margin-bottom:12px; color:var(--primary);">Trendyol & Amazon BuyBox Optimizasyonu</h3>
-                    <p style="color:var(--secondary); font-size:14px; line-height:1.6; margin-bottom:20px;">Sponsorlu ürün reklamlarında negatif kelime temizliği ile bütçeyi 6.8 katı ciroya dönüştürdük.</p>
+                    <h3 style="font-size:19px; margin-bottom:12px; color:var(--primary);">Kârlı Pazaryeri Reklamı</h3>
+                    <p style="color:var(--secondary); font-size:14px; line-height:1.6; margin-bottom:20px;">Sponsorlu ürün reklamlarında negatif kelime temizliği, kârlı ürünlere bütçe önceliği ve BuyBox takibi.</p>
                     
                     <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; background:var(--bg-secondary); padding:14px; border-radius:12px; text-align:center;">
                         <div>
-                            <div style="font-size:11px; color:var(--secondary); font-weight:600;">Net ROAS</div>
-                            <div style="font-size:20px; font-weight:800; color:var(--primary);">6.8x</div>
+                            <div style="font-size:11px; color:var(--secondary); font-weight:600;">Takip Edilen KPI</div>
+                            <div style="font-size:16px; font-weight:800; color:var(--primary);">Net ROAS</div>
                         </div>
                         <div>
-                            <div style="font-size:11px; color:var(--secondary); font-weight:600;">BuyBox Oranı</div>
-                            <div style="font-size:20px; font-weight:800; color:var(--accent);">%94</div>
+                            <div style="font-size:11px; color:var(--secondary); font-weight:600;">Takip Edilen KPI</div>
+                            <div style="font-size:16px; font-weight:800; color:var(--accent);">BuyBox oranı</div>
                         </div>
                     </div>
                 </div>
@@ -2236,7 +2242,7 @@
                         </li>
                         <li class="sector-feature-item">
                             <span class="feature-icon-check">✓</span>
-                            <span><strong>Tıbbi Reklam Politikası Uyumu:</strong> Meta ve Google sağlık kurallarına %100 uyumlu, hesap kapatma riski olmayan profesyonel yönetim.</span>
+                            <span><strong>Tıbbi Reklam Politikası Uyumu:</strong> Meta ve Google sağlık reklam kurallarına uygun kurgu ile hesap kısıtlaması riskini azaltan yönetim.</span>
                         </li>
                     </ul>
 
@@ -2246,8 +2252,38 @@
                 </div>
 
                 <div class="sector-spotlight-visual">
-                    <div class="image-showcase-box">
-                        <img src="img-health.jpg" alt="Sağlık Turizmi Meta Ads Paneli" width="1200" height="896" loading="lazy">
+                    <div class="flow-card">
+                        <div class="flow-card-title">Hasta Kazanım Akışı</div>
+                        <ol class="flow-steps">
+                            <li class="flow-step">
+                                <span class="flow-step-num">01</span>
+                                <div>
+                                    <strong>Hastanın dilinde reklam</strong>
+                                    <span>Meta ve Google'da Fransızca, Arapça, İngilizce kampanyalar</span>
+                                </div>
+                            </li>
+                            <li class="flow-step">
+                                <span class="flow-step-num">02</span>
+                                <div>
+                                    <strong>WhatsApp'ta karşılama</strong>
+                                    <span>Reklama tıklayan hasta doğrudan klinik hattına düşer</span>
+                                </div>
+                            </li>
+                            <li class="flow-step">
+                                <span class="flow-step-num">03</span>
+                                <div>
+                                    <strong>Ön değerlendirme ve teklif</strong>
+                                    <span>Fotoğraf, röntgen ve tedavi planı üzerinden fiyatlandırma</span>
+                                </div>
+                            </li>
+                            <li class="flow-step">
+                                <span class="flow-step-num">04</span>
+                                <div>
+                                    <strong>Randevu</strong>
+                                    <span>Görüşmeden randevuya dönüşüm adım adım takip edilir</span>
+                                </div>
+                            </li>
+                        </ol>
                     </div>
                 </div>
             </div>
@@ -2286,8 +2322,38 @@
                 </div>
 
                 <div class="sector-spotlight-visual">
-                    <div class="image-showcase-box">
-                        <img src="img-course.jpg" alt="Kurslar İçin Yerel Meta Ads Yönetimi" width="1200" height="896" loading="lazy">
+                    <div class="flow-card">
+                        <div class="flow-card-title">Öğrenci Kayıt Akışı</div>
+                        <ol class="flow-steps">
+                            <li class="flow-step">
+                                <span class="flow-step-num">01</span>
+                                <div>
+                                    <strong>Şube çevresine reklam</strong>
+                                    <span>Yalnızca 5-10 km yarıçaptaki adaylara gösterim</span>
+                                </div>
+                            </li>
+                            <li class="flow-step">
+                                <span class="flow-step-num">02</span>
+                                <div>
+                                    <strong>Anlık başvuru formu</strong>
+                                    <span>Aday siteden ayrılmadan telefon ve kurs tercihini bırakır</span>
+                                </div>
+                            </li>
+                            <li class="flow-step">
+                                <span class="flow-step-num">03</span>
+                                <div>
+                                    <strong>Hızlı geri dönüş</strong>
+                                    <span>Başvurular CRM veya Google Sheets'e düşer, aynı gün aranır</span>
+                                </div>
+                            </li>
+                            <li class="flow-step">
+                                <span class="flow-step-num">04</span>
+                                <div>
+                                    <strong>Kesin kayıt</strong>
+                                    <span>Başvurudan kayda dönüşüm şube bazında izlenir</span>
+                                </div>
+                            </li>
+                        </ol>
                     </div>
                 </div>
             </div>
@@ -2299,12 +2365,8 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-badge">E-Ticaret & Pazaryeri</span>
-                <h2>Trendyol & Amazon'da <span class="highlight-trendyol">BuyBox Kazanın</span>, Satışlarınızı Katlayın</h2>
+                <h2>Trendyol & Amazon'da <span class="highlight-trendyol">BuyBox Kazanın</span>, Kârlı Büyüyün</h2>
                 <p>Türkiye'nin ve dünyanın en büyük pazaryerlerinde boşa reklam bütçesi yakmadan karlı ve sürdürülebilir büyüme sağlayın.</p>
-            </div>
-
-            <div class="image-showcase-box" style="max-width:960px;margin:0 auto 50px;">
-                <img src="img-marketplace.jpg" alt="Trendyol ve Amazon Reklam Yönetimi Paneli" width="1376" height="768" loading="lazy">
             </div>
 
             <div class="marketplace-dual-grid">
@@ -2313,7 +2375,7 @@
                 <div class="marketplace-feature-card">
                     <div class="card-brand-header">
                         <span class="brand-badge trendyol">🛒 Trendyol Partner</span>
-                        <span style="font-size:12px;font-weight:700;color:var(--success);">● %94 BuyBox Oranı</span>
+                        <span style="font-size:12px;font-weight:700;color:var(--success);">● BuyBox Takibi</span>
                     </div>
                     <h3>Trendyol Reklam Yönetimi & Bütçe Optimizasyonu</h3>
                     <p style="color:var(--secondary);font-size:14.5px;margin-top:10px;">
@@ -2322,12 +2384,12 @@
 
                     <div class="marketplace-stat-row">
                         <div class="market-metric">
-                            <div class="num" style="color:#F27A1A;">6.8x</div>
-                            <div class="lbl">Ortalama ROAS</div>
+                            <div class="num" style="color:#F27A1A;">Net ROAS</div>
+                            <div class="lbl">Ana Başarı Metriği</div>
                         </div>
                         <div class="market-metric">
-                            <div class="num">+32%</div>
-                            <div class="lbl">Organik Sıralama Artışı</div>
+                            <div class="num">BuyBox</div>
+                            <div class="lbl">Düzenli Takip</div>
                         </div>
                     </div>
 
@@ -2360,8 +2422,8 @@
 
                     <div class="marketplace-stat-row">
                         <div class="market-metric">
-                            <div class="num" style="color:#FF9900;">5.9x</div>
-                            <div class="lbl">Global PPC ROAS</div>
+                            <div class="num" style="color:#FF9900;">ACoS</div>
+                            <div class="lbl">Ana Başarı Metriği</div>
                         </div>
                         <div class="market-metric">
                             <div class="num">€ & $</div>
@@ -2401,7 +2463,7 @@
             <div class="web-perks-grid">
                 <div class="web-perk-card">
                     <div class="perk-icon-circle">⚡</div>
-                    <h4>95+ Google Hız Skoru</h4>
+                    <h4>Hız Odaklı Kurulum</h4>
                     <p>Yavaş açılan siteler reklam bütçesini yakar. Kodladığımız sayfalar ışık hızında açılır ve hemen terk etme oranını (Bounce Rate) minimuma indirir.</p>
                 </div>
 
@@ -2451,7 +2513,7 @@
                         <span class="blog-read-time">5 dk okuma</span>
                     </div>
                     <h3>Sürücü Kursları İçin Yerel SEO ve Mahalle Bazlı Meta Ads</h3>
-                    <p>Şubenizin çevresindeki adayları şubeye çeken harita optimizasyonu, mikro yarıçap hedeflemesi ve kayıt maliyetini %40 düşüren stratejiler.</p>
+                    <p>Şubenizin çevresindeki adayları şubeye çeken harita optimizasyonu, mikro yarıçap hedeflemesi ve kayıt maliyetini düşürmeye yönelik stratejiler.</p>
                     <div class="blog-card-footer">
                         <span>Rehberi Oku</span> <span>→</span>
                     </div>
@@ -2464,7 +2526,7 @@
                         <span class="blog-read-time">7 dk okuma</span>
                     </div>
                     <h3>Trendyol Sponsorlu Ürün Reklamlarında Bütçe & ROAS Yönetimi</h3>
-                    <p>Negatif anahtar kelime eşlemeleri, BuyBox kazanma algoritmaları ve reklam bütçesini 6.8x ROAS'a çeviren pratik yöntemler.</p>
+                    <p>Negatif anahtar kelime eşlemeleri, BuyBox mantığı ve reklam bütçesini kârlı ROAS'a çeviren pratik yöntemler.</p>
                     <div class="blog-card-footer">
                         <span>Rehberi Oku</span> <span>→</span>
                     </div>
@@ -2483,15 +2545,7 @@
     <!-- HUMAN / TEAM & STRATEGY SECTION -->
     <section class="expert-section" id="expert-team">
         <div class="container">
-            <div class="expert-grid">
-                <div class="expert-photo-wrap">
-                    <img src="img-expert.jpg" alt="MetricSell Büyüme Danışmanı ve Ekibi" width="1376" height="768" loading="lazy">
-                    <div class="expert-tag-float">
-                        <div class="name">MetricSell Strateji Ekibi</div>
-                        <div class="role">Özel Hesap Yöneticiniz & Büyüme Uzmanı</div>
-                    </div>
-                </div>
-
+            <div class="expert-grid expert-grid--solo">
                 <div class="expert-content">
                     <span class="section-badge" style="background:rgba(255,140,0,0.2);color:var(--accent-light);">Birebir Danışmanlık</span>
                     <h2>Sadece Reklam Açmıyoruz, <span class="highlight-accent">Cironuzu Büyüten İş Ortağınız</span> Oluyoruz</h2>
@@ -2585,49 +2639,50 @@
                     <p>Formu doldurun, uzmanlarımız mevcut reklam ve satış kanallarınızı ücretsiz inceleyip 24 saat içinde size özel büyüme raporunu hazırlasın.</p>
                 </div>
 
-                <form id="growthAuditForm" onsubmit="handleFormSubmit(event)">
+                <form id="growthAuditForm" action="https://formspree.io/f/mykrnjzk" method="POST">
+                    <input type="hidden" name="sektor" value="Ana Sayfa — Büyüme Analizi">
+                    <input type="hidden" name="_subject" value="Yeni Büyüme Analizi Talebi — Ana Sayfa">
+                    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
                     <div class="form-grid">
                         <div>
-                            <label class="form-label">Adınız Soyadınız</label>
-                            <input type="text" class="form-input" placeholder="Örn: Atakan Yılmaz" required>
+                            <label class="form-label" for="audit-name">Adınız Soyadınız</label>
+                            <input type="text" id="audit-name" name="name" class="form-input" placeholder="Örn: Atakan Yılmaz" autocomplete="name" required>
                         </div>
                         <div>
-                            <label class="form-label">WhatsApp / Telefon Numaranız</label>
-                            <input type="tel" class="form-input" placeholder="05XX XXX XX XX" required>
+                            <label class="form-label" for="audit-phone">WhatsApp / Telefon Numaranız</label>
+                            <input type="tel" id="audit-phone" name="phone" class="form-input" placeholder="05XX XXX XX XX" autocomplete="tel" required>
                         </div>
                         <div>
-                            <label class="form-label">Hizmet Almak İstediğiniz Alan</label>
-                            <select class="form-select" required>
+                            <label class="form-label" for="audit-service">Hizmet Almak İstediğiniz Alan</label>
+                            <select id="audit-service" name="hizmet" class="form-select" required>
                                 <option value="" disabled selected>Seçiniz</option>
-                                <option value="saglik">🏥 Sağlık Turizmi Meta Ads</option>
-                                <option value="surucu">🚗 Sürücü Kursu Reklamları</option>
-                                <option value="dil">🇬🇧 Dil Okulu / Eğitim Reklamları</option>
-                                <option value="trendyol">🛒 Trendyol Reklam Yönetimi</option>
-                                <option value="amazon">📦 Amazon E-İhracat & Satış Desteği</option>
-                                <option value="web">⚡ Dönüşüm Odaklı Web Sitesi Kurulumu</option>
-                                <option value="diger">Diğer / Çoklu Hizmet</option>
+                                <option value="Sağlık Turizmi Meta Ads">🏥 Sağlık Turizmi Meta Ads</option>
+                                <option value="Sürücü Kursu Reklamları">🚗 Sürücü Kursu Reklamları</option>
+                                <option value="Dil Okulu / Eğitim Reklamları">🇬🇧 Dil Okulu / Eğitim Reklamları</option>
+                                <option value="Trendyol Reklam Yönetimi">🛒 Trendyol Reklam Yönetimi</option>
+                                <option value="Amazon E-İhracat & Satış Desteği">📦 Amazon E-İhracat & Satış Desteği</option>
+                                <option value="Dönüşüm Odaklı Web Sitesi Kurulumu">⚡ Dönüşüm Odaklı Web Sitesi Kurulumu</option>
+                                <option value="Diğer / Çoklu Hizmet">Diğer / Çoklu Hizmet</option>
                             </select>
                         </div>
                         <div>
-                            <label class="form-label">Aylık Tahmini Reklam Bütçesi</label>
-                            <select class="form-select">
-                                <option value="15-40k">15.000 TL - 40.000 TL</option>
-                                <option value="40-100k">40.000 TL - 100.000 TL</option>
-                                <option value="100k+">100.000 TL+</option>
-                                <option value="doviz">Döviz Bütçesi (€ / $)</option>
+                            <label class="form-label" for="audit-budget">Aylık Tahmini Reklam Bütçesi</label>
+                            <select id="audit-budget" name="butce" class="form-select">
+                                <option value="15.000 - 40.000 TL">15.000 TL - 40.000 TL</option>
+                                <option value="40.000 - 100.000 TL">40.000 TL - 100.000 TL</option>
+                                <option value="100.000 TL+">100.000 TL+</option>
+                                <option value="Döviz Bütçesi (€ / $)">Döviz Bütçesi (€ / $)</option>
                             </select>
                         </div>
                         <div class="form-group-full">
-                            <label class="form-label">Hedefleriniz veya Ek Notlarınız</label>
-                            <textarea class="form-input" rows="3" placeholder="Örn: Fransa'dan diş hastası çekmek istiyoruz veya Trendyol mağazamızda ROAS oranımızı yükseltmek istiyoruz..."></textarea>
+                            <label class="form-label" for="audit-notes">Hedefleriniz veya Ek Notlarınız</label>
+                            <textarea id="audit-notes" name="mesaj" class="form-input" rows="3" placeholder="Örn: Fransa'dan diş hastası çekmek istiyoruz veya Trendyol mağazamızda ROAS oranımızı yükseltmek istiyoruz..."></textarea>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary form-submit-btn">
-                        Ücretsiz Analiz Raporumu Hazırla <span class="btn-arrow">→</span>
+                        <span class="btn-text">Ücretsiz Analiz Raporumu Hazırla</span> <span class="btn-arrow">→</span>
                     </button>
-                    <div id="formFeedback" style="display:none;margin-top:16px;text-align:center;color:#34C759;font-weight:700;">
-                        ✓ Talebiniz başarıyla alındı! Ekibimiz 24 saat içinde sizinle WhatsApp üzerinden iletişime geçecektir.
-                    </div>
+                    <div id="formFeedback" role="status" aria-live="polite" style="display:none;margin-top:16px;text-align:center;font-weight:700;"></div>
                 </form>
             </div>
         </div>
@@ -2678,6 +2733,8 @@
                         <li><a href="tel:+905369852926">+90 (536) 985 29 26</a></li>
                         <li><a href="kvkk.html">KVKK Aydınlatma Metni</a></li>
                         <li><a href="gizlilik-politikasi.html">Gizlilik Politikası</a></li>
+                        <li><a href="cerez-politikasi.html">Çerez Politikası</a></li>
+                        <li><a href="#" id="cookieSettingsLink">Çerez Ayarları</a></li>
                     </ul>
                 </div>
             </div>
@@ -2732,78 +2789,25 @@
             updateCalculator();
         }
 
+        // Rough planning ranges, not results: shown to the visitor as assumptions
+        const CALC_ASSUMPTIONS = {
+            health: { cur: '€', cplMin: 15, cplMax: 40, convMin: 0.05, convMax: 0.15, lead: 'Lead', client: 'Hasta' },
+            course: { cur: '₺', cplMin: 40, cplMax: 120, convMin: 0.15, convMax: 0.30, lead: 'Başvuru', client: 'Kayıt' }
+        };
+
         function updateCalculator() {
             const val = parseInt(document.getElementById('budgetSlider').value);
-            const budgetDisplay = document.getElementById('budgetDisplay');
-            const leadsDisplay = document.getElementById('calcLeadsDisplay');
-            const clientsDisplay = document.getElementById('calcClientsDisplay');
-            const roasDisplay = document.getElementById('calcRoasDisplay');
+            const a = CALC_ASSUMPTIONS[currentCalcSector];
+            const leadsMin = Math.round(val / a.cplMax);
+            const leadsMax = Math.round(val / a.cplMin);
+            const clientsMin = Math.max(1, Math.round(leadsMin * a.convMin));
+            const clientsMax = Math.round(leadsMax * a.convMax);
 
-            if (currentCalcSector === 'health') {
-                budgetDisplay.innerText = `€${val.toLocaleString('tr-TR')} / Ay`;
-                const cpl = 14.5;
-                const leads = Math.round(val / cpl);
-                const clientsMin = Math.round(leads * 0.12);
-                const clientsMax = Math.round(leads * 0.18);
-                leadsDisplay.innerText = `${leads} Yabancı Lead`;
-                clientsDisplay.innerText = `${clientsMin} - ${clientsMax} Hasta`;
-                roasDisplay.innerText = `+${420 + Math.round((val/20000)*100)}% ROAS`;
-            } else {
-                budgetDisplay.innerText = `₺${val.toLocaleString('tr-TR')} / Ay`;
-                const cpl = 45;
-                const leads = Math.round(val / cpl);
-                const enrollMin = Math.round(leads * 0.22);
-                const enrollMax = Math.round(leads * 0.32);
-                leadsDisplay.innerText = `${leads} Başvuru Formu`;
-                clientsDisplay.innerText = `${enrollMin} - ${enrollMax} Kesin Kayıt`;
-                roasDisplay.innerText = `+${300 + Math.round((val/150000)*80)}% Büyüme`;
-            }
+            document.getElementById('budgetDisplay').innerText = `${a.cur}${val.toLocaleString('tr-TR')} / Ay`;
+            document.getElementById('calcLeadsDisplay').innerText = `${leadsMin} - ${leadsMax} ${a.lead}`;
+            document.getElementById('calcClientsDisplay').innerText = `${clientsMin} - ${clientsMax} ${a.client}`;
+            document.getElementById('calcRoasDisplay').innerText = `CPL ${a.cur}${a.cplMin}-${a.cplMax} · Dönüşüm %${a.convMin * 100}-${a.convMax * 100}`;
         }
-
-        // 3. Live Lead & Sales Toast Generator
-        const toastData = [
-            { icon: "🇫🇷", title: "Paris / Fransa (WhatsApp)", desc: "Diş İmplantı ve Zirkonyum için yeni hasta randevu talebi düştü.", time: "1 dk önce" },
-            { icon: "🛒", title: "Trendyol Mağazası (Satış)", desc: "Sponsorlu ürün kampanyasından 4 yeni sipariş onaylandı.", time: "2 dk önce" },
-            { icon: "🚗", title: "Kadıköy Şubesi (Meta Form)", desc: "B Sınıfı Ehliyet için yeni kurs kayıt formu dolduruldu.", time: "4 dk önce" },
-            { icon: "📦", title: "Amazon Almanya (E-İhracat)", desc: "Amazon PPC kampanyasından €185 tutarında satış gerçekleşti.", time: "6 dk önce" },
-            { icon: "🇦🇪", title: "Dubai / BAE (WhatsApp)", desc: "Hollywood Smile gülüş tasarımı için fiyat teklifi istendi.", time: "9 dk önce" },
-            { icon: "🇬🇧", title: "Beşiktaş Şubesi (Instagram)", desc: "Genel İngilizce & Seviye Belirleme için başvuru yapıldı.", time: "12 dk önce" }
-        ];
-
-        let toastIndex = 0;
-        function showLiveToast() {
-            const container = document.getElementById('toastContainer');
-            if (!container) return;
-
-            const item = toastData[toastIndex % toastData.length];
-            toastIndex++;
-
-            const toast = document.createElement('div');
-            toast.className = 'live-lead-toast';
-            toast.innerHTML = `
-                <div class="toast-icon-wrap">
-                    <span>${item.icon}</span>
-                    <span class="toast-live-dot"></span>
-                </div>
-                <div class="toast-content">
-                    <div class="toast-title">
-                        <span>${item.title}</span>
-                        <span class="toast-time">${item.time}</span>
-                    </div>
-                    <div class="toast-desc">${item.desc}</div>
-                </div>
-            `;
-
-            container.appendChild(toast);
-            setTimeout(() => {
-                toast.remove();
-            }, 6000);
-        }
-
-        setTimeout(() => {
-            showLiveToast();
-            setInterval(showLiveToast, 11000);
-        }, 3000);
 
         // 4. YOUTUBE SHORTS MODAL CONTROLLER
         function openShortsModal(videoId, title) {
@@ -2859,21 +2863,49 @@
         }
 
         // 7. Form Submit & Conversion Tracking
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            
-            // Trigger Meta Pixel & Google Analytics Lead Events
-            if (typeof fbq === 'function') {
-                fbq('track', 'Lead');
-            }
-            if (typeof gtag === 'function') {
-                gtag('event', 'generate_lead', { 'event_category': 'Form', 'event_label': 'Growth Audit Request' });
-            }
+        // Growth audit form submission (Formspree, AJAX)
+        const auditForm = document.getElementById('growthAuditForm');
+        if (auditForm) {
+            auditForm.addEventListener('submit', async function (e) {
+                e.preventDefault();
 
-            document.getElementById('formFeedback').style.display = 'block';
-            setTimeout(() => {
-                alert('Talebiniz alındı! Ekibimiz en kısa sürede sizinle iletişime geçecektir.');
-            }, 300);
+                const submitBtn = auditForm.querySelector('.form-submit-btn');
+                const btnText = submitBtn.querySelector('.btn-text');
+                const feedback = document.getElementById('formFeedback');
+                const originalText = btnText.textContent;
+
+                submitBtn.disabled = true;
+                btnText.textContent = 'Gönderiliyor...';
+                feedback.style.display = 'none';
+
+                const showFeedback = (msg, ok) => {
+                    feedback.textContent = msg;
+                    feedback.style.color = ok ? '#34C759' : '#FF6B6B';
+                    feedback.style.display = 'block';
+                };
+
+                try {
+                    const response = await fetch(auditForm.action, {
+                        method: 'POST',
+                        body: new FormData(auditForm),
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (response.ok) {
+                        if (typeof fbq === 'function') fbq('track', 'Lead');
+                        if (typeof gtag === 'function') gtag('event', 'generate_lead', { 'event_category': 'Form', 'event_label': 'Growth Audit Request' });
+                        showFeedback('✓ Talebiniz başarıyla alındı! Ekibimiz 24 saat içinde sizinle WhatsApp üzerinden iletişime geçecektir.', true);
+                        auditForm.reset();
+                    } else {
+                        showFeedback('Bir hata oluştu. Lütfen tekrar deneyin veya info@metricsell.com adresine yazın.', false);
+                    }
+                } catch (err) {
+                    showFeedback('Bağlantı hatası. Lütfen tekrar deneyin veya info@metricsell.com adresine yazın.', false);
+                } finally {
+                    submitBtn.disabled = false;
+                    btnText.textContent = originalText;
+                }
+            });
         }
 
         // 8. Navbar Scroll Effect
