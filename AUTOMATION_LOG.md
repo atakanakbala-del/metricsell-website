@@ -249,3 +249,40 @@ değil.
 ### ⚠️ Onay bekliyor
 - Yeni bir madde yok. Önceki iki madde (orphan sayfa ve vaka analizi rakamları) bu koşuda yukarıda
   açıklandığı gibi main'de doğrudan çözüldüğü için listeden çıkarıldı.
+
+## 2026-10-05
+
+`origin/main`'i bu dala merge alırken `sitemap.xml`'de aynı tanıdık trivial çakışma çıktı (main yeni blog
+yazısının `<url>` kaydını eklerken, bu dal önceki bir koşuda aynı bloğun hemen ardına ekleme yapmıştı) —
+iki taraf da sadece ekleme yapıyordu, ikisi de korunarak elle çözüldü (`blog.html` için de otomatik merge
+sorunsuz oldu). Main'den gelen tek yeni içerik: `blog-almanya-saglik-turizmi-dis-klinigi-meta-ads.html`
+("Almanya'dan Diş Hastası Çekmek İçin Almanca Meta Ads Stratejisi"), `blog.html` ve `sitemap.xml`'e zaten
+eklenmiş olarak geldi.
+
+- **`llms.txt`**: her zamanki tekrarlayan boşluk — main'den gelen yeni blog yazısı "Blog ve Bilgi Bankası"
+  listesinde eksikti (bu dosya elle tutuluyor, `blog.html`/`sitemap.xml`'e otomatik eklenen yeni yazılar
+  buraya sızmıyor). Eklendi.
+- Diff: 1 dosya, 1 satır (1 ekleme).
+- PR: https://github.com/atakanakbala-del/metricsell-website/pull/7 (güncellendi)
+
+### Kontroller
+- Yeni blog yazısının kapanış/nav CTA'ları kontrol edildi — hepsi `index.html#services` ve
+  `index.html#contact`'e linkliyor, ikisi de gerçek id; önceki koşularda görülen kırık
+  `#egitim`/`#saglik-turizmi` kalıbı bu yazıda yok.
+- Tüm `.html` dosyalarındaki `href`/`src` referansları (dosya yolları + aynı-sayfa/sayfalar-arası
+  anchor'lar) script ile diskteki dosyalar ve gerçek `id`'lerle karşılaştırıldı — repo genelinde kırık
+  link/anchor bulunamadı.
+- Kopya `id` bulunamadı (tüm `.html` dosyaları, yeni blog yazısı dahil, script ile kontrol edildi).
+- Eksik `alt` metni bulunamadı (repo genelinde script ile kontrol edildi).
+- `target="_blank"` linklerinde eksik `rel="noopener"` bulunamadı.
+- `sitemap.xml`: `googled9b1b023e4cc4604.html` (Search Console doğrulama dosyası) kasıtlı olarak
+  sitemap'te yok — site içeriği değil, index edilecek bir sayfa değil, doğru davranış.
+- `CLAUDE.md`'deki CSS paleti değerleri hâlâ `index.html`'deki gerçek `:root` tanımlarıyla eşleşiyor
+  (tüm 8 değer tek tek karşılaştırıldı) — yeni sapma yok.
+- Yeni blog yazısında doğrulanamaz müşteri-atıflı istatistik/vaka rakamı bulunamadı.
+- Stray dev artifact (`.bak`, `.orig`, `~`, `Thumbs.db`, `.DS_Store`) bulunamadı. `git status` merge
+  sonrası temiz, commit öncesi credential-benzeri dosya yok. Ödeme/faturalama veya auth kodu yok (statik
+  site, beklenen).
+
+### ⚠️ Onay bekliyor
+- Yeni bir madde yok.
