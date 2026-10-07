@@ -286,3 +286,71 @@ eklenmiş olarak geldi.
 
 ### ⚠️ Onay bekliyor
 - Yeni bir madde yok.
+
+## 2026-10-07
+
+`origin/main`'i bu dala merge alırken çakışma çıkmadı (`git merge origin/main` "Already up to date"
+döndü — bu koşuda main'de 10-05'ten beri yeni commit yoktu). PR #6 (`auto/2026-09-22`, stale blog makale
+sayısı + `CLAUDE.md` "tek dosyalık" ifadesi) hâlâ ayrı açık bekliyor, dokunulmadı — o ikisi tekrar
+önerilmedi.
+
+- **Ölü CSS, `logo-wordmark`**: `.logo-wordmark { display: block; height: 28px; width: auto; }` kuralı 31
+  dosyada (`blog.html`, 23 `blog-*.html` yazısı, 3 niş sayfası, 3 politika sayfası) tanımlıydı ama hiçbir
+  HTML etiketinde `class="...logo-wordmark..."` olarak kullanılmıyordu (gerçek logo markup'ı `logo-mark` +
+  `logo-text` kullanıyor, `logo-wordmark` hiç uygulanmamış) — hepsinden kaldırıldı (`index.html`'de zaten
+  yoktu).
+- **Ölü CSS, `index.html`**: main'deki "Remove fabricated results, fake live activity and AI mock images"
+  (39402cc) ve "Fix homepage lead form and remove AI-generated expert photo" (4fe0750) commit'leri ilgili
+  HTML markup'ını kaldırmış ama arkasında kullanılmayan CSS kuralları bırakmıştı (09-26/10-04'teki
+  `.placeholder-flag`/`.metric-disclaimer` temizliğiyle aynı kalıp):
+  - `.live-lead-toast-container`, `.live-lead-toast`, `@keyframes slideInToast`, `@keyframes fadeOutToast`,
+    `.toast-icon-wrap`, `.toast-content`, `.toast-title`, `.toast-time`, `.toast-desc` — eski "canlı lead"
+    toast bildirimi kaldırılmıştı, bu 9 kural artık hiçbir yerde kullanılmıyordu. **Not**: aynı blokta
+    `.toast-live-dot` ve `@keyframes pulseGreen` hâlâ gerçekten kullanılıyor (WhatsApp widget'ındaki
+    "Çevrimiçi" durumu noktası) — bu ikisi bilerek dokunulmadan bırakıldı, yorum satırı da buna göre
+    güncellendi.
+  - `.expert-photo-wrap`, `.expert-photo-wrap img`, `.expert-tag-float`, `.expert-tag-float .name`,
+    `.expert-tag-float .role` — "AI-generated expert photo" kaldırılıp `expert-grid--solo` (fotoğrafsız,
+    tek kolonlu) düzene geçilmiş, bu 5 kural artık kullanılmıyordu.
+  - `.image-showcase-box`, `.image-showcase-box img`, `.image-showcase-box:hover img` — markup'ta hiç
+    karşılığı yok (muhtemelen daha önce kaldırılmış bir görsel bloğundan kalıntı).
+- Diff: 32 dosya, 114 satır (1 ekleme / 113 silme). Görsel/davranışsal değişiklik yok (sadece kullanılmayan
+  CSS kuralları kaldırıldı).
+- PR: https://github.com/atakanakbala-del/metricsell-website/pull/7 (güncellendi)
+
+### Kontroller
+- Tüm `.html` dosyalarındaki `href`/`src` referansları (dosya yolları + aynı-sayfa/sayfalar-arası
+  anchor'lar) script ile diskteki dosyalar ve gerçek `id`'lerle karşılaştırıldı — repo genelinde kırık
+  link/anchor bulunamadı.
+- Kaldırılan her CSS sınıfı için HTML'de `class="..."` içinde literal kullanım, satır içi JS
+  (`querySelector`/`classList`) referansı ve (varsa) bileşik seçici (`.parent.child`) kalıpları tek tek
+  grep ile doğrulandı — hiçbiri gerçekte kullanılmıyordu. `.toast-live-dot`/`@keyframes pulseGreen` özellikle
+  ayrıca kontrol edildi ve WhatsApp widget'ında kullanıldığı doğrulandığı için dokunulmadı.
+- Kopya `id` bulunamadı; eksik `alt` metni bulunamadı; `target="_blank"` linklerinde eksik `rel="noopener"`
+  bulunamadı (repo genelinde).
+- `sitemap.xml`/`llms.txt`/`blog.html`: 30 blog yazısının hepsi üçünde de eksiksiz listeleniyor — eksik yok.
+- Tüm redirect sayfaları (`biz-kimiz/`, `teklif-al/`, `store/m/5/`, eski BilgiKurumsal URL'leri vb.) tek tek
+  kontrol edildi: hepsinde `noindex` + doğru `canonical` + çalışan `meta refresh` hedefi var, hiçbiri
+  `sitemap.xml`/`llms.txt`'e sızmamış (kasıtlı, doğru).
+- `tracking.js`'in her sayfaya dahil edildiği doğrulandı — tek istisna, 15 anlık-yönlendirme (instant
+  `meta refresh`) sayfası ve Search Console doğrulama dosyası (`googled9b1b023e4cc4604.html`); bunlar
+  ziyaretçiye hiç render olmadan anında yönlendirdiği için tracking'e ihtiyaç duymuyor — kasıtlı, sorun
+  değil.
+- `CLAUDE.md`'deki CSS paleti değerleri hâlâ `index.html`'deki gerçek `:root` tanımlarıyla eşleşiyor — yeni
+  sapma yok. Copyright yılı (`© 2026`) bugünün tarihiyle (2026-10-07) uyumlu, güncel.
+- Stray dev artifact (`.bak`, `.orig`, `~`, `Thumbs.db`, `.DS_Store`) bulunamadı. `git status` merge sonrası
+  temiz, commit öncesi credential-benzeri dosya yok. Ödeme/faturalama veya auth kodu yok (statik site).
+
+### Not (devam eden tespit, bir karar gerektirmiyor — sadece diff boyutu için bu koşuda ertelendi)
+- 3 niş sayfasında (`eticaret-e-ihracat-ajansi.html`, `saglik-turizmi-reklam-ajansi.html`,
+  `surucu-kursu-dil-okulu-reklam-ajansi.html`) `.bg-alt`, `.bg-dark` (sector-block varyantı, CSS değişkeni
+  `--bg-dark` ile karıştırılmasın), `.chip-select`, `.contact-content`, `.contact-section` ve ilgili alt
+  seçiciler, `.reverse`, `.sector-pill-nav`, `.sector-split`, `.sector-text`, `.sectors-intro` gibi ~10 seçici
+  tanımlı ama üç dosyada da artık `class="..."` içinde literal kullanımı yok (tek `sector-block` örneği
+  sadece `bg-light` kullanıyor) — muhtemelen önceki bir "sector split / alternating background" tasarımından
+  kalıntı. Bu, bu koşudaki `logo-wordmark`/`index.html` temizliğiyle aynı ölü-CSS kalıbı, ama üç dosya
+  arasında seçici başına tek tek doğrulama gerektiriyor ve bu koşunun diff bütçesini zorlardı — bu yüzden bu
+  koşuda dokunulmadı. Bir yargı/onay gerektirmiyor, sadece bir sonraki koşuya bırakıldı.
+
+### ⚠️ Onay bekliyor
+- Yeni bir madde yok.
