@@ -33,7 +33,7 @@ Sitede vurgulanması gereken uzun vadeli hizmet kapsamı:
 
 ## Mevcut Tasarım / Teknik Yapı
 
-Site şu an tek dosyalık, framework kullanmayan bir **statik HTML/CSS** yapısında (`index.html`). Türkçe içerik (`lang="tr"`).
+Site framework kullanmayan bir **statik HTML/CSS** yapısında. Ana sayfa `index.html`; ayrıca sektöre özel açılış sayfaları (`saglik-turizmi-reklam-ajansi.html`, `surucu-kursu-dil-okulu-reklam-ajansi.html`, `eticaret-e-ihracat-ajansi.html`), bir blog dizini (`blog.html` + 25+ `blog-*.html` yazısı) ve yasal sayfalar (`kvkk.html`, `gizlilik-politikasi.html`, `cerez-politikasi.html`) var — artık tek dosyalık değil, çok sayfalı statik bir site. Türkçe içerik (`lang="tr"`).
 
 **Mevcut renk paleti (CSS değişkenleri, `:root` içinde tanımlı):**
 - `--primary: #1B3A5C` (koyu lacivert)
