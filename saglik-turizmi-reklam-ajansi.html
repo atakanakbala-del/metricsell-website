@@ -1041,6 +1041,23 @@
         .consent-checkbox label a { color: var(--accent); text-decoration: underline; }
 
         /* ===== RESULTS ===== */
+        /* Gerçek kampanya verisi (anonim müşteri) */
+        .real-data-card { background: var(--bg-dark); color: #FFFFFF; border-radius: 28px; padding: 44px 48px; }
+        .real-data-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-bottom: 30px; }
+        .real-data-eyebrow { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 10px; }
+        .real-data-head h3 { color: #FFFFFF; font-size: clamp(21px, 2.4vw, 28px); line-height: 1.25; margin: 0; }
+        .real-data-period { font-size: 13.5px; color: rgba(255, 255, 255, 0.7); white-space: nowrap; }
+        .real-data-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+        .real-data-stat { background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 18px; padding: 22px 20px; }
+        .real-data-value { font-size: clamp(28px, 3.2vw, 40px); font-weight: 800; line-height: 1; color: var(--accent-light); margin-bottom: 10px; }
+        .real-data-label { font-size: 14px; line-height: 1.45; color: rgba(255, 255, 255, 0.85); }
+        .real-data-note { font-size: 12.5px; line-height: 1.6; color: rgba(255, 255, 255, 0.6); margin: 24px 0 0; }
+        @media (max-width: 900px) {
+            .real-data-card { padding: 30px 22px; }
+            .real-data-grid { grid-template-columns: repeat(2, 1fr); }
+            .real-data-period { white-space: normal; }
+        }
+
         .results {
             padding: 120px 24px;
             background: linear-gradient(135deg, var(--primary) 0%, var(--gradient-end) 100%);
@@ -1859,6 +1876,40 @@
                     <h3>İlgili Yazı</h3>
                     <a href="blog-google-ads-uluslararasi-hasta.html">Uluslararası Hasta Çekmek İçin Google Ads Stratejileri →</a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REAL CAMPAIGN DATA (anonim müşteri) -->
+    <section style="padding: 80px 24px; background: var(--bg);">
+        <div class="container">
+            <div class="real-data-card">
+                <div class="real-data-head">
+                    <div>
+                        <span class="real-data-eyebrow">Gerçek kampanya verisi</span>
+                        <h3>Bir diş kliniği müşterimizin Meta reklamlarında 30 günlük tablo</h3>
+                    </div>
+                    <span class="real-data-period">7 Eylül – 6 Ekim 2026</span>
+                </div>
+                <div class="real-data-grid">
+                    <div class="real-data-stat">
+                        <div class="real-data-value">1.197</div>
+                        <div class="real-data-label">Başlatılan WhatsApp görüşmesi</div>
+                    </div>
+                    <div class="real-data-stat">
+                        <div class="real-data-value">330</div>
+                        <div class="real-data-label">Form üzerinden gelen başvuru</div>
+                    </div>
+                    <div class="real-data-stat">
+                        <div class="real-data-value">485 bin</div>
+                        <div class="real-data-label">Reklam gösterimi</div>
+                    </div>
+                    <div class="real-data-stat">
+                        <div class="real-data-value">4 pazar</div>
+                        <div class="real-data-label">Fransa, Frankofon Afrika, İngiltere, Türkiye</div>
+                    </div>
+                </div>
+                <p class="real-data-note">Kaynak: Meta Ads Manager raporu. Rakamlar başlatılan görüşme ve form başvurusu sayısıdır; randevu veya tedavi sayısı değildir. Müşteri adı ve bütçe gizlilik nedeniyle paylaşılmamıştır. Sonuçlar bütçeye, pazara ve rekabete göre değişir.</p>
             </div>
         </div>
     </section>
