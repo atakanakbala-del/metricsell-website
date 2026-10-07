@@ -1308,6 +1308,34 @@
         .sector-spotlight-card.reverse { grid-template-columns: 0.95fr 1.05fr; direction: rtl; }
         .sector-spotlight-card.reverse > * { direction: ltr; }
 
+        /* Kendi projelerimiz */
+        .own-projects-section { padding: 100px 24px; background: var(--bg-secondary); }
+        .own-projects-head { text-align: center; max-width: 760px; margin: 0 auto 48px; }
+        .own-projects-eyebrow { display: inline-block; font-size: 12.5px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+        .own-projects-head h2 { font-size: clamp(28px, 3.6vw, 42px); line-height: 1.2; color: var(--primary); margin: 0 0 16px; }
+        .own-projects-head h2 span { color: var(--accent); }
+        .own-projects-head p { font-size: 17px; line-height: 1.6; color: var(--secondary); margin: 0; }
+        .own-projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+        .own-projects-grid--single { grid-template-columns: 1fr; max-width: 620px; margin: 0 auto; }
+        .own-project-card { background: #FFFFFF; border: 1px solid var(--border); border-radius: 24px; overflow: hidden; display: flex; flex-direction: column; }
+        .own-project-shot { display: block; border-bottom: 1px solid var(--border); }
+        .own-project-shot img { display: block; width: 100%; height: auto; }
+        .own-project-body { padding: 28px 30px 30px; display: flex; flex-direction: column; flex: 1; }
+        .own-project-tag { font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--secondary); margin-bottom: 8px; }
+        .own-project-body h3 { font-size: 22px; color: var(--primary); margin: 0 0 10px; }
+        .own-project-body p { font-size: 15px; line-height: 1.6; color: var(--secondary); margin: 0 0 18px; }
+        .own-project-list { list-style: none; padding: 0; margin: 0 0 24px; display: flex; flex-direction: column; gap: 9px; }
+        .own-project-list li { position: relative; padding-left: 22px; font-size: 14.5px; line-height: 1.5; color: var(--primary); }
+        .own-project-list li::before { content: "\2713"; position: absolute; left: 0; top: 0; color: var(--success); font-weight: 800; }
+        .own-project-link { margin-top: auto; align-self: flex-start; font-size: 15px; font-weight: 700; color: var(--accent); text-decoration: none; border-bottom: 2px solid transparent; }
+        .own-project-link:hover { border-bottom-color: var(--accent); }
+        .own-projects-note { text-align: center; font-size: 13px; color: var(--secondary); margin: 32px 0 0; }
+        @media (max-width: 900px) {
+            .own-projects-section { padding: 70px 20px; }
+            .own-projects-grid { grid-template-columns: 1fr; }
+            .own-project-body { padding: 24px 22px 26px; }
+        }
+
         /* Gerçek kampanya verisi (anonim müşteri) */
         .real-data-card { background: var(--bg-dark); color: #FFFFFF; border-radius: 28px; padding: 44px 48px; }
         .real-data-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-bottom: 30px; }
@@ -2542,6 +2570,52 @@
                     <p>Sağlık turizmi ve e-ihracat için Fransızca, Arapça, İngilizce ve Almanca kusursuz dil geçişleri ve arama motoru uyumlu meta yapısı.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- OWN PROJECTS (MetricSell'in kendi girişimleri) -->
+    <section class="own-projects-section" id="kendi-projelerimiz">
+        <div class="container">
+            <div class="own-projects-head">
+                <span class="own-projects-eyebrow">Kendi Projelerimiz</span>
+                <h2>Size Önerdiğimizi <span>Önce Kendi İşimizde</span> Kuruyoruz</h2>
+                <p>Tasarımından yazılımına kendi ekibimizin kurduğu ve bugün yayında olan iki proje.</p>
+            </div>
+            <div class="own-projects-grid">
+                <article class="own-project-card">
+                    <a class="own-project-shot" href="https://www.trygrafix.com/tr" target="_blank" rel="noopener">
+                        <img src="proje-grafix.jpg" alt="Grafix ana sayfası ekran görüntüsü" width="960" height="600" loading="lazy">
+                    </a>
+                    <div class="own-project-body">
+                        <div class="own-project-tag">Yapay zekâ aracı</div>
+                        <h3>Grafix</h3>
+                        <p>Bir web sitesinin adresini alıp markanın logosuna, renklerine ve yazı tipine uygun sosyal medya görselleri üreten kendi yazılımımız.</p>
+                        <ul class="own-project-list">
+                            <li>Siteyi tarar, markayı analiz eder ve altı farklı görsel üretir</li>
+                            <li>Gönderi, hikâye ve banner için ayrı boyutlar</li>
+                            <li>Abonelik ve ücretsiz deneme akışı, Türkçe ve İngilizce arayüz</li>
+                        </ul>
+                        <a class="own-project-link" href="https://www.trygrafix.com/tr" target="_blank" rel="noopener">trygrafix.com'u ziyaret et →</a>
+                    </div>
+                </article>
+                <article class="own-project-card">
+                    <a class="own-project-shot" href="https://www.partsmercedes.com.tr/" target="_blank" rel="noopener">
+                        <img src="proje-partsmercedestr.jpg" alt="Partsmercedestr ana sayfası ekran görüntüsü" width="960" height="600" loading="lazy">
+                    </a>
+                    <div class="own-project-body">
+                        <div class="own-project-tag">E-ticaret</div>
+                        <h3>Partsmercedestr</h3>
+                        <p>Orijinal Mercedes-Benz yedek parçası satan kendi e-ticaret sitemiz. Parça, sipariş verilmeden önce aracın şasi numarasına göre doğrulanır.</p>
+                        <ul class="own-project-list">
+                            <li>Şasi numarasıyla parça sorgulama ve araç modeline göre katalog</li>
+                            <li>Sepetten WhatsApp'a aktarılan sipariş akışı</li>
+                            <li>Servisler ve ustalar için toptan fiyat programı</li>
+                        </ul>
+                        <a class="own-project-link" href="https://www.partsmercedes.com.tr/" target="_blank" rel="noopener">partsmercedes.com.tr'yi ziyaret et →</a>
+                    </div>
+                </article>
+            </div>
+            <p class="own-projects-note">Bu projeler MetricSell'in kendi girişimleridir; müşteri referansı değildir.</p>
         </div>
     </section>
 
