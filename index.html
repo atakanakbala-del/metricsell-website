@@ -1318,6 +1318,12 @@
         .real-data-stat { background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 18px; padding: 22px 20px; }
         .real-data-value { font-size: clamp(28px, 3.2vw, 40px); font-weight: 800; line-height: 1; color: var(--accent-light); margin-bottom: 10px; }
         .real-data-label { font-size: 14px; line-height: 1.45; color: rgba(255, 255, 255, 0.85); }
+        .real-data-second { margin-top: 16px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 18px; padding: 20px 22px; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+        .real-data-second-title { font-size: 15px; font-weight: 700; color: #FFFFFF; margin-bottom: 4px; }
+        .real-data-second-desc { font-size: 13.5px; color: rgba(255, 255, 255, 0.7); }
+        .real-data-second-stats { display: flex; gap: 28px; flex-wrap: wrap; }
+        .real-data-second-stats div { font-size: 13px; color: rgba(255, 255, 255, 0.85); }
+        .real-data-second-stats strong { display: block; font-size: 22px; font-weight: 800; line-height: 1.1; color: var(--accent-light); margin-bottom: 4px; }
         .real-data-note { font-size: 12.5px; line-height: 1.6; color: rgba(255, 255, 255, 0.6); margin: 24px 0 0; }
         @media (max-width: 900px) {
             .real-data-card { padding: 30px 22px; }
@@ -2331,7 +2337,18 @@
                         <div class="real-data-label">Fransa, Frankofon Afrika, İngiltere, Türkiye</div>
                     </div>
                 </div>
-                <p class="real-data-note">Kaynak: Meta Ads Manager raporu. Rakamlar başlatılan görüşme ve form başvurusu sayısıdır; randevu veya tedavi sayısı değildir. Müşteri adı ve bütçe gizlilik nedeniyle paylaşılmamıştır. Sonuçlar bütçeye, pazara ve rekabete göre değişir.</p>
+                <div class="real-data-second">
+                    <div>
+                        <div class="real-data-second-title">İkinci müşteri: bir diş hekimi muayenehanesi</div>
+                        <div class="real-data-second-desc">Fransızca konuşan pazarlara yönelik tek WhatsApp kampanyasının toplamı</div>
+                    </div>
+                    <div class="real-data-second-stats">
+                        <div><strong>258</strong>WhatsApp görüşmesi</div>
+                        <div><strong>95 bin</strong>Gösterim</div>
+                        <div><strong>46,9 bin</strong>Erişilen kişi</div>
+                    </div>
+                </div>
+                <p class="real-data-note">Kaynak: Meta Ads Manager raporları. Rakamlar başlatılan görüşme ve form başvurusu sayısıdır; randevu veya tedavi sayısı değildir. Müşteri adları ve bütçeler gizlilik nedeniyle paylaşılmamıştır. Sonuçlar bütçeye, pazara ve rekabete göre değişir.</p>
             </div>
         </div>
     </section>
