@@ -354,3 +354,45 @@ sayısı + `CLAUDE.md` "tek dosyalık" ifadesi) hâlâ ayrı açık bekliyor, do
 
 ### ⚠️ Onay bekliyor
 - Yeni bir madde yok.
+
+## 2026-10-08
+
+`origin/main`'i bu dala merge alırken çakışma çıkmadı (temiz merge). Main'de bu koşuda 5 yeni commit vardı:
+yeni blog yazısı (`blog-hepsiburada-reklam-yonetimi-sponsorlu-urun.html`), homepage'e gerçek/anonim kampanya
+verisi bloğu (bir diş kliniği müşterisi, 30 günlük Meta Ads tablosu + ikinci müşteri özeti), homepage'e
+"Kendi Projelerimiz" bölümü (Grafix ve Partsmercedestr'i gösteren iki kart) ve gerçek kurucu fotoğrafı
+(`kurucu-atakan-akbala.jpg`, siyah-beyaz) eklenmesi.
+
+- **Gerçek regresyon, metin aramasıyla bulundu**: "Add real founder photo" commit'i `expert-section`
+  markup'ını eski haline döndürüp `.expert-photo-wrap` / `.expert-tag-float` sınıflarını tekrar kullanmaya
+  başladı — ama bu iki sınıfın CSS tanımları 2026-10-07 koşusunda tam olarak bu dal üzerinde "ölü CSS" diye
+  kaldırılmıştı (o zaman markup fotoğrafsız `expert-grid--solo` düzenindeydi). Git merge metinsel çakışma
+  görmedi çünkü biri `<style>` bloğunu, diğeri `<body>` içindeki markup'ı değiştiriyordu — ama sonuç olarak
+  gerçek kurucu fotoğrafı stilsiz/konumsuz render olacaktı. 2026-10-07'de kaldırılan 5 CSS kuralını
+  (`.expert-photo-wrap`, `.expert-photo-wrap img`, `.expert-tag-float`, `.expert-tag-float .name`,
+  `.expert-tag-float .role`) git geçmişinden (`2aeeb93`) birebir aynı değerlerle geri ekledim. Aynı anda artık
+  markup'ta hiç kullanılmayan `.expert-grid--solo` ve `.expert-grid--solo .benefit-pill-item` kurallarını da
+  kaldırdım (fotoğraf geri geldiği için düzen tekrar iki-kolonlu `expert-grid`'e döndü, `--solo` varyantı
+  artık hiçbir yerde `class="..."` içinde geçmiyor — grep ile doğrulandı).
+- **`llms.txt`**: aynı recurring gap — yeni blog yazısı "Blog ve Bilgi Bankası" listesinde yoktu. Eklendi.
+
+### Kontroller
+- Yeni blog yazısında ve homepage'in yeni bölümlerinde (`real-data-card`, `own-projects-section`) eksik
+  `rel="noopener"` bulunamadı (tüm `target="_blank"` linkleri kontrol edildi).
+- Yeni iki `<img>` (`proje-grafix.jpg`, `proje-partsmercedestr.jpg`) ve kurucu fotoğrafında (`kurucu-atakan-akbala.jpg`)
+  `alt` metni mevcut ve açıklayıcı; repo genelinde eksik `alt` bulunamadı.
+- Kopya `id` bulunamadı (`index.html` dahil, tüm dosyalar).
+- Yeni "Gerçek kampanya verisi" bloğu zaten kaynak/not etiketli ("Kaynak: Meta Ads Manager raporları...",
+  müşteri adı/bütçe paylaşılmadığı belirtilmiş) — ek bir "placeholder/fake" etiketlemesi gerekmiyor, zaten
+  doğru şekilde işaretlenmiş. "Kendi Projelerimiz" bölümü de "müşteri referansı değildir" notuyla doğru
+  şekilde ayrıştırılmış.
+- `CLAUDE.md`'deki CSS paleti değerleri hâlâ `index.html`'deki gerçek `:root` tanımlarıyla eşleşiyor — yeni
+  sapma yok. CLAUDE.md'deki iki-palet belirsizliği notu hâlâ duruyor, kasıtlı olarak dokunulmadı (insan
+  kararı gerektiriyor).
+- Stray dev artifact bulunamadı, credential-benzeri dosya commit edilmedi. Ödeme/faturalama veya auth kodu
+  yok (statik site).
+- 2026-10-07'den devam eden 3 niş sayfasındaki (~10 seçici) ölü CSS notu hâlâ ertelenmiş durumda — bu koşuda
+  tekrar dokunulmadı (bu koşunun bütçesi gerçek regresyon düzeltmesine gitti).
+
+### ⚠️ Onay bekliyor
+- Yeni bir madde yok.
