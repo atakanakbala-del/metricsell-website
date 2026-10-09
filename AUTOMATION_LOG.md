@@ -1,5 +1,61 @@
 # Automation Log
 
+## 2026-10-09
+
+`origin/main`'i bu dala merge alırken yeni commit yoktu (`git merge origin/main` "Already up to date"
+döndü — main'de 10-08'den beri değişiklik olmamış). PR #6 (`auto/2026-09-22`) hâlâ ayrı açık bekliyor,
+dokunulmadı.
+
+- **2026-10-07/08'de ertelenen ölü CSS notunun 1/3'ü tamamlandı**: 3 niş sayfasından sadece
+  `eticaret-e-ihracat-ajansi.html` bu koşuda temizlendi (diğer ikisi —
+  `saglik-turizmi-reklam-ajansi.html` ve `surucu-kursu-dil-okulu-reklam-ajansi.html` — bu dosyayla
+  birebir aynı ölü CSS'i taşıyor, ama üçünü birden yapmak bu koşunun ~150 satır diff bütçesini
+  anlamlı şekilde aşardı; tek dosya bile 169 satır oldu). Kaldırılan, grep ile doğrulanmış kullanılmayan
+  seçiciler: `.sectors-intro`, `.sector-pill-nav` (+`a`, `a:hover`), `.sector-block.bg-alt`,
+  `.sector-block.bg-dark` (ve `::before`, `.sector-icon-badge`, `.sector-text h2`, `.sector-text > p`,
+  `.sector-tag`, `.sector-mini-stat .lbl` alt-override'ları), `.sector-split` ve
+  `.sector-block.reverse .sector-split` (+`> *`) — hem ana tanım hem `max-width:1024px` media query
+  içindeki tekrarı —, `.chip-select`, `.contact-section` (+`::before`, `.contact-content`, `h2`,
+  `> .contact-content > p`, `.sector-form-card` override). Hepsi tek tek `class="..."` kullanımı ve
+  satır içi JS (`querySelector`/`classList`) referansı için grep'lendi — hiçbiri eşleşmedi. Dosyada
+  gerçekte kullanılan temel sınıflar (`.sector-block`, `.sector-block.bg-light`, `.sector-icon-badge`,
+  `.sector-tags`, `.sector-tag`, `.sector-mini-stats`, `.sector-mini-stat .num`/`.lbl`,
+  `.sector-form-card`) dokunulmadan bırakıldı — sadece bunların artık hiç tetiklenemeyen
+  `.bg-dark`/`.reverse`/`.contact-section` altındaki override'ları kaldırıldı. Görsel/davranışsal
+  değişiklik yok; `{`/`}` sayısı dengeli (302/302) doğrulandı.
+- **Yeni tespit (bu koşuda dokunulmadı, sadece not)**: aynı dosyada (ve diğer iki niş sayfasında da
+  aynı kalıp var) `.chip`, `.chip:hover`, `.chip.active` CSS kuralları da statik markup'ta hiç
+  kullanılmıyor — tek "kullanıcısı" `genChips.querySelectorAll('.chip')` (satır ~2023) ama bu kod
+  `document.getElementById('genSectorChips')`'e bağlı ve bu id hiçbir `.html` dosyasında yok, yani
+  `if (genChips && genSectorValue)` koşulu her zaman false — kod asla çalışmıyor ama hataya da yol
+  açmıyor (null-check ile korunmuş, zararsız ölü JS). `.chip-select`'i bu koşuda kaldırdım (orijinal
+  ~10 seçici listesindeydi) ama `.chip` ailesini kapsam dışı tuttum — orijinal listede yoktu ve aynı
+  koşuda ekstra kapsam genişletmek istemedim. Bir sonraki ölü-CSS turunda (diğer 2 niş sayfasıyla
+  birlikte) bu üçü de değerlendirilebilir; silinmesi güvenli görünüyor (sadece asla çalışmayan JS'ten
+  referans alınıyor) ama onay/karar gerektirmiyor, sadece bir hatırlatma.
+- Diff: 1 dosya, 169 satır (169 silme).
+- PR: https://github.com/atakanakbala-del/metricsell-website/pull/7 (güncellendi)
+
+### Kontroller
+- Tüm `.html` dosyalarındaki `href`/`src` referansları (dosya yolları + aynı-sayfa/sayfalar-arası
+  anchor'lar) script ile diskteki dosyalar ve gerçek `id`'lerle karşılaştırıldı — kırık link/anchor
+  bulunamadı. (404.html'deki kök-relatif `/favicon.png` gibi `/`-ile-başlayan 7 link scriptimde ilk
+  başta "missing" göründü — script'in kontrolü sadece relative path'leri çözüyordu; elle doğrulandı,
+  hepsi site kökünde gerçekten var, false positive.)
+- Kopya `id` bulunamadı (tüm `.html` dosyaları, script ile tek tek).
+- Eksik `alt` metni bulunamadı (repo genelinde regex ile kontrol edildi).
+- `target="_blank"` linklerinde eksik `rel="noopener"` bulunamadı (repo genelinde).
+- 31 blog yazısının hepsi `sitemap.xml`, `llms.txt` ve `blog.html`'de eksiksiz listeleniyor — eksik yok
+  (main'den bu koşuda yeni blog yazısı gelmedi).
+- `CLAUDE.md`'deki CSS paleti değerleri hâlâ `index.html`'deki gerçek `:root` tanımlarıyla eşleşiyor
+  (tüm 8 değer tek tek karşılaştırıldı) — yeni sapma yok.
+- Stray dev artifact (`.bak`, `.orig`, `~`, `Thumbs.db`, `.DS_Store`) bulunamadı. `git status` merge
+  sonrası temiz, commit öncesi credential-benzeri dosya yok. Ödeme/faturalama veya auth kodu yok
+  (statik site, beklenen).
+
+### ⚠️ Onay bekliyor
+- Yeni bir madde yok.
+
 ## 2026-09-17
 
 - Fixed broken in-page navigation anchors on `index.html`: nav/footer links across nearly every page in
