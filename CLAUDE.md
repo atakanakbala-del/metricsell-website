@@ -1,4 +1,4 @@
-c# MetricSell Website — Proje Bilgi Dosyası
+# MetricSell Website — Proje Bilgi Dosyası
 
 ## Proje Amacı
 
@@ -39,10 +39,10 @@ Site şu an tek dosyalık, framework kullanmayan bir **statik HTML/CSS** yapıs�
 - `--primary: #1B3A5C` (koyu lacivert)
 - `--secondary: #6B8BAE` (orta ton mavi-gri)
 - `--accent: #FF8C00` (turuncu)
-- `--accent-light: #FFB84D`
-- `--bg: #FFFFFF`, `--bg-secondary: #F0F4F8`, `--bg-dark: #0F2744`
+- `--accent-light: #FFA733`
+- `--bg: #FFFFFF`, `--bg-secondary: #F4F7FB`, `--bg-dark: #091A2F`
 - `--text: #1B3A5C`, `--text-light: #6B8BAE`, `--text-white: #FFFFFF`
-- `--border: #D1DDE8`
+- `--border: #D8E3EE`
 - `--success: #34C759`
 
 Not: Ana MetricSell CLAUDE.md dosyasında geçen "lacivert `#0F3A60` / amber `#F5A623`" paletiyle bu dosyadaki renkler yakın ama birebir aynı değil — tasarım çalışmasında hangi paletin esas alınacağına karar verilmeli.
