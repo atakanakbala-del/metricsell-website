@@ -1,5 +1,46 @@
 # Automation Log
 
+## 2026-10-10
+
+`origin/main`'i merge alırken 1 yeni commit geldi: "Add free site audit box below the homepage hero"
+(`index.html`'e, ana sayfa hero'sunun altına LayzrAI/web-audit-ai aracına (`web-audit-ai-theta.vercel.app`)
+yönlendiren ücretsiz site analizi kutusu eklendi). Merge'de textual conflict yoktu.
+
+- **Yeni eklenen bölümde bulunan gerçek sorun**: site-analizi formu
+  `target="_blank"` ile yeni sekmede açılıyor ama `rel="noopener"` eksikti — repoda tekrarlayan ve her
+  koşuda kontrol edilen `target="_blank"` + `rel="noopener"` kuralının tam da yakalaması gereken bir
+  örnek. `index.html`'deki diğer "kendi araçlarımız" linkleriyle (trygrafix.com/partsmercedestr kartları)
+  aynı konvansiyonla `rel="noopener"` eklendi.
+- Aynı bölüm için ayrıca kontrol edildi: form `action` URL'i canlı ve 200 dönüyor (curl ile doğrulandı);
+  tekil `id="site-analizi"` kopya değil; `aria-label` ile erişilebilir; sahte istatistik/vaka numarası yok
+  (ürün özelliği listesi, iddia edilen bir sonuç değil).
+- **2026-10-07/08/09'da ertelenen ölü CSS notunun 2/3'ü tamamlandı**: `saglik-turizmi-reklam-ajansi.html`
+  da `eticaret-e-ihracat-ajansi.html` ile birebir aynı ~10 ölü seçiciden (`.sectors-intro`,
+  `.sector-pill-nav` +`a`+`a:hover`, `.sector-block.bg-alt`/`.bg-dark` ve alt-override'ları, `.sector-split`
+  + `.reverse` varyantları (duplicate `max-width:1024px` media query dahil), `.chip-select`,
+  `.contact-section`/`::before`/`.contact-content`/`h2`/`>p`/`.sector-form-card` override) temizlendi.
+  Her seçici tek tek `class="..."` ve JS (`querySelector`/`classList`/`getElementById`) referansı için
+  grep ile doğrulandı — hiçbiri birleşmiş ağaçta kullanılmıyordu. Brace sayısı doğrulandı (297/297, önce
+  ve sonra). `surucu-kursu-dil-okulu-reklam-ajansi.html` aynı bloğu hâlâ taşıyor — bu koşunun diff'ini
+  küçük tutmak için 3/3 yine ertelendi (bir sonraki koşuda tamamlanabilir).
+- Diff: 2 dosya, 170 satır (1 ekleme, 169 silme).
+
+### Kontroller
+- Tüm `.html` dosyalarında kopya `id` ve eksik `img alt` için script ile tam tarama yapıldı — repo
+  genelinde hiçbiri bulunamadı.
+- Tüm göreli `href`/`src`/`action` dosya referansları (kök-mutlak `/...` yollar dahil) diskteki dosyalarla
+  karşılaştırıldı — kırık referans yok. Tüm aynı-sayfa `#anchor` linkleri gerçek `id`'lerle karşılaştırıldı
+  — kırık anchor yok.
+- `llms.txt` (42 `.html` referansı) / `sitemap.xml` (39 `<url>`) / `blog.html`: 31 blog yazısının hepsi
+  mevcut, bu koşuda main'den yeni blog yazısı gelmedi — senkron.
+- CLAUDE.md'nin iki-palet belirsizliği notu ve CSS paleti değerleri yeniden kontrol edildi — yeni sapma
+  yok, insan kararı olarak bırakıldı (önceki koşularla aynı).
+- Stray dev artifact (`.bak`/`.orig`/`~`/`Thumbs.db`/`.DS_Store`) yok. `.env*` dosyası yok. Ödeme/faturalama
+  veya auth kodu yok. Copyright yılı (`© 2026`) güncel.
+
+### ⚠️ Onay bekliyor
+Yeni yok — liste boş.
+
 ## 2026-10-09
 
 `origin/main`'i bu dala merge alırken yeni commit yoktu (`git merge origin/main` "Already up to date"
