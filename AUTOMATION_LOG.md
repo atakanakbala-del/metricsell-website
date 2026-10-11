@@ -1,5 +1,45 @@
 # Automation Log
 
+## 2026-10-11
+
+`origin/main`'i bu dala merge alırken yeni commit yoktu (`git merge origin/main` "Already up to date"
+döndü — `auto/maintenance` zaten main'in en son commit'ini (`5981ef1`, free site-audit box) önceki koşunun
+merge'ü üzerinden içeriyordu). Main'den bu koşuda işlenecek yeni içerik yok.
+
+- **Ertelenen ölü CSS notunun 3/3'ü tamamlandı**: `surucu-kursu-dil-okulu-reklam-ajansi.html`, diğer iki niş
+  sayfasından (`eticaret-e-ihracat-ajansi.html` 2026-10-09, `saglik-turizmi-reklam-ajansi.html` 2026-10-10)
+  temizlenen aynı ~10 ölü seçiciyi birebir taşıyordu: `.sectors-intro`, `.sector-pill-nav` (+`a`, `a:hover`),
+  `.sector-block.bg-alt`, `.sector-block.bg-dark` (+`::before` ve `.sector-icon-badge`/`.sector-text h2`/
+  `.sector-text > p`/`.sector-tag`/`.sector-mini-stat .lbl` alt-override'ları), `.sector-split` +
+  `.sector-block.reverse .sector-split` (+`> *`, hem ana tanım hem `max-width:1024px` media query içindeki
+  tekrarı), `.chip-select`, `.contact-section` (+`::before`, `.contact-content`, `h2`,
+  `> .contact-content > p`, `.sector-form-card` override). Her seçici için `class="..."` ve JS
+  (`querySelector`/`classList`/`getElementById`) referansı ayrı ayrı grep ile doğrulandı — hiçbiri birleşmiş
+  ağaçta kullanılmıyordu. Brace sayısı doğrulandı (303/303 önce, 279/279 sonra — 24 kural kaldırıldı).
+  Görsel/davranışsal değişiklik yok. Bu, orijinal 3 dosyalık listenin son parçasıydı — dead-CSS notu artık
+  tamamen çözülmüş durumda.
+- Diff: 1 dosya, 153 satır (153 silme).
+- PR: https://github.com/atakanakbala-del/metricsell-website/pull/7 (güncellendi)
+
+### Kontroller
+- Tüm `.html` dosyalarında kopya `id` ve eksik `img alt` için script ile tam tarama yapıldı — hiçbiri
+  bulunamadı.
+- Tüm `target="_blank"` linkler/formlar için eksik `rel="noopener"` taraması yapıldı — repo genelinde eksik
+  yok.
+- Tüm göreli `href`/`src`/`action` dosya referansları diskteki dosyalarla, tüm aynı-sayfa `#anchor` linkleri
+  gerçek `id`'lerle karşılaştırıldı (script ile) — kırık link/anchor bulunamadı (`404.html`'deki kök `/`
+  linki script'in basit path-çözümleyicisinde "eksik" göründü ama elle doğrulandı, gerçek bir ana sayfa
+  linki, false positive).
+- `llms.txt` (31 blog referansı) / `sitemap.xml` (31 blog referansı) / `blog.html` (31 blog yazısı) — üçü de
+  birebir eşleşiyor, eksik yok.
+- Stray dev artifact (`.bak`/`.orig`/`~`/`Thumbs.db`/`.DS_Store`) yok. `.env*` dosyası yok. Ödeme/faturalama
+  veya auth kodu yok (statik site, beklenen). `git status` commit öncesi temiz, credential-benzeri dosya yok.
+- Doğrulanamaz istatistik/vaka numarası taraması: bu koşuda main'den yeni içerik gelmediği için tekrar
+  taranacak yeni bölüm yoktu; mevcut durum önceki koşularda temiz bulunmuştu.
+
+### ⚠️ Onay bekliyor
+- Yeni bir madde yok.
+
 ## 2026-10-10
 
 `origin/main`'i merge alırken 1 yeni commit geldi: "Add free site audit box below the homepage hero"
