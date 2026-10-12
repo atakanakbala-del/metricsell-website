@@ -1,5 +1,56 @@
 # Automation Log
 
+## 2026-10-12
+
+`origin/main`'i bu dala merge alırken 1 yeni commit geldi: "Yeni blog yazısı: E-ihracatta yapay zeka arama
+motorlarında (ChatGPT, Perplexity) görünürlük rehberi" (`blog-eihracat-yapay-zeka-arama-chatgpt-perplexity.html`,
+`blog.html`/`sitemap.xml`'e otomatik eklenmiş olarak geldi). Merge'de textual conflict yoktu.
+
+- **`llms.txt`**: her zamanki tekrarlayan boşluk — yeni blog yazısı "Blog ve Bilgi Bankası" listesinde
+  eksikti (bu dosya elle tutuluyor). Eklendi; `llms.txt`/`sitemap.xml`/`blog.html` artık üçü de aynı 32
+  yazıyı listeliyor.
+- **2026-10-09'da tespit edilen, 2026-10-11'de "gelecek temizlik adayı" olarak not edilen `.chip` ölü CSS'i
+  tamamlandı**: `eticaret-e-ihracat-ajansi.html`, `saglik-turizmi-reklam-ajansi.html`,
+  `surucu-kursu-dil-okulu-reklam-ajansi.html` — üçünde de `.chip`, `.chip:hover`, `.chip.active` kuralları
+  tanımlıydı ama tek "kullanıcısı" `genChips.querySelectorAll('.chip')` (satır ~2020), ve bu kod
+  `document.getElementById('genSectorChips')`'e bağlı — bu id üç dosyadan hiçbirinde yok, yani kod asla
+  çalışmıyor. `class="...chip..."` literal kullanımı üç dosyada da grep ile doğrulanarak sıfır bulundu.
+  Brace sayısı doğrulandı (299/294/276 → her dosyada 3'er kural, toplam 9 kural kaldırıldı; önce/sonra
+  dengeli). Görsel/davranışsal değişiklik yok.
+- Diff: 4 dosya, 73 satır (1 ekleme / 72 silme).
+- PR: https://github.com/atakanakbala-del/metricsell-website/pull/7 (güncellendi)
+
+### Kontroller
+- Tüm `.html` dosyalarında kopya `id` için script ile tam tarama yapıldı — site içeriğinde hiçbiri
+  bulunamadı (`.claude/skills/` ve `.agents/skills/` altındaki bir `creative-review-template.html`'de
+  tekrar eden `id="review-data"` var, ama bunlar 2026-08-18'de kasıtlı eklenmiş skill varlıkları, site
+  içeriği değil — önceki koşularda da bu şekilde not edilmişti).
+- Eksik `img alt` için tam tarama yapıldı — bulunamadı.
+- Tüm `target="_blank"` linkler için eksik `rel="noopener"` taraması yapıldı (yeni blog yazısı dahil) —
+  repo genelinde eksik yok.
+- Tüm göreli/kök-mutlak `href`/`src`/`action` dosya referansları diskteki dosyalarla, tüm aynı-sayfa/
+  sayfalar-arası `#anchor` linkleri gerçek `id`'lerle script ile karşılaştırıldı — kırık link/anchor
+  bulunamadı (`404.html`'deki kök `/` linki önceki koşularda da doğrulanmış bilinen false positive).
+  Yeni blog yazısındaki `eticaret-e-ihracat-ajansi.html#contact` anchor'ı ayrıca elle doğrulandı, gerçek.
+- Yeni blog yazısındaki istatistik iddiaları kontrol edildi: "Princeton'ın GEO araştırmasına göre... %37-40"
+  ve "keyword stuffing görünürlüğü düşürüyor" cümleleri kaynağı adlandırılmış (Princeton GEO araştırması),
+  sorun değil. Ama aynı yazıdaki "şema eksikliği olan sayfalar AI motorlarında %30-40 daha düşük görünürlük
+  alıyor" (Şema İşaretlemesi bölümü) cümlesi **kaynaksız** — bir önceki paragraftaki gibi adlandırılmış bir
+  araştırmaya atfedilmiyor, düz iddia olarak sunulmuş. Aşağıda "Onay bekliyor"a eklendi.
+- Stray dev artifact (`.bak`/`.orig`/`~`/`Thumbs.db`/`.DS_Store`) yok. `.env*` dosyası yok. Ödeme/faturalama
+  veya auth kodu yok (statik site, beklenen). `git status` commit öncesi temiz, credential-benzeri dosya
+  yok.
+- `CLAUDE.md`'deki CSS paleti değerleri hâlâ `index.html`'deki gerçek `:root` tanımlarıyla eşleşiyor (tüm 8
+  değer tek tek karşılaştırıldı) — yeni sapma yok.
+
+### ⚠️ Onay bekliyor
+- Yeni blog yazısında (`blog-eihracat-yapay-zeka-arama-chatgpt-perplexity.html`), "Şema İşaretlemesi"
+  bölümünde kaynaksız bir istatistik var: "şema eksikliği olan sayfalar AI motorlarında %30-40 daha düşük
+  görünürlük alıyor" — hemen üstündeki paragraftaki gibi adlandırılmış bir kaynağa (örn. Princeton GEO
+  araştırması) atfedilmiyor, düz iddia. Önerilen düzeltme: ya gerçek bir kaynak eklenmeli, ya rakam
+  kaldırılıp genel ifadeye ("şema eksikliği AI motorlarında görünürlüğü düşürüyor") çevrilmeli. İçerik/
+  copy kararı olduğu için bu koşuda dokunulmadı.
+
 ## 2026-10-11
 
 `origin/main`'i bu dala merge alırken yeni commit yoktu (`git merge origin/main` "Already up to date"
