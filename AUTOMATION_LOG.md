@@ -1,5 +1,44 @@
 # Automation Log
 
+## 2026-10-13
+
+`origin/main`'i bu dala merge alırken **gerçek bir metinsel çakışma** çıktı: `index.html`'deki site-analizi
+formunun `<form>` açılış etiketinde main'in yeni commit'i ("Point the site audit box to analiz.metricsell.com",
+`d44f794`) `action` URL'ini LayzrAI/web-audit-ai aracından (`https://web-audit-ai-theta.vercel.app/`) MetricSell'in
+kendi alan adına (`https://analiz.metricsell.com/`) taşımıştı; bu dal ise aynı satırda daha önceki bir koşuda
+(2026-10-10) eksik `rel="noopener"`yi eklemişti. İki taraf da aynı satırı değiştirdiği için git otomatik
+çözemedi. Bu bir içerik/pazarlama kararı değil, mekanik bir birleştirme: main'in yeni (ve canlı — `curl` ile
+200 doğrulandı) alan adı korunarak, dalın güvenlik/erişilebilirlik düzeltmesi (`target="_blank" rel="noopener"`)
+geri eklendi — sonuç `action="https://analiz.metricsell.com/" ... target="_blank" rel="noopener"`. Gerçek bir
+copy/pozisyon çakışması değildi, bu yüzden insana eskale edilmedi.
+- Diff (bu koşu): 1 dosya, 1 satır net (merge dışında).
+- PR: https://github.com/atakanakbala-del/metricsell-website/pull/7 (güncellendi)
+
+### Kontroller
+- `llms.txt` (32 blog referansı) / `sitemap.xml` (32) / `blog.html` (32) — script ile karşılaştırıldı, üçü
+  de diskteki 32 `blog-*.html` dosyasıyla birebir eşleşiyor, eksik/fazla yok. Bu koşuda main'den yeni blog
+  yazısı gelmedi (tek yeni commit site-analizi domain değişikliğiydi).
+- Tüm `.html` dosyalarında (57 dosya, skill varlıkları hariç) kopya `id`, eksik `img alt`, kırık `href`/`src`/
+  `action` dosya referansı ve kırık aynı-sayfa/sayfalar-arası `#anchor` linki için script ile tam tarama
+  yapıldı — hiçbiri bulunamadı.
+- `target="_blank"` linkler/formlar için eksik `rel="noopener"` taraması yapıldı — repo genelinde eksik yok
+  (yukarıdaki merge çakışması dahil, zaten düzeltilmiş durumda).
+- `blog-eihracat-yapay-zeka-arama-chatgpt-perplexity.html`'deki 2026-10-12'de flaglenen kaynaksız istatistik
+  ("şema eksikliği olan sayfalar AI motorlarında %30-40 daha düşük görünürlük alıyor", Şema İşaretlemesi
+  bölümü) hâlâ aynı haliyle duruyor, dokunulmadı — copy kararı, aşağıda tekrar not edildi.
+- `CLAUDE.md`'deki CSS paleti değerleri (8 değer) hâlâ `index.html`'deki gerçek `:root` tanımlarıyla
+  eşleşiyor — yeni sapma yok.
+- Stray dev artifact (`.bak`/`.orig`/`~`/`Thumbs.db`/`.DS_Store`) yok. `.env*` dosyası yok. Ödeme/faturalama
+  veya auth kodu yok (statik site). `git status` commit öncesi temiz.
+- Site-analizi formunun yeni `action` hedefi (`https://analiz.metricsell.com/`) canlı, `curl` ile 200
+  doğrulandı.
+
+### ⚠️ Onay bekliyor
+- (Devam ediyor, 2026-10-12'den) `blog-eihracat-yapay-zeka-arama-chatgpt-perplexity.html`, "Şema
+  İşaretlemesi" bölümü: "şema eksikliği olan sayfalar AI motorlarında %30-40 daha düşük görünürlük alıyor"
+  hâlâ kaynaksız/adlandırılmamış bir iddia. Önerilen düzeltme değişmedi: gerçek bir kaynak eklenmeli, ya da
+  rakam kaldırılıp genel ifadeye çevrilmeli. Copy kararı olduğu için bu koşuda da dokunulmadı.
+
 ## 2026-10-12
 
 `origin/main`'i bu dala merge alırken 1 yeni commit geldi: "Yeni blog yazısı: E-ihracatta yapay zeka arama
