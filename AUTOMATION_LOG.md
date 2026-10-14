@@ -1,5 +1,38 @@
 # Automation Log
 
+## 2026-10-14
+
+`origin/main`'i bu dala merge alırken `git merge origin/main` "Already up to date" döndü — main'de
+2026-10-13'teki `d44f794` (site-analizi `action`'ını `analiz.metricsell.com`'a taşıyan commit, o koşuda
+zaten merge edilmişti) sonrasında yeni commit yok. Bu koşuda main'den işlenecek yeni içerik yoktu.
+
+Tam bir maintenance taraması yapıldı (script ile) ama **yeni bir bulgu çıkmadı** — bu koşuda repoya
+dokunulmadı, sadece bu log girdisi eklendi.
+
+### Kontroller
+- Tüm `.html` dosyalarında (57 dosya, `.claude/skills`/`.agents/skills` altındaki skill varlıkları hariç)
+  kopya `id`, eksik `img alt`, kırık `href`/`src`/`action` dosya referansı için script ile tam tarama
+  yapıldı — hiçbiri bulunamadı.
+- Tüm aynı-sayfa/sayfalar-arası `#anchor` linkleri, hedef dosyadaki gerçek `id`'lerle ayrı bir script ile
+  karşılaştırıldı — kırık anchor bulunamadı.
+- `target="_blank"` linkler/formlar için eksik `rel="noopener"` taraması yapıldı — repo genelinde eksik
+  yok.
+- `llms.txt` / `sitemap.xml` / `blog.html` — üçü de diskteki 32 `blog-*.html` dosyasıyla birebir eşleşiyor
+  (32/32/32), eksik/fazla yok. Main'den bu koşuda yeni blog yazısı gelmedi.
+- `blog-eihracat-yapay-zeka-arama-chatgpt-perplexity.html`'deki 2026-10-12'den beri flaglenen kaynaksız
+  istatistik ("şema eksikliği olan sayfalar AI motorlarında %30-40 daha düşük görünürlük alıyor", Şema
+  İşaretlemesi bölümü) hâlâ aynı haliyle duruyor, dokunulmadı — copy kararı, tekrar flaglenmedi.
+- `CLAUDE.md`'deki CSS paleti değerleri (8 değer, tek tek karşılaştırıldı) hâlâ `index.html`'deki gerçek
+  `:root` tanımlarıyla eşleşiyor — yeni sapma yok.
+- 2026-10-07'de flaglenip 2026-10-09/10/11'de 3/3 tamamlanan niş sayfası ölü CSS'i (`.sectors-intro`,
+  `.sector-pill-nav`, `.chip-select` vb.) tekrar kontrol edildi, hâlâ geri gelmemiş (0 eşleşme).
+- Stray dev artifact (`.bak`/`.orig`/`~`/`Thumbs.db`/`.DS_Store`) yok. `.env*` dosyası yok. Ödeme/faturalama
+  veya auth kodu yok (statik site). `git status` temiz.
+
+### ⚠️ Onay bekliyor
+- Yeni bir madde yok. Tek standing madde (kaynaksız %30-40 istatistiği) yukarıda tekrar flaglenmeden not
+  edildi, hâlâ bekliyor.
+
 ## 2026-10-13
 
 `origin/main`'i bu dala merge alırken **gerçek bir metinsel çakışma** çıktı: `index.html`'deki site-analizi
