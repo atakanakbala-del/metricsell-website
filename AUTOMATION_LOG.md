@@ -1,5 +1,43 @@
 # Automation Log
 
+## 2026-10-15
+
+`origin/main`'i bu dala merge alırken 1 yeni commit geldi: main'e yeni bir blog yazısı eklenmiş —
+`blog-etsy-uluslararasi-satis-seo-reklam-stratejisi.html` ("Etsy'de Uluslararası Satış: Türk Satıcılar
+İçin SEO ve Reklam Stratejisi"). Merge çakışmasız, temiz (`blog.html` ve `sitemap.xml` ayrı ayrı
+auto-merge edildi, ikisi de sahip tarafından zaten güncellenmiş geliyordu).
+
+**Yeni bulgu — tekrarlayan `llms.txt` boşluğu**: `blog.html` (33/33) ve `sitemap.xml` (33/33) yeni yazıyı
+zaten içeriyordu, ama `llms.txt` (manuel tutulan liste) eksikti — 32/33. Eklendi; üçü de şimdi 33/33
+eşleşiyor, diskteki 33 `blog-*.html` dosyasıyla birebir.
+
+Yeni yazı üzerinde ek kontroller: `href`/`src` referansları (iç sayfalar, `favicon.png`, `logo-icon*.png`,
+`tracking.js`) hepsi diskte mevcut; sayfa-arası anchor'lar (`index.html#contact`/`#sectors`/`#services`,
+`eticaret-e-ihracat-ajansi.html#contact`) hedef dosyalarda gerçek `id`'lere karşılık geliyor; `id`
+tekrarı yok; `img alt` eksiği yok; `target="_blank"` linki yok (dolayısıyla `rel="noopener"` sorunu da
+yok); `tracking.js` dahil edilmiş.
+
+### Kontroller
+- Tüm `.html` dosyalarında kopya `id`, eksik `img alt`, kırık `href`/`src`/`action` dosya referansı
+  (root-absolute `/...` dahil) için tam tarama yapıldı — yeni yazı dahil, hiçbiri bulunamadı.
+- Tüm aynı-sayfa/sayfalar-arası `#anchor` linkleri hedef dosyadaki gerçek `id`'lerle karşılaştırıldı —
+  kırık anchor yok.
+- `target="_blank"` linkler/formlar için eksik `rel="noopener"` taraması yapıldı — repo genelinde eksik
+  yok.
+- `llms.txt` / `sitemap.xml` / `blog.html` — yukarıda açıklanan boşluk düzeltildi, üçü de şimdi 33/33.
+- `blog-eihracat-yapay-zeka-arama-chatgpt-perplexity.html`'deki 2026-10-12'den beri flaglenen kaynaksız
+  istatistik ("şema eksikliği olan sayfalar AI motorlarında %30-40 daha düşük görünürlük alıyor", Şema
+  İşaretlemesi bölümü) hâlâ aynı haliyle duruyor, dokunulmadı — copy kararı, tekrar flaglenmedi.
+- `CLAUDE.md`'deki CSS paleti değerleri (8 değer) `index.html`'deki gerçek `:root` tanımlarıyla tek tek
+  karşılaştırıldı — sapma yok.
+- Stray dev artifact (`.bak`/`.orig`/`~`/`Thumbs.db`/`.DS_Store`) yok. `.env*` dosyası yok. Ödeme/
+  faturalama veya auth kodu yok (statik site). `git status` temiz (bu commit hariç).
+- Diff: 1 dosya (`llms.txt`), 1 satır ekleme.
+
+### ⚠️ Onay bekliyor
+- Yeni bir madde yok. Tek standing madde (kaynaksız %30-40 istatistiği) yukarıda tekrar flaglenmeden not
+  edildi, hâlâ bekliyor.
+
 ## 2026-10-14
 
 `origin/main`'i bu dala merge alırken `git merge origin/main` "Already up to date" döndü — main'de
