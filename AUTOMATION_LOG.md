@@ -1,5 +1,35 @@
 # Automation Log
 
+## 2026-10-16
+
+`origin/main`'i bu dala merge alırken `git merge origin/main` "Already up to date" döndü — main'de
+2026-10-15'teki Etsy blog yazısı commit'i sonrasında yeni commit yoktu (bu dal o commit'i zaten
+2026-10-15 koşusunda içeriyordu). Bu koşuda main'den işlenecek yeni içerik yoktu.
+
+Tam bir maintenance taraması yapıldı (script ile) ama **yeni bir bulgu çıkmadı** — bu koşuda repoya
+dokunulmadı, sadece bu log girdisi eklendi.
+
+### Kontroller
+- `llms.txt` / `sitemap.xml` / `blog.html` — üçü de diskteki 33 `blog-*.html` dosyasıyla birebir eşleşiyor
+  (33/33/33), eksik/fazla yok.
+- Tüm `.html` dosyalarında (skill varlıkları hariç) kopya `id`, eksik `img alt`, kırık `href`/`src`/`action`
+  dosya referansı (root-absolute `/...` dahil) ve kırık aynı-sayfa/sayfalar-arası `#anchor` linki için
+  script ile tam tarama yapıldı — hiçbiri bulunamadı.
+- `target="_blank"` linkler/formlar için eksik `rel="noopener"` taraması yapıldı — repo genelinde eksik
+  yok.
+- `blog-eihracat-yapay-zeka-arama-chatgpt-perplexity.html`'deki 2026-10-12'den beri flaglenen kaynaksız
+  istatistik ("şema eksikliği olan sayfalar AI motorlarında %30-40 daha düşük görünürlük alıyor", Şema
+  İşaretlemesi bölümü) hâlâ aynı haliyle duruyor, dokunulmadı — copy kararı, tekrar flaglenmedi.
+- `CLAUDE.md`'deki CSS paleti değerleri (8 değer, tek tek karşılaştırıldı) hâlâ `index.html`'deki gerçek
+  `:root` tanımlarıyla eşleşiyor — yeni sapma yok.
+- Footer copyright (`© 2026 MetricSell`) bugünün tarihiyle (2026-10-16) uyumlu, güncel.
+- Stray dev artifact (`.bak`/`.orig`/`~`/`Thumbs.db`/`.DS_Store`) yok. `.env*` dosyası yok. Ödeme/
+  faturalama veya auth kodu yok (statik site). `git status` temiz.
+
+### ⚠️ Onay bekliyor
+- Yeni bir madde yok. Tek standing madde (kaynaksız %30-40 istatistiği) yukarıda tekrar flaglenmeden not
+  edildi, hâlâ bekliyor.
+
 ## 2026-10-15
 
 `origin/main`'i bu dala merge alırken 1 yeni commit geldi: main'e yeni bir blog yazısı eklenmiş —
