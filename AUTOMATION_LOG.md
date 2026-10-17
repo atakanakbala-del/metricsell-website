@@ -1,5 +1,30 @@
 # Automation Log
 
+## 2026-10-17
+
+`origin/main`'i bu dala merge alırken `git merge origin/main` "Already up to date" döndü — main'de
+2026-10-16'dan sonra yeni commit yoktu.
+
+Tam bir maintenance taraması yapıldı ama **yeni bir bulgu çıkmadı** — bu koşuda repoya dokunulmadı,
+sadece bu log girdisi eklendi.
+
+### Kontroller
+- `llms.txt` / `sitemap.xml` / `blog.html` — üçü de diskteki 33 `blog-*.html` dosyasıyla birebir eşleşiyor
+  (33/33/33), eksik/fazla yok.
+- Tüm `.html` dosyalarında kopya `id` taraması yapıldı — hiçbiri bulunamadı.
+- `target="_blank"` linkler/formlar için eksik `rel="noopener"` taraması yapıldı — repo genelinde eksik
+  yok.
+- `blog-eihracat-yapay-zeka-arama-chatgpt-perplexity.html`'deki 2026-10-12'den beri flaglenen kaynaksız
+  istatistik ("şema eksikliği olan sayfalar AI motorlarında %30-40 daha düşük görünürlük alıyor") hâlâ aynı
+  haliyle duruyor, dokunulmadı — copy kararı, tekrar flaglenmedi.
+- `CLAUDE.md`'deki CSS paleti değerleri (8 değer, tek tek karşılaştırıldı) hâlâ `index.html`'deki gerçek
+  `:root` tanımlarıyla eşleşiyor — yeni sapma yok.
+- Stray dev artifact yok, `.env*` dosyası yok, ödeme/auth kodu yok (statik site). `git status` temiz.
+
+### ⚠️ Onay bekliyor
+- Yeni bir madde yok. Tek standing madde (kaynaksız %30-40 istatistiği) yukarıda tekrar flaglenmeden not
+  edildi, hâlâ bekliyor.
+
 ## 2026-10-16
 
 `origin/main`'i bu dala merge alırken `git merge origin/main` "Already up to date" döndü — main'de
