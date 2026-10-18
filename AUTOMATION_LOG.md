@@ -1,5 +1,29 @@
 # Automation Log
 
+## 2026-10-18
+
+`origin/main`'i bu dala merge alırken `git merge origin/main` "Already up to date" döndü — main'de
+2026-10-15'teki Etsy blog yazısı commit'i sonrasında yeni commit yoktu.
+
+Tam bir maintenance taraması yapıldı ama **yeni bir bulgu çıkmadı** — bu koşuda repoya dokunulmadı,
+sadece bu log girdisi eklendi.
+
+### Kontroller
+- `llms.txt` / `sitemap.xml` / `blog.html` — üçü de diskteki 33 `blog-*.html` dosyasıyla birebir eşleşiyor
+  (33/33/33), eksik/fazla yok.
+- `target="_blank"` linkler/formlar için eksik `rel="noopener"` taraması yapıldı — repo genelinde eksik
+  yok.
+- `CLAUDE.md`'deki CSS paleti değerleri (8 değer, tek tek karşılaştırıldı) hâlâ `index.html`'deki gerçek
+  `:root` tanımlarıyla eşleşiyor — yeni sapma yok (bu dal, master'da henüz merge edilmemiş düzeltilmiş
+  değerleri zaten taşıyor).
+- `blog-eihracat-yapay-zeka-arama-chatgpt-perplexity.html`'deki 2026-10-12'den beri flaglenen kaynaksız
+  istatistik hâlâ aynı haliyle duruyor, dokunulmadı — copy kararı, tekrar flaglenmedi.
+- Stray dev artifact yok, `.env*` dosyası yok, ödeme/auth kodu yok (statik site). `git status` temiz.
+
+### ⚠️ Onay bekliyor
+- Yeni bir madde yok. Tek standing madde (kaynaksız %30-40 istatistiği) yukarıda tekrar flaglenmeden not
+  edildi, hâlâ bekliyor.
+
 ## 2026-10-17
 
 `origin/main`'i bu dala merge alırken `git merge origin/main` "Already up to date" döndü — main'de
