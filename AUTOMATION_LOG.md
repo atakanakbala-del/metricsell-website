@@ -1,5 +1,67 @@
 # Automation Log
 
+## 2026-10-19
+
+Merged `main` in (1 new commit since 2026-10-18: a new blog post,
+`blog-egitim-performance-max-ogrenci-kaydi.html` — "Dil Okulları ve Sürücü Kursları İçin Google Performance
+Max Rehberi: Öğrenci Kaydını Artırma"). Clean merge, no textual conflicts (`blog.html`/`sitemap.xml`
+auto-merged, both already updated by the owner).
+
+- **`llms.txt`**: the recurring gap — `blog.html` and `sitemap.xml` already had the new post (34/34 each,
+  matching the 34 `blog-*.html` files now on disk) but `llms.txt` was missing it. Added; all three now
+  list the same 34 posts.
+- Checked the new post specifically: all `href`/`src` references (internal pages, `favicon.png`,
+  `logo-icon*.png`/`logo-icon-footer.png`, `tracking.js`) resolve to files on disk; cross-page anchors
+  (`index.html#services`/`#sectors`/`#contact`, `surucu-kursu-dil-okulu-reklam-ajansi.html#contact`)
+  resolve to real target ids; no duplicate ids; no missing `alt`; its one `target="_blank"` link
+  (Instagram) already has `rel="noopener noreferrer"`; footer copyright year matches.
+- Re-ran the full standard checklist across the whole repo (script-based): broken `href`/`img src`/`action`
+  file references (incl. root-absolute), broken same-page/cross-page anchors, duplicate ids, missing `alt`,
+  missing `rel="noopener"` on `target="_blank"`, stray dev artifacts/credential-pattern files,
+  TODO/placeholder/lorem-ipsum scan — all clean, nothing new found.
+- Re-confirmed the 2026-10-12 unsourced-stat flag (see "⚠️ Onay bekliyor" below) is still present,
+  untouched as instructed.
+- **New observation (not fixed this run, logged below under "Deferred")**: the new post's embedded
+  `:root` still carries the old CSS palette values (`--accent-light: #FFB84D`, `--bg-secondary: #F0F4F8`,
+  `--bg-dark: #0F2744`, `--border: #D1DDE8`) that were corrected on `index.html` itself back on
+  2026-09-26 (`--accent-light: #FFA733`, `--bg-secondary: #F4F7FB`, `--bg-dark: #091A2F`,
+  `--border: #D8E3EE`). This isn't a regression from this commit — every one of the 28 pre-existing
+  `blog-*.html` files (grep-verified) carries the same old values in its own self-contained `<style>`
+  block, so the blog template itself was never updated after the homepage palette fix, and every new post
+  keeps inheriting the stale values. Visually the hex differences are subtle shade shifts, not a broken
+  look, and each blog page is self-contained (doesn't inline from `index.html`), so nothing is actually
+  broken — just a drift between the homepage's corrected tokens and the blog template's frozen copy.
+  Fixing it properly means updating the blog post *template* (so future posts stop re-introducing the old
+  values) plus batch-updating up to 29 existing files — too large for today's diff budget, so left alone
+  and added to "Deferred" below for incremental pickup (same pattern as the 2026-10-09/10/11 dead-CSS
+  cleanup).
+- Diff: 2 files (`llms.txt`, `AUTOMATION_LOG.md`), 2 content lines + log entry.
+
+### Kontroller
+- `llms.txt` / `sitemap.xml` / `blog.html` — yukarıda açıklanan boşluk düzeltildi, üçü de şimdi 34/34,
+  diskteki 34 `blog-*.html` dosyasıyla birebir.
+- Tüm `.html` dosyalarında kopya `id`, eksik `img alt`, kırık `href`/`src`/`action` dosya referansı (kök-
+  mutlak `/...` dahil) ve kırık aynı-sayfa/sayfalar-arası `#anchor` linki için script ile tam tarama
+  yapıldı — yeni yazı dahil, hiçbiri bulunamadı.
+- `target="_blank"` linkler/formlar için eksik `rel="noopener"` taraması yapıldı — repo genelinde eksik
+  yok.
+- `blog-eihracat-yapay-zeka-arama-chatgpt-perplexity.html`'deki 2026-10-12'den beri flaglenen kaynaksız
+  istatistik hâlâ aynı haliyle duruyor, dokunulmadı — copy kararı, tekrar flaglenmedi.
+- Yeni yazıdaki `%20` ve `10-15 katı` gibi oranlar, belirli bir müşteriye atfedilen vaka rakamı değil, genel
+  taktik eşik tavsiyesi (önceki günlerdeki benzer kararlarla tutarlı) — ek flag gerekmedi.
+- Stray dev artifact yok, `.env*` dosyası yok, ödeme/auth kodu yok (statik site). `git status` temiz
+  (bu commit hariç).
+
+### Deferred, not a judgment call
+- **New (2026-10-19)**: blog post template's embedded `:root` palette (`--accent-light`, `--bg-secondary`,
+  `--bg-dark`, `--border`) is stale relative to `index.html`'s corrected values — affects all ~29
+  `blog-*.html` files. Mechanical fix (hex value sync), not a design decision, but too large for one run's
+  diff budget. Pick up incrementally in future runs, same as the niche-page dead-CSS cleanup.
+
+### ⚠️ Onay bekliyor
+- Yeni bir madde yok. Tek standing madde (kaynaksız %30-40 istatistiği) yukarıda tekrar flaglenmeden not
+  edildi, hâlâ bekliyor.
+
 ## 2026-10-18
 
 `origin/main`'i bu dala merge alırken `git merge origin/main` "Already up to date" döndü — main'de
