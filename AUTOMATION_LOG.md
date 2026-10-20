@@ -1,5 +1,49 @@
 # Automation Log
 
+## 2026-10-20
+
+`git merge origin/main` was a no-op — no new commits since the 2026-10-19 blog post
+(`main`'s tip is still `759b636`). `llms.txt`/`sitemap.xml`/`blog.html` all still list the
+same 34 posts (34/34/34, matches disk) — no gap this run.
+
+**Picked up the 2026-10-19-deferred blog-template palette drift, in part**: fixed the 28
+`blog-*.html` files that share the shared blog-post template and still carried the old
+pre-2026-09-26 palette (`--accent-light: #FFB84D`→`#FFA733`, `--bg-secondary: #F0F4F8`→
+`#F4F7FB`, `--bg-dark: #0F2744`→`#091A2F`, `--border: #D1DDE8`→`#D8E3EE`, plus the
+`.post-hero` gradient's hardcoded `#F0F4F8`→`#F4F7FB`), matching `index.html`'s current
+values (confirmed via direct read of `index.html`'s `:root` block and `CLAUDE.md`'s
+documented palette). Verified read-only first: grepped all 34 `blog-*.html` files, found
+exactly 28 with the identical 3-line stale `:root` block (byte-for-byte match across all
+28) plus the gradient line — a pure value substitution, not a structural edit, and the
+other `--primary`/`--secondary`/`--accent`/`--bg`/`--success`/`--error` values already
+matched `index.html`, so left untouched. Re-ran the full checklist after editing: no
+broken `href`/`src`/anchor links, no duplicate ids, no missing `alt`, no missing
+`rel="noopener"`, HTML still well-formed (`html.parser` parse check) on all 28 edited
+files. Diff: 28 files, 112 lines changed (within this run's diff budget).
+
+**Deferred, not fixed this run (diff-budget reasons, continuing the incremental pattern)**:
+the identical stale 3-value block also exists in 7 more files outside the blog-post
+template — `blog.html` itself (the listing/index page) and 6 standalone pages
+(`cerez-politikasi.html`, `gizlilik-politikasi.html`, `kvkk.html`,
+`saglik-turizmi-reklam-ajansi.html`, `eticaret-e-ihracat-ajansi.html`,
+`surucu-kursu-dil-okulu-reklam-ajansi.html`) — a new finding this run (previously only the
+blog-post template was flagged). ~32 more value occurrences across those 7 files (~64
+more changed lines) would have pushed this run over the ~150-line guideline on top of the
+28 files already fixed, so left for a future run. Confirmed separately: 6 *other*
+`blog-*.html` files (`blog-amazon-avrupa-ppc-acos-dusurme-taktikleri.html`,
+`blog-dil-okulu-ielts-ogrenci-kayit-hunisi.html`,
+`blog-fransa-saglik-turizmi-dis-klinigi-meta-ads.html`,
+`blog-istanbul-surucu-kursu-dijital-pazarlama-rehberi.html`,
+`blog-korfez-saglik-turizmi-sac-ekim-meta-ads.html`,
+`blog-trendyol-buybox-roas-optimizasyonu.html`) use an entirely different, older inline
+template (`--bg-sec` not `--bg-secondary`, no `--accent-light`/`--bg-dark` at all) — not
+the same drift, out of scope for this fix.
+
+Full scripted repo-wide pass (broken links/anchors, duplicate ids, missing alt, missing
+`rel="noopener"`, stray dev artifacts, TODO/placeholder/lorem scan) — all clean beyond the
+above. Re-confirmed the 2026-10-12 unsourced-stat flag (see "⚠️ Onay bekliyor" below) is
+still present, untouched as instructed.
+
 ## 2026-10-19
 
 Merged `main` in (1 new commit since 2026-10-18: a new blog post,
