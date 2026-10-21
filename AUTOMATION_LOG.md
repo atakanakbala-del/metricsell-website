@@ -1,5 +1,40 @@
 # Automation Log
 
+## 2026-10-21
+
+`git merge origin/main` was a no-op — no new commits since the 2026-10-19 blog post (`main`'s
+tip is still `759b636`). `llms.txt`/`sitemap.xml`/`blog.html` still list the same 34 posts
+(34/34/34) — no gap this run.
+
+**Finished the palette-drift cleanup deferred on 2026-10-20**: fixed the remaining 7 files
+that still carried the pre-2026-09-26 palette — `blog.html` itself plus the 6 standalone pages
+(`cerez-politikasi.html`, `gizlilik-politikasi.html`, `kvkk.html`,
+`saglik-turizmi-reklam-ajansi.html`, `eticaret-e-ihracat-ajansi.html`,
+`surucu-kursu-dil-okulu-reklam-ajansi.html`). Verified read-only first: all 7 had the identical
+stale `--accent-light: #FFB84D`, `--bg-secondary: #F0F4F8`, `--bg-dark: #0F2744`,
+`--border: #D1DDE8` block; none of the 7 contain a `.post-hero` class (that was specific to the
+blog-post template already fixed 2026-10-20), so no gradient fix was needed here. Updated all
+four variables in all 7 files to match `index.html`'s current values (`#FFA733`, `#F4F7FB`,
+`#091A2F`, `#D8E3EE`). Re-ran the full checklist after editing: `rel="noopener"` on every
+`target="_blank"` link (clean), no duplicate `id`s in any of the 7 files, `<style>` tag balance
+clean, `git status` otherwise clean. Diff: 7 files, 50 lines. No visual/behavioral change other
+than the color fix itself (this closes out the palette-drift item — no more stale occurrences of
+the old 4 values anywhere in the repo).
+
+**New finding, deferred (not a judgment call, just diff-budget)**: `blog.html` and the same 6
+standalone pages (plus `eticaret-e-ihracat-ajansi.html`/`saglik-turizmi-reklam-ajansi.html`/
+`surucu-kursu-dil-okulu-reklam-ajansi.html`, 6 files total — `blog.html`'s own hero doesn't have
+this pattern) have a `.legal-hero`/sector-hero background written as a **hardcoded hex literal**
+(`linear-gradient(180deg, #F0F4F8 0%, #FFFFFF 100%)`) instead of `var(--bg-secondary)` — so even
+though the CSS variable itself is now correct (fixed above), these hero backgrounds still
+visually render the *old* `#F0F4F8` tone rather than today's `#F4F7FB`. Mechanical fix (swap the
+literal for `var(--bg-secondary)` or the new hex), left for a future run's diff budget since
+today's budget went to the variable fix above.
+
+### ⚠️ Onay bekliyor
+- Yeni bir madde yok (yukarıdaki hardcoded-hex bulgusu bir onay gerektirmiyor, mekanik bir
+  düzeltme — sadece ertelendi).
+
 ## 2026-10-20
 
 `git merge origin/main` was a no-op — no new commits since the 2026-10-19 blog post
