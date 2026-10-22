@@ -1,5 +1,69 @@
 # Automation Log
 
+## 2026-10-22
+
+`git merge origin/main` brought in 1 new commit since 2026-10-21: a new blog post,
+`blog-saglik-turizmi-cok-dilli-seo-fransizca-arapca.html` ("Sağlık Turizminde Çok Dilli SEO:
+Fransızca ve Arapça Pazarlarda Organik Görünürlük Rehberi"). Clean auto-merge, no textual
+conflicts (`blog.html`/`sitemap.xml` auto-merged, both already updated by the owner).
+
+- **`llms.txt`**: the recurring gap, again — `blog.html` and `sitemap.xml` already had the new
+  post (35/35 each, matching the 35 `blog-*.html` files now on disk) but `llms.txt` was missing
+  it. Added to the "Blog ve Bilgi Bankası" list; all three now list the same 35 posts.
+- **New post's own internal consistency check found a genuinely broken anchor**: its `post-cta`
+  linked to `index.html#saglik-turizmi`, an id that does not exist anywhere in `index.html`
+  (confirmed via repo-wide search — no page defines `id="saglik-turizmi"`). Sibling sağlık
+  turizmi posts use one of two valid patterns instead — `saglik-turizmi-reklam-ajansi.html#contact`
+  (id confirmed present, used by 4 other posts) or `index.html#health-spotlight` (id confirmed
+  present, used by 3 other posts). Fixed to `saglik-turizmi-reklam-ajansi.html#contact`, the more
+  common of the two and a direct route to the contact form. All other `href`/`src` references in
+  the new post (internal pages, `favicon.png`, `logo-icon*.png`, `tracking.js`) resolve; its one
+  `target="_blank"` link (Instagram) already has `rel="noopener noreferrer"`; no duplicate ids; no
+  missing `alt`.
+- **New post also re-introduced the blog-template palette drift** (same recurring pattern as
+  2026-10-19/20/21): its embedded `:root` carried the pre-2026-09-26 stale values
+  (`--accent-light: #FFB84D`, `--bg-secondary: #F0F4F8`, `--bg-dark: #0F2744`, `--border: #D1DDE8`)
+  plus the matching hardcoded `.post-hero` gradient hex (`#F0F4F8`), even though every other
+  `blog-*.html` file was corrected on 2026-10-20. Root cause confirmed unchanged: the blog post
+  *template* itself (not a tracked file, just copied per new post) was never updated, so each new
+  post keeps reintroducing the old values. Fixed this one file to match `index.html`'s current
+  values (`#FFA733` / `#F4F7FB` / `#091A2F` / `#D8E3EE`), same substitution used in the 2026-10-20
+  cleanup.
+- **Picked up the 2026-10-21-deferred hero-gradient item, fully**: the 6 standalone pages flagged
+  then (`cerez-politikasi.html`, `gizlilik-politikasi.html`, `kvkk.html`,
+  `saglik-turizmi-reklam-ajansi.html`, `eticaret-e-ihracat-ajansi.html`,
+  `surucu-kursu-dil-okulu-reklam-ajansi.html`) still had their hero background written as the
+  hardcoded literal `linear-gradient(180deg, #F0F4F8 0%, #FFFFFF 100%)` instead of the corrected
+  tone. Fixed all 6 (swapped the stale hex for `#F4F7FB`, matching `var(--bg-secondary)`'s current
+  value). **Correction to the 2026-10-21 log**: that entry stated "`blog.html`'s own hero doesn't
+  have this pattern" — re-checked this run and found `blog.html`'s `.blog-hero` rule *does* carry
+  the identical hardcoded `#F0F4F8` literal (confirmed via `git log -L` that this line predates
+  2026-10-21, so it was simply missed, not introduced since). Fixed it too. Repo-wide grep for
+  `F0F4F8` now returns zero matches — this closes out the hero-gradient item for good.
+- Full scripted repo-wide pass (broken `href`/`src`/anchor references incl. root-absolute, duplicate
+  ids, missing `alt`, missing `rel="noopener"` on `target="_blank"`, stray dev artifacts,
+  TODO/placeholder/lorem scan) — all clean beyond the above.
+- Re-confirmed the 2026-10-12 unsourced-stat flag (see "⚠️ Onay bekliyor" below) is still present,
+  untouched as instructed.
+- Diff: 9 files, 13 insertions / 12 deletions (well within budget).
+
+### Kontroller
+- `llms.txt` / `sitemap.xml` / `blog.html` — gap düzeltildi, üçü de şimdi 35/35/35, diskteki 35
+  `blog-*.html` dosyasıyla birebir.
+- Yeni yazıdaki kırık `index.html#saglik-turizmi` anchor'ı `saglik-turizmi-reklam-ajansi.html#contact`
+  olarak düzeltildi (id doğrulandı).
+- Yeni yazıdaki eski palet değerleri (`--accent-light`, `--bg-secondary`, `--bg-dark`, `--border`,
+  `.post-hero` gradient) `index.html`'in güncel değerlerine düzeltildi.
+- 2026-10-21'de ertelenen hero-gradient maddesi (6 dosya + gözden kaçan `blog.html`) tamamlandı —
+  repo genelinde artık hiçbir `#F0F4F8` referansı yok.
+- `target="_blank"` / kopya `id` / eksik `alt` taraması repo genelinde temiz.
+- Stray dev artifact yok, `.env*` dosyası yok, ödeme/auth kodu yok (statik site). `git status`
+  temiz (bu commit hariç).
+
+### ⚠️ Onay bekliyor
+- Yeni bir madde yok. Tek standing madde (kaynaksız %30-40 istatistiği) tekrar flaglenmeden not
+  edildi, hâlâ bekliyor.
+
 ## 2026-10-21
 
 `git merge origin/main` was a no-op — no new commits since the 2026-10-19 blog post (`main`'s
