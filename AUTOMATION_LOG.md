@@ -1,5 +1,31 @@
 # Automation Log
 
+## 2026-10-26
+
+`git merge origin/main` brought in 1 new commit (new blog post
+`blog-saglik-turizmi-reels-tiktok-organik-hasta-kazanimi.html` — "Sağlık Turizminde Instagram ve
+TikTok Reels ile Organik Hasta Kazanma Rehberi"). Clean auto-merge (`blog.html`/`sitemap.xml`).
+
+- **`llms.txt`**: the recurring gap, again — the new post was in `blog.html`/`sitemap.xml` but
+  missing from `llms.txt` (36/36/36 now).
+- **Broken anchor, same pattern as 2026-10-22**: the new post's own CTA linked to
+  `index.html#saglik-turizmi`, an id that doesn't exist anywhere in the repo. Fixed to
+  `saglik-turizmi-reklam-ajansi.html#contact` (confirmed id present, matches the pattern 2 sibling
+  posts already use).
+- **Blog-template palette drift, same pattern as every prior new-post run**: the new post carried
+  the stale `--accent-light`/`--bg-secondary`/`--bg-dark`/`--border` values plus a hardcoded
+  `#F0F4F8` hero-gradient literal. Corrected both to match `index.html`'s current values
+  (`--accent-light: #FFA733`, `--bg-secondary: #F4F7FB`, `--bg-dark: #091A2F`,
+  `--border: #D8E3EE`, hero gradient `#F4F7FB`). Repo-wide grep for `F0F4F8` now returns zero
+  matches again.
+- Full scripted repo-wide pass on the new post and a re-check of the rest of the site (broken
+  links/anchors incl. root-absolute, duplicate ids, missing alt, missing `rel="noopener"`, stray
+  dev artifacts, TODO/placeholder/lorem scan) — all clean beyond the above.
+- Re-confirmed the standing ⚠️ item (unsourced "%30-40 daha düşük görünürlük" stat in
+  `blog-eihracat-yapay-zeka-arama-chatgpt-perplexity.html`) is still present — left untouched,
+  copy decision.
+- Diff: 2 files, 16 lines (well within budget).
+
 ## 2026-10-25
 
 `git merge origin/main` was a no-op (`main`'s tip still `1172e3e`, unchanged since 2026-10-22's
