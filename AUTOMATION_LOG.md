@@ -1,5 +1,25 @@
 # Automation Log
 
+## 2026-10-27
+
+`git merge origin/main` was a no-op — no new commits since 2026-10-26's run (main's tip
+unchanged, no new blog post).
+
+Full repo-wide re-verification pass, nothing new found:
+- `llms.txt` / `sitemap.xml` / `blog.html`: all three list exactly the same 36 `blog-*.html`
+  filenames as disk (36/36/36, diffed by exact filename, no gap).
+- No `<img>` missing `alt` beyond the known Search Console verification-file exception.
+- No `target="_blank"` without `rel="noopener"` anywhere.
+- No stray dev artifacts (`.bak`/`.orig`/`~`/`Thumbs.db`/`.DS_Store`), no `.env*` files.
+- `git status` clean before this commit.
+
+**No code changed this run.**
+
+### ⚠️ Onay bekliyor
+- Unchanged: the unsourced "%30-40 daha düşük görünürlük" stat in
+  `blog-eihracat-yapay-zeka-arama-chatgpt-perplexity.html` — still present, still a copy decision,
+  not touched.
+
 ## 2026-10-26
 
 `git merge origin/main` brought in 1 new commit (new blog post
