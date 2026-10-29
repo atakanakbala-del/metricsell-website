@@ -1,5 +1,35 @@
 # Automation Log
 
+## 2026-10-29
+
+`git merge origin/main` brought in 1 new commit (new blog post
+`blog-egitim-sezonsal-kampanya-takvimi.html`). Clean auto-merge, no conflicts.
+
+- **`llms.txt`**: the recurring gap, again — the new post was in `blog.html`/`sitemap.xml` but
+  missing from `llms.txt`. Added. Cross-checked by exact filename: 37/37/37 now in sync across
+  `llms.txt`/`blog.html`/disk, no diff.
+- **Blog-template palette drift, same pattern as every prior new-post run**: the new post carried
+  the stale `--accent-light: #FFB84D` / `--bg-secondary: #F0F4F8` / `--bg-dark: #0F2744` /
+  `--border: #D1DDE8` values plus a hardcoded `#F0F4F8` hero-gradient literal, instead of
+  `index.html`'s current `:root` values. Corrected to `#FFA733` / `#F4F7FB` / `#091A2F` /
+  `#D8E3EE` (and the gradient to `#F4F7FB`). Repo-wide grep for `FFB84D`/`F0F4F8` in this file now
+  returns zero matches.
+
+### Kontroller
+- New post's CTA anchors (`index.html#services`/`#sectors`/`#contact`,
+  `surucu-kursu-dil-okulu-reklam-ajansi.html#contact`) all resolve to real `id`s — no repeat of the
+  2026-10-22/26 broken-sector-anchor pattern this time.
+- New post's `<img>` tags have `alt` (empty + `aria-hidden` for decorative logo marks, consistent
+  with sibling posts); its one `target="_blank"` link already has `rel="noopener noreferrer"`; no
+  duplicate `id`s; `tracking.js` present.
+- No stray dev artifacts found repo-wide. `CLAUDE.md`'s palette note already matches `index.html`'s
+  current `:root` values (fixed in a prior run) — re-confirmed, no new drift.
+- Diff: 2 files, 5 lines.
+
+### ⚠️ Onay bekliyor
+- Standing unsourced-stat item (flagged 2026-10-12, re-confirmed every run since) still present,
+  untouched — see PR #7 description for the full note. No new items this run.
+
 ## 2026-10-28
 
 `git merge origin/main` was a no-op — `origin/main`'s tip is still `cbc9aa3`, already merged into
