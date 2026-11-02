@@ -1,5 +1,69 @@
 # Automation Log
 
+## 2026-11-02
+
+`git merge origin/main` brought in 1 new commit since 2026-11-01: a new blog post,
+`blog-saglik-turizmi-yapay-zeka-arama-chatgpt-perplexity.html` ("Sağlık Turizminde Yapay
+Zeka Arama Motorlarında Görünürlük: ChatGPT ve Perplexity'de Klinik Nasıl Öne Çıkar").
+Clean auto-merge, no conflicts (`blog.html`/`sitemap.xml` auto-merged, both already
+updated by the owner).
+
+The new post repeated three recurring patterns seen in prior new-post runs:
+- **`llms.txt`**: the recurring gap, again — the new post was already in
+  `blog.html`/`sitemap.xml` (38/38 each, matching 38 `blog-*.html` files on disk) but
+  missing from `llms.txt` (37/38). Added at the end of the blog list (matching how prior
+  additions were appended); all three now list the same 38 posts, diffed by exact
+  filename.
+- **Blog-template palette drift, same pattern as nearly every prior new-post run**: the
+  new post's embedded `:root` carried the stale pre-2026-09-26 values
+  (`--accent-light: #FFB84D`, `--bg-secondary: #F0F4F8`, `--bg-dark: #0F2744`,
+  `--border: #D1DDE8`) plus a hardcoded `#F0F4F8` `.post-hero` gradient literal, instead
+  of `index.html`'s current `:root` values (read directly from `index.html` first, not
+  assumed from old notes: `--accent-light: #FFA733`, `--bg-secondary: #F4F7FB`,
+  `--bg-dark: #091A2F`, `--border: #D8E3EE`). Corrected both. Repo-wide grep for
+  `FFB84D`/`F0F4F8`/`D1DDE8` now returns zero matches in this file.
+- **Broken anchor, same pattern as 2026-10-22/26**: the new post's `post-cta` linked to
+  `index.html#saglik-turizmi`, an id that does not exist in `index.html` (it exists only
+  on `saglik-turizmi-reklam-ajansi.html`, a different page). Fixed to
+  `saglik-turizmi-reklam-ajansi.html#contact` (id confirmed present, the pattern already
+  used by 7 sibling posts).
+- Checked the new post otherwise: all other `href`/`src` references resolve to real
+  files; no duplicate ids; both `<img>` tags have `alt` (empty + `aria-hidden` for the
+  decorative logo marks, consistent with sibling posts); its one `target="_blank"` link
+  (Instagram) already has `rel="noopener noreferrer"`; `tracking.js` present. Its own
+  "Şema İşaretlemesi" section does **not** repeat the standing unsourced-stat pattern —
+  it has different wording with no unattributed percentage claim, so no new onay-bekliyor
+  item from this post.
+- Diff: 2 files, 6 insertions / 5 deletions (well within budget).
+
+Full repo-wide re-verification pass beyond the new post, nothing else new found:
+- Scripted href/src/action + same-page/cross-page anchor check across all `.html` files:
+  no broken links, no broken anchors, no duplicate ids, no missing `<img alt>`, no
+  `target="_blank"` missing `rel="noopener"`.
+- Repo-wide grep for the old stale palette values (`FFB84D`/`F0F4F8`/`0F2744`/`D1DDE8`):
+  the only hits besides the file just fixed are the same 6 already-documented
+  older-template files (`blog-amazon-avrupa-ppc-acos-dusurme-taktikleri.html`,
+  `blog-dil-okulu-ielts-ogrenci-kayit-hunisi.html`,
+  `blog-fransa-saglik-turizmi-dis-klinigi-meta-ads.html`,
+  `blog-istanbul-surucu-kursu-dijital-pazarlama-rehberi.html`,
+  `blog-korfez-saglik-turizmi-sac-ekim-meta-ads.html`,
+  `blog-trendyol-buybox-roas-optimizasyonu.html` — different inline template, out of
+  scope, unchanged since 2026-10-20) plus `index.html`'s own intentional
+  `--primary-dark: #0F2744` (a distinct, current variable — coincidental hex match, not
+  drift).
+- All 15 redirect stub directories re-checked individually: `noindex` + `canonical` +
+  working `meta refresh` present on every one.
+- `tracking.js` confirmed on every real content page.
+- No stray dev artifacts (`.bak`/`.orig`/`~`/`Thumbs.db`/`.DS_Store`), no `.env*` files,
+  no payment/billing or auth code (static site).
+- Footer copyright (`© 2026 MetricSell`) still matches today's date. `CLAUDE.md`'s
+  palette block still matches `index.html`'s current `:root` values exactly — no drift.
+
+### ⚠️ Onay bekliyor
+- Standing unsourced-stat item (flagged 2026-10-12, re-confirmed every run since) still
+  present, untouched in `blog-eihracat-yapay-zeka-arama-chatgpt-perplexity.html` — see PR
+  #7 description. No new items this run.
+
 ## 2026-11-01
 
 `git merge origin/main` was a no-op — `origin/main`'s tip is still `cd1e0cc`, unchanged since the
