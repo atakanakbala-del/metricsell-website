@@ -1,5 +1,24 @@
 # Automation Log
 
+## 2026-11-05
+
+`git merge origin/main` brought in 1 new commit: a new blog post,
+`blog-egitim-yapay-zeka-arama-chatgpt-perplexity.html`. Clean auto-merge (`blog.html`/`sitemap.xml` only).
+
+The new post repeated the same two recurring patterns as nearly every prior new-post run:
+- **`llms.txt`**: missing the new post (already present in `blog.html`/`sitemap.xml`). Added — all three
+  back in sync.
+- **Blog-template palette drift**: stale `--accent-light: #FFB84D` / `--bg-secondary: #F0F4F8` /
+  `--bg-dark: #0F2744` / `--border: #D1DDE8` plus a hardcoded `#F0F4F8` hero-gradient literal. Corrected to
+  `index.html`'s current values (read fresh, not assumed): `#FFA733` / `#F4F7FB` / `#091A2F` / `#D8E3EE`.
+
+Checked and clean on the new post specifically: its `index.html#services`/`#sectors`/`#contact` anchors all
+resolve (no repeat of the 2026-10-22/26/29/11-02 `index.html#<sector>` broken-anchor pattern — those ids do
+exist on `index.html`), no missing `alt`, no `target="_blank"` missing `rel="noopener"`, correct `© 2026`
+copyright line. Full repo-wide re-verification (duplicate ids, stray artifacts, all 15 redirect stubs,
+`tracking.js` inclusion, `CLAUDE.md` accuracy — palette values there already match `index.html`) otherwise
+unchanged/clean. Diff: 2 files, 6 insertions / 4 deletions.
+
 ## 2026-11-03
 
 `git merge origin/main` was a no-op — `origin/main`'s tip is still `1d7e195`, unchanged since the
