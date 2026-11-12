@@ -1,5 +1,30 @@
 # Automation Log
 
+## 2026-11-12
+
+`git merge origin/main` brought in 1 new commit since 2026-11-10: a new blog post,
+`blog-saglik-turizmi-e-posta-hasta-takip-dizisi.html` ("Sağlık Turizminde E-posta Takip Dizisi
+ile Hasta Adayını Randevuya Dönüştürme"). Clean auto-merge (`blog.html`/`sitemap.xml`).
+
+The new post repeated the same two recurring patterns as nearly every prior new-post run:
+- **`llms.txt`**: missing the new post (already present in `blog.html`/`sitemap.xml`). Added at
+  the end of the blog list, matching how prior additions were appended.
+- **Blog-template palette drift**: stale `--accent-light: #FFB84D` / `--bg-secondary: #F0F4F8` /
+  `--bg-dark: #0F2744` / `--border: #D1DDE8` plus the matching hardcoded `.post-hero`
+  hero-gradient literal (`#F0F4F8`). Corrected to `index.html`'s current values (read fresh):
+  `#FFA733` / `#F4F7FB` / `#091A2F` / `#D8E3EE` (gradient → `#F4F7FB`).
+
+Checked and clean on the new post specifically: its `index.html#services`/`#sectors`/`#contact`
+and `saglik-turizmi-reklam-ajansi.html#contact` anchors all resolve, no missing `alt`, its one
+`target="_blank"` link (Instagram) already has `rel="noopener noreferrer"`, correct copyright
+line. Repo-wide grep for the old palette literals now returns zero matches again (only this
+file had them). Diff: 2 files, 5 insertions / 4 deletions (well within budget).
+
+### ⚠️ Onay bekliyor
+- Standing unsourced-stat item (flagged 2026-10-12, re-confirmed every run since) still present,
+  untouched in `blog-eihracat-yapay-zeka-arama-chatgpt-perplexity.html` — see PR #7 description.
+  No new items this run.
+
 ## 2026-11-10
 
 `git fetch origin` + `git merge origin/main` was a no-op — `origin/main`'s tip is still `293fe23`,
