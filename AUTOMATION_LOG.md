@@ -1,5 +1,38 @@
 # Automation Log
 
+## 2026-11-13
+
+`git fetch origin` + `git merge origin/main` was a no-op — `origin/main`'s tip is still `fece3ba`,
+unchanged since the 2026-11-12 run (no new blog post or other commit since).
+
+Full repo-wide re-verification pass, independently re-run from scratch:
+- `llms.txt` / `sitemap.xml` / `blog.html`: all three list exactly the same 41 `blog-*.html`
+  filenames as disk (diffed by exact filename, no gap).
+- No `<img>` missing `alt`, no duplicate `id`s, no `target="_blank"` link missing
+  `rel="noopener"`, anywhere in the repo (scripted checks).
+- Scripted href/src + same-page/cross-page anchor check across all `.html` files: 0 broken.
+- No stray dev artifacts (`.bak`/`.orig`/`~`/`Thumbs.db`/`.DS_Store`), no `.env*` files, no new
+  `TODO`/`FIXME` beyond the ones already accounted for in prior runs.
+- Investigated a grep hit on `#0F2744` across `index.html` and 6 blog posts' `.cta-banner` rule —
+  **false alarm, not the previously-fixed `--bg-dark` drift pattern.** `#0F2744` is `index.html`'s
+  own current `--primary-dark` value (line 200), used intentionally and consistently in its own
+  CTA-banner gradient (line 697) and in matching `.cta-banner` rules copied into those 6 blog
+  posts — not a stale copy of the old `--bg-dark`/`--accent-light`/`--bg-secondary`/`--border`
+  blog-template literals (which already return zero matches repo-wide, re-confirmed). No action
+  needed.
+- `CLAUDE.md`'s documented palette (all values) still matches `index.html`'s current `:root`
+  values exactly — no drift; the two-palette-vs-main-repo ambiguity note is still accurately
+  described and still intentionally left as a human decision.
+- Standing unsourced-stat example (flagged 2026-10-12, re-confirmed every run since) re-confirmed
+  still present, unchanged, in `blog-eihracat-yapay-zeka-arama-chatgpt-perplexity.html` — a
+  copy/positioning decision, not this run's call.
+
+**Nothing genuinely new found this run.** No code changed — only this `AUTOMATION_LOG.md` entry.
+
+### ⚠️ Onay bekliyor
+- Standing unsourced-stat item (flagged 2026-10-12, re-confirmed every run since, including
+  today) — see PR #7 description. No new items this run.
+
 ## 2026-11-12
 
 `git merge origin/main` brought in 1 new commit since 2026-11-10: a new blog post,
