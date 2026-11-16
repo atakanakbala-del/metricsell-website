@@ -1,5 +1,33 @@
 # Automation Log
 
+## 2026-11-16
+
+`git fetch origin` + `update_pull_request_branch` merge: `origin/main` had moved by 1 new commit
+since the 2026-11-13 run — a new blog post, `blog-eihracat-cok-dilli-urun-sayfasi-seo.html`
+("E-ihracatta Çok Dilli Ürün Sayfası SEO Rehberi"). Clean merge (`blog.html`/`sitemap.xml` only).
+
+The new post repeated the same two recurring patterns as nearly every prior new-post run:
+- **`llms.txt`**: missing the new post (already present in `blog.html`/`sitemap.xml`/disk — all
+  three at 42). Added — all three back in sync (42/42/42).
+- **Blog-template palette drift**: stale `--accent-light: #FFB84D` / `--bg-secondary: #F0F4F8` /
+  `--bg-dark: #0F2744` / `--border: #D1DDE8` literals, plus a hardcoded `#F0F4F8` `.post-hero`
+  gradient literal (same pattern as the 2026-11-09 run). Corrected to `index.html`'s current
+  values (read fresh): `#FFA733` / `#F4F7FB` / `#091A2F` / `#D8E3EE` (gradient to `#F4F7FB`,
+  matching sibling posts). Repo-wide grep for the old literals now returns zero matches again.
+
+Checked and clean on the new post specifically: no `target="_blank"` without
+`rel="noopener"`; both `<img>` tags have `alt`; all internal `href`s (incl. the two sibling-post
+cross-links) resolve to real files on disk.
+
+Re-confirmed both standing "⚠️ Onay bekliyor" items directly against current code — both
+unchanged: the CLAUDE.md two-palette ambiguity, and the unsourced `%X arttı` example statistic in
+`blog-eihracat-yapay-zeka-arama-chatgpt-perplexity.html`.
+
+Diff: 3 files, ~6 insertions / 4 deletions (well within budget).
+
+### ⚠️ Onay bekliyor
+- No new item this run — see PR #7 description for the 2 standing items.
+
 ## 2026-11-13
 
 `git fetch origin` + `git merge origin/main` was a no-op — `origin/main`'s tip is still `fece3ba`,
