@@ -1,5 +1,37 @@
 # Automation Log
 
+## 2026-11-19
+
+`git fetch origin main` + `git merge origin/main`: `origin/main` had moved by 1 new commit since
+the 2026-11-16 run — a new blog post, `blog-eticaret-whatsapp-business-api-siparis-takibi.html`
+("E-ticarette WhatsApp Business API ile Sipariş Takibi ve Müşteri Otomasyonu: 8 Adımlık Rehber").
+Clean merge, no conflicts (`blog.html`/`sitemap.xml` only, 453 insertions).
+
+The new post repeated the same two recurring patterns as nearly every prior new-post run:
+- **`llms.txt`**: missing the new post (already present in `blog.html`/`sitemap.xml`/disk — all
+  three in sync, 43/43/43 by exact filename diff). Added at the end of the blog list.
+- **Blog-template palette drift**: stale `--accent-light: #FFB84D` / `--bg-secondary: #F0F4F8` /
+  `--bg-dark: #0F2744` / `--border: #D1DDE8` literals, plus a hardcoded `#F0F4F8` `.post-hero`
+  gradient literal. Corrected to `index.html`'s current values (read fresh, unchanged since
+  2026-11-16): `#FFA733` / `#F4F7FB` / `#091A2F` / `#D8E3EE` (gradient to `#F4F7FB`, matching
+  sibling posts). Repo-wide grep for the old literals now returns zero matches again (the only
+  remaining `#0F2744` hits are the already-confirmed-benign `--primary-dark` / `.cta-banner`
+  usages in `index.html` and 6 older posts, per the 2026-11-13 investigation — not this pattern).
+
+Checked and clean on the new post specifically: its one `target="_blank"` link (Instagram) already
+has `rel="noopener noreferrer"`; both `<img>` tags are decorative with `alt=""` + `aria-hidden`
+(not missing); all internal `href`s (nav/footer links, sibling cross-links, `index.html`/
+`eticaret-e-ihracat-ajansi.html` anchors) resolve to real files/ids on disk.
+
+Re-confirmed both standing "⚠️ Onay bekliyor" items directly against current code — both
+unchanged: the CLAUDE.md two-palette ambiguity note, and the unsourced `%X arttı` example
+statistic in `blog-eihracat-yapay-zeka-arama-chatgpt-perplexity.html`.
+
+Diff: 2 files changed beyond the merge itself, 5 insertions / 4 deletions (well within budget).
+
+### ⚠️ Onay bekliyor
+- No new item this run — see PR #7 description for the 2 standing items.
+
 ## 2026-11-16
 
 `git fetch origin` + `update_pull_request_branch` merge: `origin/main` had moved by 1 new commit

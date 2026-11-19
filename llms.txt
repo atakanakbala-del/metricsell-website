@@ -86,3 +86,4 @@
 - **Rusya ve BDT Ülkelerinden Hasta Kazanmak İçin Dijital Pazarlama Rehberi:** https://www.metricsell.com/blog-rusya-bdt-saglik-turizmi-dijital-pazarlama.html
 - **Sağlık Turizminde E-posta Takip Dizisi ile Hasta Adayını Randevuya Dönüştürme:** https://www.metricsell.com/blog-saglik-turizmi-e-posta-hasta-takip-dizisi.html
 - **E-ihracatta Çok Dilli Ürün Sayfası SEO Rehberi:** https://www.metricsell.com/blog-eihracat-cok-dilli-urun-sayfasi-seo.html
+- **E-ticarette WhatsApp Business API ile Sipariş Takibi ve Müşteri Otomasyonu: 8 Adımlık Rehber:** https://www.metricsell.com/blog-eticaret-whatsapp-business-api-siparis-takibi.html
