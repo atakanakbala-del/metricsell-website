@@ -1,5 +1,36 @@
 # Automation Log
 
+## 2026-11-20
+
+`git fetch origin` + `git merge origin/main` was a no-op — `origin/main`'s tip is still `2a7b959`,
+unchanged since the 2026-11-19 run (no new blog post or other commit since; already merged into
+this branch).
+
+Full repo-wide re-verification pass, independently re-run from scratch, nothing new found:
+- `llms.txt` / `sitemap.xml` / `blog.html`: all three list exactly the same 43 `blog-*.html`
+  filenames as disk (43/43/43, diffed by exact filename, no gap).
+- Repo-wide grep for the old stale palette literals (`FFB84D`/`F0F4F8`/`D1DDE8`) returns zero
+  matches; the 7 remaining `0F2744` hits are the already-confirmed-benign `--primary-dark` /
+  `.cta-banner` usages (`index.html` + 6 older-template posts), not this pattern.
+- Scripted href/src/action + same-page/cross-page anchor check across every `.html` file: 0
+  broken links, 0 broken anchors, 0 duplicate `id`s.
+- No `<img>` missing `alt`, no `target="_blank"` link missing `rel="noopener"` anywhere in the
+  repo.
+- `tracking.js` confirmed present on every `blog-*.html` file (0 missing).
+- No stray dev artifacts (`.bak`/`.orig`/`~`/`Thumbs.db`/`.DS_Store`), no `.env*`/credential-
+  pattern files, no new `TODO`/`FIXME` in site content (the only hits are pre-existing, unrelated
+  occurrences inside `.claude/skills/impeccable/` reference docs, not site code).
+- `CLAUDE.md`'s documented palette still matches `index.html`'s current `:root` values exactly —
+  no drift. The two-palette-ambiguity note is still accurate and still a human decision.
+- Standing unsourced `%X arttı` example-stat item re-confirmed still present, unchanged, in
+  `blog-eihracat-yapay-zeka-arama-chatgpt-perplexity.html`.
+
+**Nothing genuinely new found this run.** No site code changed — only this `AUTOMATION_LOG.md`
+entry.
+
+### ⚠️ Onay bekliyor
+- No new item this run — see PR #7 description for the 2 standing items.
+
 ## 2026-11-19
 
 `git fetch origin main` + `git merge origin/main`: `origin/main` had moved by 1 new commit since
