@@ -1603,3 +1603,36 @@ stat in `blog-eihracat-yapay-zeka-arama-chatgpt-perplexity.html`, flagged since 
 
 **Nothing genuinely new found this run.** No site code changed — only this `AUTOMATION_LOG.md`
 entry.
+
+## 2026-11-23
+
+`git merge origin/main` brought in 1 new commit: a new blog post,
+`blog-egitim-e-posta-ogrenci-takip-dizisi.html` ("Sürücü Kursu ve Dil Okulları İçin E-posta Takip
+Dizisi"). Clean auto-merge (`blog.html`/`sitemap.xml` only).
+
+The new post repeated the same two recurring patterns as nearly every prior new-post run:
+- **`llms.txt`**: missing the new post (already present in `blog.html`/`sitemap.xml`/disk — all
+  three at 44). Added — all three back in sync (44/44/44).
+- **Blog-template palette drift**: stale `--accent-light: #FFB84D` / `--bg-secondary: #F0F4F8` /
+  `--bg-dark: #0F2744` / `--border: #D1DDE8` plus a hardcoded `#F0F4F8` `.post-hero` gradient
+  literal. Corrected to `index.html`'s current values (read fresh): `#FFA733` / `#F4F7FB` /
+  `#091A2F` / `#D8E3EE` (gradient to `#F4F7FB`). Repo-wide grep for the old literals now returns
+  zero matches again.
+
+Checked and clean on the new post specifically: all `href`/`src` references (internal pages,
+`favicon.png`, `logo-icon*.png`, `tracking.js`) resolve to real files; no duplicate `id`s; both
+`<img>` tags have `alt` (empty + `aria-hidden` for decorative logo marks, consistent with sibling
+posts); its one `target="_blank"` link (Instagram) already has `rel="noopener noreferrer"`;
+correct `© 2026` copyright.
+
+Re-confirmed repo-wide: no stray dev artifacts, no `.env*` files, no payment/billing or auth code
+(static site); `CLAUDE.md`'s documented palette still matches `index.html`'s current `:root`
+values exactly.
+
+Diff: 2 files, 7 insertions / 4 deletions (well within budget).
+
+### ⚠️ Onay bekliyor
+- Standing unsourced-stat item (flagged 2026-10-12, re-confirmed every run since) still present,
+  untouched, in `blog-eihracat-yapay-zeka-arama-chatgpt-perplexity.html` — see PR #7 description.
+- Palette-ambiguity item (CLAUDE.md's two-palette note) still accurate, still a human decision.
+No new items this run.
