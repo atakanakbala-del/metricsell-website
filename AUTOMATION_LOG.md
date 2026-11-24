@@ -1,5 +1,29 @@
 # Automation Log
 
+## 2026-11-24
+
+`git fetch origin` + `git merge origin/main` — no-op, `origin/main` tip still `ee04dca`, unchanged
+since the 2026-11-23 run (no new blog post or other commit since).
+
+Full repo-wide re-verification pass, independently re-run from scratch, nothing new found:
+- `llms.txt` / `sitemap.xml` / `blog.html` / disk: all four agree on exactly the same 44
+  `blog-*.html` filenames (44/44/44/44, diffed by exact filename set — no gap either direction).
+- Repo-wide grep for the old stale palette literals (`FFB84D`/`F0F4F8`/`D1DDE8`) returns zero
+  matches; `CLAUDE.md`'s documented palette still matches `index.html`'s current `:root` values
+  exactly (`#FFA733`/`#F4F7FB`/`#091A2F`/`#D8E3EE`) — no drift.
+- Scripted internal `href` link-target check across every `blog-*.html` file: 0 missing targets.
+- No stray dev artifacts, no `.env*`/credential-pattern files.
+
+Both standing ⚠️ Onay bekliyor items re-confirmed unchanged (palette ambiguity note in CLAUDE.md;
+unsourced example stat in `blog-eihracat-yapay-zeka-arama-chatgpt-perplexity.html`, flagged since
+2026-10-12). **Nothing genuinely new found this run.** No site code changed — only this log entry.
+
+### ⚠️ Onay bekliyor
+- Standing unsourced-stat item (flagged 2026-10-12, re-confirmed every run since) still present,
+  untouched — see PR #7 description.
+- Palette-ambiguity item (CLAUDE.md's two-palette note) still accurate, still a human decision.
+No new items this run.
+
 ## 2026-11-20
 
 `git fetch origin` + `git merge origin/main` was a no-op — `origin/main`'s tip is still `2a7b959`,
@@ -1635,4 +1659,26 @@ Diff: 2 files, 7 insertions / 4 deletions (well within budget).
 - Standing unsourced-stat item (flagged 2026-10-12, re-confirmed every run since) still present,
   untouched, in `blog-eihracat-yapay-zeka-arama-chatgpt-perplexity.html` — see PR #7 description.
 - Palette-ambiguity item (CLAUDE.md's two-palette note) still accurate, still a human decision.
+
+## 2026-11-24
+
+`git fetch origin` + `git merge origin/main` — no-op, `origin/main` tip still `ee04dca`, unchanged
+since 2026-11-23 (no new blog post today).
+
+Full repo-wide re-verification pass, nothing new found:
+- `llms.txt` / `sitemap.xml` / `blog.html`: all three list exactly the same 44 `blog-*.html`
+  filenames as disk (44/44/44).
+- Repo-wide grep for the old stale palette literals (`FFB84D`/`F0F4F8`/`D1DDE8`) returns zero
+  matches; `index.html`'s current `:root` values (`#FFA733`/`#F4F7FB`/`#091A2F`/`#D8E3EE`) match
+  `CLAUDE.md`'s documented palette exactly — no drift.
+- No duplicate `id`s found across any `blog-*.html` file.
+- No `<img>` missing `alt`.
+- No `target="_blank"` link missing `rel="noopener"` anywhere in the repo.
+- No stray dev artifacts or `.env*`/credential-pattern files found.
+
+Both standing ⚠️ Onay bekliyor items re-confirmed unchanged (palette ambiguity; unsourced example
+stat in `blog-eihracat-yapay-zeka-arama-chatgpt-perplexity.html`, flagged since 2026-10-12).
+
+**Nothing genuinely new found this run.** No site code changed — only this `AUTOMATION_LOG.md`
+entry.
 No new items this run.
