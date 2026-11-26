@@ -1,5 +1,43 @@
 # Automation Log
 
+## 2026-11-26
+
+`git fetch origin` + `git merge origin/main` brought in 1 new commit: a new blog post,
+`blog-google-merchant-center-feed-hatalari.html` ("Google Merchant Center'da Ürün Feed
+Hatalarını Çözmenin 8 Yolu"). Clean auto-merge, no conflicts (`blog.html`/`sitemap.xml` only,
+3 files/451 insertions from `main`).
+
+The new post repeated the same two recurring patterns as nearly every prior new-post run:
+- **`llms.txt`**: missing the new post (already present in `blog.html`/`sitemap.xml`/disk — all
+  three at 45). Added to the "Blog ve Bilgi Bankası" list — all three back in sync (45/45/45,
+  verified by checking every disk `blog-*.html` filename is referenced in each of the three
+  files, not just a line count, since `llms.txt` also repeats some posts as category highlights).
+- **Blog-template palette drift**: stale `--accent-light: #FFB84D` / `--bg-secondary: #F0F4F8` /
+  `--bg-dark: #0F2744` / `--border: #D1DDE8` plus a hardcoded `#F0F4F8` `.post-hero` gradient
+  literal. Corrected to `index.html`'s current values (read fresh): `#FFA733` / `#F4F7FB` /
+  `#091A2F` / `#D8E3EE` (gradient to `#F4F7FB`). Repo-wide grep for the old literals now returns
+  zero matches again.
+
+Checked and clean on the new post specifically: all `href`/`src` references (internal pages +
+anchors `index.html#services`/`#sectors`/`#contact`, `eticaret-e-ihracat-ajansi.html#contact`,
+sibling blog posts, `favicon.png`, `logo-icon*.png`, `tracking.js`) resolve to real files/ids; no
+duplicate `id`s; both `<img>` tags have `alt` (empty + `aria-hidden` for decorative logo marks,
+consistent with sibling posts); its one `target="_blank"` link (Instagram) already has
+`rel="noopener noreferrer"`; correct `© 2026` copyright.
+
+Re-confirmed repo-wide: no stray dev artifacts, no `.env*`/credential-pattern files, no
+payment/billing or auth code in site content (static site; the two `password`/`api_key` string
+hits are in the pre-existing `impeccable` skill's detector script, unrelated to this site's
+content, not new). `CLAUDE.md`'s documented palette still matches `index.html`'s current `:root`
+values exactly — no drift; the two-palette-ambiguity note is unchanged, still a human decision.
+
+Diff: 2 files, 5 insertions / 4 deletions (well within budget).
+
+### ⚠️ Onay bekliyor
+- Standing unsourced-stat item (flagged 2026-10-12, re-confirmed every run since) still present,
+  untouched, in `blog-eihracat-yapay-zeka-arama-chatgpt-perplexity.html` — see PR #7 description.
+- Palette-ambiguity item (CLAUDE.md's two-palette note) still accurate, still a human decision.
+
 ## 2026-11-24
 
 `git fetch origin` + `git merge origin/main` — no-op, `origin/main` tip still `ee04dca`, unchanged

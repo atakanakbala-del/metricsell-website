@@ -88,3 +88,4 @@
 - **E-ihracatta Çok Dilli Ürün Sayfası SEO Rehberi:** https://www.metricsell.com/blog-eihracat-cok-dilli-urun-sayfasi-seo.html
 - **E-ticarette WhatsApp Business API ile Sipariş Takibi ve Müşteri Otomasyonu: 8 Adımlık Rehber:** https://www.metricsell.com/blog-eticaret-whatsapp-business-api-siparis-takibi.html
 - **Sürücü Kursu ve Dil Okulları İçin E-posta Takip Dizisi:** https://www.metricsell.com/blog-egitim-e-posta-ogrenci-takip-dizisi.html
+- **Google Merchant Center'da Ürün Feed Hatalarını Çözmenin 8 Yolu:** https://www.metricsell.com/blog-google-merchant-center-feed-hatalari.html
