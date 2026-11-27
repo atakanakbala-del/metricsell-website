@@ -1,5 +1,35 @@
 # Automation Log
 
+## 2026-11-27
+
+`git fetch origin` + `git merge origin/main` — no-op, `origin/main` tip still `2ee7abd`, unchanged
+since 2026-11-26 (no new blog post today).
+
+Full repo-wide re-verification pass, nothing new found:
+- `llms.txt` / `sitemap.xml` / `blog.html`: all three list exactly the same 45 `blog-*.html`
+  filenames as disk (45/45/45).
+- Palette grep for `FFB84D`/`F0F4F8`/`0F2744`/`D1DDE8`: the only live hits are `#0F2744` used as
+  `--primary-dark` in `index.html` itself (lines 200/697/1118/1663) and the matching
+  `.cta-banner` gradient literal repeated in 6 blog posts (`dil-okulu-ielts...`,
+  `amazon-avrupa-ppc...`, `korfez-saglik-turizmi...`, `trendyol-buybox...`,
+  `fransa-saglik-turizmi...`, `istanbul-surucu-kursu...`) — confirmed these intentionally match
+  `index.html`'s current `--primary-dark` token, not drift from an older palette version. No
+  `FFB84D`/`F0F4F8`(as `--bg-secondary`)/`D1DDE8` stale literals found anywhere.
+- No internal `href`/`src` link resolves to a missing file across all pages (full repo sweep,
+  not just the newest post).
+- No `target="_blank"` link missing `rel="noopener"`.
+- No duplicate `id`s on the newest post.
+- `CLAUDE.md`'s documented palette (`--accent-light: #FFA733`, `--bg-secondary: #F4F7FB`,
+  `--bg-dark: #091A2F`, `--border: #D8E3EE`) still matches `index.html`'s current `:root` values
+  exactly — no drift.
+- No stray dev artifacts or `.env*`/credential-pattern files found.
+
+Both standing ⚠️ Onay bekliyor items re-confirmed unchanged (palette ambiguity; unsourced example
+stat in `blog-eihracat-yapay-zeka-arama-chatgpt-perplexity.html`, flagged since 2026-10-12).
+
+**Nothing genuinely new found this run.** No site code changed — only this `AUTOMATION_LOG.md`
+entry.
+
 ## 2026-11-26
 
 `git fetch origin` + `git merge origin/main` brought in 1 new commit: a new blog post,
