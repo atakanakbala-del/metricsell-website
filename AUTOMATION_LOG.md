@@ -1,5 +1,44 @@
 # Automation Log
 
+## 2026-11-28
+
+`git fetch origin` + `git merge origin/main` — no-op, `origin/main` tip still `2ee7abd`, unchanged
+since the 2026-11-26 run (no new blog post or other commit since).
+
+Full repo-wide re-verification pass, independently re-run from scratch, nothing new found:
+- `llms.txt` / `sitemap.xml` / `blog.html`: all three list exactly the same 45 `blog-*.html`
+  filenames as disk (45/45/45, diffed by exact filename, no gap either direction).
+- Palette grep for the stale `FFB84D`/`F0F4F8`/`D1DDE8` literals returns zero matches anywhere;
+  the only `0F2744` hits are the same 6 already-confirmed-benign older-template `.cta-banner`
+  files plus `index.html`'s own current `--primary-dark` token — not drift.
+- Scripted repo-wide pass (href/src resolution, including the two nested `/c/<id>/` and
+  `store/m/5/` redirect stubs, plus every `href="...#id"` same-page/cross-page anchor) across all
+  72 `.html` files: 0 broken links, 0 broken anchors. The only hits are the known pre-existing
+  false positives in `.claude/skills/ad-creative/` and `.agents/skills/ad-creative/` template
+  assets (`${esc(f.image)}` JS template-literal strings, a duplicate `id="review-data"` inside a
+  JS-generated template string) — not site content, unchanged from prior runs.
+- No `<img>` missing `alt`, no `target="_blank"` link missing `rel="noopener"` anywhere in site
+  content.
+- All redirect-stub directories re-checked (12 top-level stubs + the 2 nested `/c/<id>/` stubs +
+  `store/m/5/`): `noindex` + `canonical` + a working `meta refresh` to a real target present on
+  every one.
+- No stray dev artifacts (`.bak`/`.orig`/`~`/`Thumbs.db`/`.DS_Store`), no `.env*`/credential-
+  pattern files, no `TODO`/`FIXME`/"lorem ipsum" in site content.
+- Footer copyright (`© 2026 MetricSell`) still matches today's date. `CLAUDE.md`'s documented
+  palette (`--accent-light: #FFA733`, `--bg-secondary: #F4F7FB`, `--bg-dark: #091A2F`,
+  `--border: #D8E3EE`, etc.) still matches `index.html`'s current `:root` values exactly — no
+  drift. The leading-"c" typo fix from the first run is still in place.
+
+Both standing ⚠️ Onay bekliyor items re-confirmed unchanged (palette ambiguity vs. the main
+MetricSell CLAUDE.md; unsourced example stat in
+`blog-eihracat-yapay-zeka-arama-chatgpt-perplexity.html`, flagged since 2026-10-12).
+
+**Nothing genuinely new found this run.** No site code changed — only this `AUTOMATION_LOG.md`
+entry.
+
+### ⚠️ Onay bekliyor
+- No new item this run — see PR #7 description for the 2 standing items.
+
 ## 2026-11-27
 
 `git fetch origin` + `git merge origin/main` — no-op, `origin/main` tip still `2ee7abd`, unchanged
